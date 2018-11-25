@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/faridrashidi/kaggle-solutions/blob/master/LICENSE">
+  <a href="https://github.com/faridrashidi/kaggle-solutions/blob/gh-pages/LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-yellow.svg">
   </a>
   <a href="https://github.com/jekyll/jekyll">
