@@ -1,0 +1,174 @@
+---
+layout: default
+---
+
+
+<!-- <a href="https://github.com/faridrashidi/kaggle-solutions">
+  <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
+</a> -->
+
+<div class="container">
+  <div class="row">
+    <div style="margin-left:auto; margin-right:auto; float:center; width:75%;">
+      <section id="content" class="body">
+        <div class="entry-content" style="font-size:14px; font-family:'Roboto', sans-serif; line-height:1.7">
+          <h2 style="text-align:center;">The Most Comprehensive List of Kaggle Solutions and Ideas</h2>
+          <p>
+            This is a list of almost all available solutions and ideas shared by top performers in the past Kaggle competitions. This list will get updated as soon as a new competition finished. If you find other solutions beside the ones listed here I would suggest you to contribute to this repo by making a pull request. The symbols were used in this list is described <a href='{{ site.baseurl }}/resources/symbols.html'>here</a>.
+          </p>
+          <!-- <p>
+            If you found it interesting you can give a star <iframe src="https://ghbtns.com/github-btn.html?user=faridrashidi&amp;repo=kaggle-solutions&amp;type=star&amp;count=true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe> or make a fork <iframe src="https://ghbtns.com/github-btn.html?user=faridrashidi&amp;repo=kaggle-solutions&amp;type=fork&amp;count=true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe>
+          </p> -->
+          <p>
+            Here are some markdown pages about Top Kagglers and Kernels of The week.
+          </p>
+          <ul>
+            <li><a href='{{ site.baseurl }}/resources/videos.html'>Top Kagglers Interviews and Lectures</a></li>
+            <li><a href='{{ site.baseurl }}/resources/kernels.html'>Kernels of The Week</a></li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<br/>
+
+
+<div class="container">
+  <div id="search-demo-container">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Type / to search title, description, year, ranking and ...">
+  </div>
+  </br>
+  <div class="row">
+    <div class="col-lg-12">
+      <section id="content" class="body">
+      	<span class="published" style="float: right;">
+          <i class="far fa-calendar-alt" style="font-size:16px"></i><time datetime="2019-01-01"> <b>Last Updated:</b> Nov 25, 2018</time>
+        </span>
+        <div class="entry-content">
+          <table id="myTable" class="table table-striped">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Title & Description</th>
+                <th>Details</th>
+                <th>Solutions</th>
+                <th>Pins</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              {% for item in site.data.competitions.competitions %}
+
+                  <tr>
+                    <td width="10%">
+                      <a style="border-bottom:none" href="{{ item.link }}">
+                        <img src="{{ item.image }}" style="border-radius:5%; max-width:70px;">
+                      </a>
+                    </td>
+                    <td width="45%">
+                      <a href="{{ item.link }}"><b>{{ item.number }}. {{ item.title }}</b></a>
+                      <br></br>
+                      <p>{{ item.desc }}</p>
+                    </td>
+                    <td width="20%">
+                      <p>Prize: {{ item.prize }}</p>
+                      <p>Team: {{ item.team }}</p>
+                      <p>Kind: {{ item.kind }}</p>
+                      <p>Year: {{ item.year }}</p>
+                    </td>
+                    <td width="20%">
+                      <ul style="list-style: none; padding-left: 0;">
+                        {% for entry in item.solutions %}
+                          {% if entry.rank == 'all solutions' %}
+                            <li class="secondary"><a href="{{ entry.link }}"><i class="fas fa-circle" style="font-size:15px"></i> all solutions</a></li>
+                          {% elsif entry.rank == '?' %}
+                            <li class="secondary"><a href="{{ entry.link }}"><i class="fas fa-circle" style="font-size:15px"></i> ?th place</a></li>
+                          {% else %}
+                            {% assign var = entry.rank | plus: 0 %}
+                            {% if var == 1 %}
+                              {% if entry.kind == 'code' %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.code_gold }} {{ entry.rank }}st place</a></li>
+                              {% elsif entry.kind == 'description' %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.description_gold }} {{ entry.rank }}st place</a></li>
+                              {% else %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.kernel_gold }} {{ entry.rank }}st place</a></li>
+                              {% endif %}
+                            {% elsif var == 2 %}
+                              {% if entry.kind == 'code' %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.code_silver }} {{ entry.rank }}nd place</a></li>
+                              {% elsif entry.kind == 'description' %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.description_silver }} {{ entry.rank }}nd place</a></li>
+                              {% else %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.kernel_silver }} {{ entry.rank }}nd place</a></li>
+                              {% endif %}
+                            {% elsif var == 3 or var == 23 or var == 33 or var == 43 or var == 53 or var == 63 %}
+                              {% if entry.kind == 'code' %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.code_bronze }} {{ entry.rank }}rd place</a></li>
+                              {% elsif entry.kind == 'description' %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.description_bronze }} {{ entry.rank }}rd place</a></li>
+                              {% else %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.kernel_bronze }} {{ entry.rank }}rd place</a></li>
+                              {% endif %}
+                            {% elsif var == 22 or var == 32 or var == 42 or var == 52 or var == 62 %}
+                              {% if entry.kind == 'code' %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.code_bronze }} {{ entry.rank }}nd place</a></li>
+                              {% elsif entry.kind == 'description' %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.description_bronze }} {{ entry.rank }}nd place</a></li>
+                              {% else %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.kernel_bronze }} {{ entry.rank }}nd place</a></li>
+                              {% endif %}
+                            {% elsif var == 21 or var == 31 or var == 41 or var == 51 or var == 61 %}
+                              {% if entry.kind == 'code' %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.code_bronze }} {{ entry.rank }}st place</a></li>
+                              {% elsif entry.kind == 'description' %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.description_bronze }} {{ entry.rank }}st place</a></li>
+                              {% else %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.kernel_bronze }} {{ entry.rank }}st place</a></li>
+                              {% endif %}
+                            {% else %}
+                              {% if entry.kind == 'code' %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.code_bronze }} {{ entry.rank }}th place</a></li>
+                              {% elsif entry.kind == 'description' %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.description_bronze }} {{ entry.rank }}th place</a></li>
+                              {% else %}
+                                <li class="secondary"><a href="{{ entry.link }}">{{ site.kernel_bronze }} {{ entry.rank }}th place</a></li>
+                              {% endif %}
+                            {% endif %}
+                          {% endif %}
+                        {% endfor %}
+                      </ul>
+                    </td>
+                    <td width="5%">
+                      {% if item.done == 'true' %}
+                        <i class="far fa-check-circle" style="font-size:15px"></i>
+                      {% elsif item.done == 'false' %}
+                        <i class="far fa-circle" style="font-size:15px"></i>
+                      {% endif %}
+                      <br/>
+                      {% if item.isHot == 'true' %}
+                        <i class="fab fa-hotjar" style="font-size:15px"></i>
+                      {% endif %}
+                    </td>
+                  </tr>
+              
+              {% endfor %}
+
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+</script>
