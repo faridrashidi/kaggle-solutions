@@ -1,0 +1,23 @@
+title: Kaggle Solutions
+description: Kaggle Solutions and Learning Progress by Farid Rashidi at Indiana University Bloomington
+baseurl: '/kaggle-solutions'
+google_analytics_tracking_id: UA-122994885-1
+
+markdown: kramdown
+permalink: /:title
+
+highlighter: rouge
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
+
+code_gold: '<img style="padding-bottom:4px;" src="/kaggle-solutions/assets/images/code-gold.png" width="15px"/>'
+code_silver: '<img style="padding-bottom:4px;" src="/kaggle-solutions/assets/images/code-silver.png" width="15px"/>'
+code_bronze: '<img style="padding-bottom:4px;" src="/kaggle-solutions/assets/images/code-bronze.png" width="15px"/>'
+description_gold: '<img style="padding-bottom:4px;" src="/kaggle-solutions/assets/images/description-gold.png" width="15px"/>'
+description_silver: '<img style="padding-bottom:4px;" src="/kaggle-solutions/assets/images/description-silver.png" width="15px"/>'
+description_bronze: '<img style="padding-bottom:4px;" src="/kaggle-solutions/assets/images/description-bronze.png" width="15px"/>'
+kernel_gold: '<img style="padding-bottom:4px;" src="/kaggle-solutions/assets/images/kernel-gold.png" width="15px"/>'
+kernel_silver: '<img style="padding-bottom:4px;" src="/kaggle-solutions/assets/images/kernel-silver.png" width="15px"/>'
+kernel_bronze: '<img style="padding-bottom:4px;" src="/kaggle-solutions/assets/images/kernel-bronze.png" width="15px"/>'
