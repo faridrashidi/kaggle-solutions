@@ -73,7 +73,7 @@ competitions:
     solutions: 
   - number: '292'
     title: 'Don't call me turkey!'
-    desc: 'Thanksgiving Edition: Find the turkey in the sound bite'
+    desc: 'Thanksgiving Edition; Find the turkey in the sound bite'
     kind: 'Playground'
     prize: 'Swag'
     team: '267'
