@@ -83,6 +83,9 @@ competitions:
     isHot: 'false'
     done: 'false'
     solutions: 
+      - rank: '2'
+        link: 'https://github.com/yafeunteun/kaggle-dont-call-me-turkey'
+        kind: 'code'
   - number: '291'
     title: 'Airbus Ship Detection Challenge'
     desc: 'Find ships on satellite images as quickly as possible'
@@ -95,6 +98,9 @@ competitions:
     isHot: 'false'
     done: 'false'
     solutions: 
+      - rank: '1'
+        link: 'https://www.kaggle.com/c/airbus-ship-detection/discussion/74443'
+        kind: 'description'
       - rank: '6'
         link: 'https://www.kaggle.com/c/airbus-ship-detection/discussion/71782'
         kind: 'description'
@@ -149,7 +155,7 @@ competitions:
     kind: 'Featured'
     prize: '$30,000'
     team: '1,499'
-    link: 'https://www.kaggle.com/c/airbus-ship-detection'
+    link: 'https://www.kaggle.com/c/rsna-pneumonia-detection-challenge'
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/10338/logos/thumb76_76.png'
     year: '2018'
     isHot: 'false'
