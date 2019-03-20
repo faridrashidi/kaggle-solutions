@@ -47,6 +47,9 @@ competitions:
     isHot: 'false'
     done: 'false'
     solutions: 
+      - rank: '8'
+        link: 'https://www.kaggle.com/c/reducing-commercial-aviation-fatalities/discussion/84527'
+        kind: 'description'
   - number: '299'
     title: 'PUBG Finish Placement Prediction (Kernels Only)'
     desc: 'Can you predict the battle royale finish of PUBG Players?'
@@ -59,6 +62,9 @@ competitions:
     isHot: 'false'
     done: 'false'
     solutions: 
+      - rank: '1'
+        link: 'https://www.kaggle.com/c/pubg-finish-placement-prediction/discussion/79161'
+        kind: 'description'
   - number: '298'
     title: '20 Newsgroups Ciphertext Challenge'
     desc: '-'
@@ -71,6 +77,9 @@ competitions:
     isHot: 'false'
     done: 'false'
     solutions: 
+      - rank: '1'
+        link: 'https://www.kaggle.com/c/20-newsgroups-ciphertext-challenge/discussion/77894'
+        kind: 'description'
   - number: '297'
     title: 'Human Protein Atlas Image Classification'
     desc: 'Classify subcellular protein patterns in human cells'
