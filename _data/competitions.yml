@@ -1,4 +1,16 @@
 competitions:
+  - number: '306'
+    title: 'VSB Power Line Fault Detection'
+    desc: 'Can you detect faults in above-ground electrical lines?'
+    kind: 'Featured'
+    prize: '$25,000'
+    team: '1,451'
+    link: 'https://www.kaggle.com/c/vsb-power-line-fault-detection'
+    image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/10684/logos/thumb76_76.png'
+    year: '2019'
+    isHot: 'false'
+    done: 'false'
+    solutions: 
   - number: '305'
     title: 'Microsoft Malware Prediction'
     desc: 'Can you predict if a machine will soon be hit with malware?'
