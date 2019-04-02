@@ -1,4 +1,16 @@
 competitions:
+  - number: '307'
+    title: 'Histopathologic Cancer Detection'
+    desc: 'Identify metastatic tissue in histopathologic scans of lymph node sections'
+    kind: 'Playground'
+    prize: 'Knowledge'
+    team: '1,157'
+    link: 'https://www.kaggle.com/c/histopathologic-cancer-detection'
+    image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/11848/logos/thumb76_76.png'
+    year: '2019'
+    isHot: 'false'
+    done: 'false'
+    solutions: 
   - number: '306'
     title: 'VSB Power Line Fault Detection'
     desc: 'Can you detect faults in above-ground electrical lines?'
