@@ -19,7 +19,7 @@ title: Top Kagglers Interviews and Lectures
 <br/><br/>
 
 
-◽️ Presentation of [Vladimir Iglovikov](https://www.kaggle.com/iglovikov) [Carvana Image Masking Challenge](https://www.kaggle.com/c/carvana-image-masking-challenge) on Jan 29, 2018
+◾️ Presentation of [Vladimir Iglovikov](https://www.kaggle.com/iglovikov) [Carvana Image Masking Challenge](https://www.kaggle.com/c/carvana-image-masking-challenge) on Jan 29, 2018
 <div class="ytcontainer">
   <iframe class="yt" allowfullscreen src="https://www.youtube.com/embed/g6oIQ5MXBE4"></iframe>
 </div>
@@ -64,21 +64,21 @@ title: Top Kagglers Interviews and Lectures
 <br/><br/>
 
 
-◽️ Presentation of [Vladimir Iglovikov](https://www.kaggle.com/iglovikov) for [Dstl Satellite Imagery Feature Detection](https://www.kaggle.com/c/dstl-satellite-imagery-feature-detection) on May 25, 2017
+◾️ Presentation of [Vladimir Iglovikov](https://www.kaggle.com/iglovikov) for [Dstl Satellite Imagery Feature Detection](https://www.kaggle.com/c/dstl-satellite-imagery-feature-detection) on May 25, 2017
 <div class="ytcontainer">
   <iframe class="yt" allowfullscreen src="https://www.youtube.com/embed/EVc2NaiK3hg"></iframe>
 </div>
 <br/><br/>
 
 
-◽️ Presentation of [Vladimir Iglovikov](https://www.kaggle.com/iglovikov) for [Dstl Satellite Imagery Feature Detection](https://www.kaggle.com/c/dstl-satellite-imagery-feature-detection) on May 2, 2017
+◾️ Presentation of [Vladimir Iglovikov](https://www.kaggle.com/iglovikov) for [Dstl Satellite Imagery Feature Detection](https://www.kaggle.com/c/dstl-satellite-imagery-feature-detection) on May 2, 2017
 <div class="ytcontainer">
   <iframe class="yt" allowfullscreen src="https://www.youtube.com/embed/lCcLjPOCof0"></iframe>
 </div>
 <br/><br/>
 
 
-◽️ How to Win Machine Learning Competitions by [Marios Michailidis](https://www.kaggle.com/kazanova) on Mar 17, 2017
+◾️ How to Win Machine Learning Competitions by [Marios Michailidis](https://www.kaggle.com/kazanova) on Mar 17, 2017
 <div class="ytcontainer">
   <iframe class="yt" allowfullscreen src="https://www.youtube.com/embed/ft7iVUpcsOM"></iframe>
 </div>
@@ -92,7 +92,7 @@ title: Top Kagglers Interviews and Lectures
 <br/><br/>
 
 
-◽️ Presentation of [Vladimir Iglovikov](https://www.kaggle.com/iglovikov) for [Allstate Claims Severity](https://www.kaggle.com/c/allstate-claims-severity) on Feb 10, 2017
+◾️ Presentation of [Vladimir Iglovikov](https://www.kaggle.com/iglovikov) for [Allstate Claims Severity](https://www.kaggle.com/c/allstate-claims-severity) on Feb 10, 2017
 <div class="ytcontainer">
   <iframe class="yt" allowfullscreen src="https://www.youtube.com/embed/5fBGkoDTrsc"></iframe>
 </div>
