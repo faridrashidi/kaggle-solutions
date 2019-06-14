@@ -37,7 +37,7 @@ competitions:
     solutions: 
   - number: '317'
     title: 'TMDB Box Office Prediction'
-    desc: 'Can you predict a movie's worldwide box office revenue?'
+    desc: 'Can you predict a movies worldwide box office revenue?'
     kind: 'Playground'
     prize: 'Knowledge'
     team: '1,400'
