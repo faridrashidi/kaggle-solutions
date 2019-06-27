@@ -5,6 +5,13 @@ title: Top Kagglers Interviews and Lectures
 
 
 <!-- https://www.youtube.com/results?search_query=Mark+Landry+kaggle -->
+◾️ How to Become an Expert Data Scientist Panel ([Bojan Tunguz](https://www.kaggle.com/tunguz), [Mathias Müller](https://www.kaggle.com/mmueller), [Vladimir Iglovikov](https://www.kaggle.com/iglovikov), [Dmitry Larko](https://www.kaggle.com/dmitrylarko), [Marios Michailidis](https://www.kaggle.com/kazanova) and [Sudalai Rajkumar](https://www.kaggle.com/sudalairajkumar)) on Feb 6, 2019
+<div class="ytcontainer">
+  <iframe class="yt" allowfullscreen src="https://www.youtube.com/embed/RtGEtzEniTQ"></iframe>
+</div>
+<br/><br/>
+
+
 ◾️ An interviews with grandmasters ([Sudalai Rajkumar](https://www.kaggle.com/sudalairajkumar), [Jean-Francois Puget](https://www.kaggle.com/cpmpml), [Dmitry Larko](https://www.kaggle.com/dmitrylarko), [Marios Michailidis](https://www.kaggle.com/kazanova), [Branden Murray](https://www.kaggle.com/brandenkmurray), [Mathias Müller](https://www.kaggle.com/mmueller), [Darragh Hanley](https://www.kaggle.com/darraghdog) and [Mikel Bober-Irizar](https://www.kaggle.com/anokas)) on Nov 1, 2018
 <div class="ytcontainer">
   <iframe class="yt" allowfullscreen src="https://www.youtube.com/embed/BNAiHpH_gMM"></iframe>
