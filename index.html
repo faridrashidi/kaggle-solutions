@@ -37,7 +37,6 @@ layout: default
 </div>
 <br/>
 
-
 <div class="container">
   <div id="search-demo-container">
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Type / to search title, description, year, ranking and ...">
@@ -63,26 +62,27 @@ layout: default
             <tbody>
               
               {% for item in site.data.competitions.competitions %}
-
-                  <tr>
-                    <td width="10%">
-                      <a style="border-bottom:none" href="{{ item.link }}">
-                        <img src="{{ item.image }}" style="border-radius:5%; max-width:70px;">
-                      </a>
-                    </td>
-                    <td width="45%">
-                      <a href="{{ item.link }}"><b>{{ item.number }}. {{ item.title }}</b></a>
-                      <br></br>
-                      <p>{{ item.desc }}</p>
-                    </td>
-                    <td width="20%">
-                      <p>Prize: {{ item.prize }}</p>
-                      <p>Team: {{ item.team }}</p>
-                      <p>Kind: {{ item.kind }}</p>
-                      <p>Year: {{ item.year }}</p>
-                    </td>
-                    <td width="20%">
-                      <ul style="list-style: none; padding-left: 0;">
+                
+                <tr>
+                  <td width="10%">
+                    <a style="border-bottom:none" href="{{ item.link }}">
+                      <img src="{{ item.image }}" style="border-radius:5%; max-width:70px;">
+                    </a>
+                  </td>
+                  <td width="45%">
+                    <a href="{{ item.link }}"><b>{{ item.number }}. {{ item.title }}</b></a>
+                    <br></br>
+                    <p>{{ item.desc }}</p>
+                  </td>
+                  <td width="20%">
+                    <p>Prize: {{ item.prize }}</p>
+                    <p>Team: {{ item.team }}</p>
+                    <p>Kind: {{ item.kind }}</p>
+                    <p>Year: {{ item.year }}</p>
+                  </td>
+                  <td width="20%">
+                    <ul style="list-style: none; padding-left: 0;">
+                      {% if item.done == 'true' %}
                         {% for entry in item.solutions %}
                           {% if entry.rank == 'all solutions' %}
                             <li class="secondary"><a href="{{ entry.link }}"><i class="fas fa-circle" style="font-size:15px"></i> all solutions</a></li>
@@ -141,21 +141,24 @@ layout: default
                             {% endif %}
                           {% endif %}
                         {% endfor %}
-                      </ul>
-                    </td>
-                    <td width="5%">
-                      {% if item.done == 'true' %}
-                        <i class="far fa-check-circle" style="font-size:15px"></i>
-                      {% elsif item.done == 'false' %}
-                        <i class="far fa-circle" style="font-size:15px"></i>
+                      {% else %}
+                        <li class="secondary"><a href="{{ entry.link }}"><i class="fas fa-info-circle" style="font-size:15px"></i> under collection</a></li>
                       {% endif %}
-                      <br/>
-                      {% if item.isHot == 'true' %}
-                        <i class="fab fa-hotjar" style="font-size:15px"></i>
-                      {% endif %}
-                    </td>
-                  </tr>
-              
+                    </ul>
+                  </td>
+                  <td width="5%">
+                    {% if item.done == 'true' %}
+                      <i class="far fa-check-circle" style="font-size:15px"></i>
+                    {% elsif item.done == 'false' %}
+                      <i class="far fa-circle" style="font-size:15px"></i>
+                    {% endif %}
+                    <br/>
+                    {% if item.isHot == 'true' %}
+                      <i class="fab fa-hotjar" style="font-size:15px"></i>
+                    {% endif %}
+                  </td>
+                </tr>
+                
               {% endfor %}
 
             </tbody>
