@@ -1,4 +1,16 @@
 competitions:
+  - number: '337'
+    title: 'Recursion Cellular Image Classification'
+    desc: 'CellSignal; Disentangling biological signal from experimental noise in cellular images'
+    kind: 'Research'
+    prize: '$13,000'
+    team: '866'
+    link: 'https://www.kaggle.com/c/recursion-cellular-image-classification'
+    image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/14420/logos/thumb76_76.png'
+    year: '2019'
+    isHot: 'false'
+    done: 'false'
+    solutions: 
   - number: '336'
     title: 'APTOS 2019 Blindness Detection'
     desc: 'Detect diabetic retinopathy to stop blindness before it is too late'
