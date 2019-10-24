@@ -4,7 +4,13 @@ title: Top Kagglers Interviews and Lectures
 ---
 
 
-<!-- https://www.youtube.com/results?search_query=Mark+Landry+kaggle -->
+◾️ Meet the Kaggle Grandmasters - #H2OWorld 2019 NYC ([Sudalai Rajkumar](https://www.kaggle.com/sudalairajkumar), [Kim Montgomery](https://www.linkedin.com/in/kim-montgomery-70b8189/), [Branden Murray](https://www.kaggle.com/brandenkmurray), [Mark Landry](https://www.kaggle.com/mlandry), [Yauhen Babakhin](https://www.kaggle.com/ybabakhin), [Arno Candel](https://www.kaggle.com/arnocandel), [Olivier Grellier](https://www.kaggle.com/ogrellier), [Shivam Bansal](https://www.kaggle.com/shivamb), [Rohan Rao](https://www.kaggle.com/rohanrao), [Dmitry Larko](https://www.kaggle.com/dmitrylarko) and [Pavel Pleskov](https://www.kaggle.com/ppleskov)) on Oct 23, 2019
+<div class="ytcontainer">
+  <iframe class="yt" allowfullscreen src="https://www.youtube.com/embed/NPJ7ORvcmU4"></iframe>
+</div>
+<br/><br/>
+
+
 ◾️ How to Become an Expert Data Scientist Panel ([Bojan Tunguz](https://www.kaggle.com/tunguz), [Mathias Müller](https://www.kaggle.com/mmueller), [Vladimir Iglovikov](https://www.kaggle.com/iglovikov), [Dmitry Larko](https://www.kaggle.com/dmitrylarko), [Marios Michailidis](https://www.kaggle.com/kazanova) and [Sudalai Rajkumar](https://www.kaggle.com/sudalairajkumar)) on Feb 6, 2019
 <div class="ytcontainer">
   <iframe class="yt" allowfullscreen src="https://www.youtube.com/embed/RtGEtzEniTQ"></iframe>
