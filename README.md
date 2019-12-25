@@ -27,7 +27,7 @@
 
 <p align="center">
   <a href="https://faridrashidi.github.io/kaggle-solutions/">
-    <img src="assets/images/homepage.png" height="450">
+    <img src="assets/images/homepage.png" height="550">
   </a>
 </p>
 
