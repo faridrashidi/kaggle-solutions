@@ -7,9 +7,9 @@
 </p>
 
 <p align="center">
-  <a href="#Overview"><strong>Overview</strong></a> ·
-  <a href="#Usage"><strong>Usage</strong></a> ·
-  <a href="#Guideline"><strong>Suggestion</strong></a> ·
+  <a href="#Overview"><strong>Overview</strong></a> •
+  <a href="#Usage"><strong>Usage</strong></a> •
+  <a href="#Guideline"><strong>Suggestion</strong></a> •
   <a href="#Suggestion"><strong>Contribution</strong></a>
 </p>
 
@@ -26,7 +26,7 @@
 </p>
 
 <p align="center">
-  <a href="https://faridrashidi.github.io/kaggle-solutions/">
+  <a href="https://farid.one/kaggle-solutions/">
     <img src="assets/images/homepage.png" height="550">
   </a>
 </p>
