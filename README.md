@@ -1,5 +1,10 @@
 <p align="center">
-  <h1 align="center">Kaggle Solutions</h1>
+  <a href="https://farid.one/kaggle-solutions/">
+    <img src="assets/images/logo.png" height="150">
+  </a>
+</p>
+<p align="center">
+  <h1 align="center"></h1>
 </p>
 
 <p align="center">
@@ -27,7 +32,12 @@
 
 <p align="center">
   <a href="https://farid.one/kaggle-solutions/">
-    <img src="assets/images/homepage.png" height="550">
+    <img src="assets/images/homepage1.png" height="550">
+  </a>
+</p>
+<p align="center">
+  <a href="https://farid.one/kaggle-solutions/resources/videos.html">
+    <img src="assets/images/homepage2.png" height="550">
   </a>
 </p>
 
@@ -47,12 +57,12 @@ What you only need to do is fork the repo. Then automatically it will come to yo
 ## Suggestion
 If you want to learn a lot from the past competitions, try carefully read the followings for every single competition:
 <ul>
-	<li>Description (Task)</li>
-	<li>Evaluation (Metric)</li>
-	<li>Data</li>
-	<li>Check top performers' profile in Leaderboard</li>
-	<li>Most voted Discussion</li>
-	<li>Most voted Kernels</li>
+    <li>Description (Task)</li>
+    <li>Evaluation (Metric)</li>
+    <li>Data</li>
+    <li>Check top performers' profile in Leaderboard</li>
+    <li>Most voted Discussion</li>
+    <li>Most voted Kernels</li>
 </ul>
 
 
