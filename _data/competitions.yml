@@ -1,4 +1,127 @@
 competitions:
+  - number: '364'
+    title: 'Google Cloud & NCAA® ML Competition 2020-NCAAM'
+    desc: 'Apply Machine Learning to NCAA® March Madness®'
+    kind: 'Featured'
+    prize: 'Kudos'
+    team: '-'
+    link: 'https://www.kaggle.com/c/google-cloud-ncaa-march-madness-2020-division-1-mens-tournament'
+    image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/11999/logos/thumb76_76.png'
+    year: '2020'
+    isHot: 'false'
+    done: 'false'
+    solutions: 
+  - number: '363'
+    title: 'Google Cloud & NCAA® ML Competition 2020-NCAAW'
+    desc: 'Apply Machine Learning to NCAA® March Madness®'
+    kind: 'Featured'
+    prize: 'Kudos'
+    team: '-'
+    link: 'https://www.kaggle.com/c/google-cloud-ncaa-march-madness-2020-division-1-womens-tournament'
+    image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/12000/logos/thumb76_76.png'
+    year: '2020'
+    isHot: 'false'
+    done: 'false'
+    solutions: 
+  - number: '362'
+    title: 'DS4G: Environmental Insights Explorer'
+    desc: 'Exploring alternatives for emissions factor calculations'
+    kind: 'Analytics'
+    prize: '$25,000'
+    team: '-'
+    link: 'https://www.kaggle.com/c/ds4g-environmental-insights-explorer'
+    image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/17907/logos/thumb76_76.png'
+    year: '2020'
+    isHot: 'false'
+    done: 'true'
+    solutions: 
+      - rank: '1'
+        link: 'https://www.kaggle.com/katemelianova/ds4g-spatial-panel-data-modeling'
+        kind: 'code'
+      - rank: '2'
+        link: 'https://www.kaggle.com/niyamatalmass/1-introduction-to-the-solution-of-dsg-eie'
+        kind: 'code'
+      - rank: '3'
+        link: 'https://www.kaggle.com/chrisarderne/ds4g-an-analytical-approach-to-no2-emissions'
+        kind: 'code'
+      - rank: '4'
+        link: 'https://www.kaggle.com/vlarmet/an-r-notebook-for-no2-emission-factor'
+        kind: 'code'
+      - rank: 'all solutions'
+        link: 'https://www.kaggle.com/c/ds4g-environmental-insights-explorer/discussion/141822'
+        kind: 'kernel'
+  - number: '361'
+    title: 'Bengali.AI Handwritten Grapheme Classification'
+    desc: 'Classify the components of handwritten Bengali'
+    kind: 'Research'
+    prize: '$10,000'
+    team: '2,059'
+    link: 'https://www.kaggle.com/c/bengaliai-cv19'
+    image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/14897/logos/thumb76_76.png'
+    year: '2020'
+    isHot: 'false'
+    done: 'true'
+    solutions: 
+      - rank: '1'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/135984'
+        kind: 'code'
+      - rank: '2'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/135966'
+        kind: 'description'
+      - rank: '3'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/135982'
+        kind: 'description'
+      - rank: '4'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/136982'
+        kind: 'description'
+      - rank: '5'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/136129'
+        kind: 'description'
+      - rank: '6'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/136011'
+        kind: 'description'
+      - rank: '7'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/135960'
+        kind: 'description'
+      - rank: '8'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/135990'
+        kind: 'code'
+      - rank: '9'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/135985'
+        kind: 'description'
+      - rank: '10'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/136815'
+        kind: 'code'
+      - rank: '12'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/135998'
+        kind: 'description'
+      - rank: '13'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/136116'
+        kind: 'description'
+      - rank: '14'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/136021'
+        kind: 'description'
+      - rank: '21'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/136056'
+        kind: 'description'
+      - rank: '22'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/136870'
+        kind: 'description'
+      - rank: '24'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/136064'
+        kind: 'description'
+      - rank: '38'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/136780'
+        kind: 'description'
+      - rank: '38'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/136075'
+        kind: 'description'
+      - rank: '55'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/136799'
+        kind: 'description'
+      - rank: 'all solutions'
+        link: 'https://www.kaggle.com/c/bengaliai-cv19/discussion/136030'
+        kind: 'kernel'
   - number: '360'
     title: 'Google QUEST Q&A Labeling'
     desc: 'Improving automated understanding of complex question answer content'
@@ -1143,7 +1266,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/15447/logos/thumb76_76.png'
     year: '2019'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '334'
     title: 'SIIM-ACR Pneumothorax Segmentation'
@@ -1371,7 +1494,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/9933/logos/thumb76_76.png'
     year: '2019'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '329'
     title: 'Jigsaw Unintended Bias in Toxicity Classification'
@@ -1458,7 +1581,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/13435/logos/thumb76_76.png'
     year: '2019'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '327'
     title: 'Data Science for Good; City of Los Angeles'
@@ -1470,7 +1593,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/13988/logos/thumb76_76.png'
     year: '2019'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '326'
     title: 'Instant Gratification'
@@ -1806,7 +1929,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/10300/logos/thumb76_76.png'
     year: '2019'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '316'
     title: 'Dont Overfit! II'
@@ -1839,7 +1962,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/13503/logos/thumb76_76.png'
     year: '2019'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '314'
     title: 'Data Science for Good; CareerVillage.org'
@@ -2499,7 +2622,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/12125/logos/thumb76_76.png'
     year: '2019'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '294'
     title: 'PLAsTiCC Astronomical Classification'
@@ -2778,7 +2901,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/10170/logos/thumb76_76.png'
     year: '2018'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '286'
     title: 'Forest Cover Type (Kernels Only)'
@@ -2790,7 +2913,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/9985/logos/thumb76_76.png'
     year: '2018'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '285'
     title: 'Store Item Demand Forecasting Challenge'
@@ -2802,7 +2925,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/9999/logos/thumb76_76.png'
     year: '2018'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '284'
     title: 'Whats Cooking? (Kernels Only)'
@@ -2814,7 +2937,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/10012/logos/thumb76_76.png'
     year: '2018'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '283'
     title: 'Flavours of Physics; Finding τ  →  μμμ (Kernels Only)'
@@ -2826,7 +2949,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/10014/logos/thumb76_76.png'
     year: '2018'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '282'
     title: 'Movie Review Sentiment Analysis (Kernels Only)'
@@ -2838,7 +2961,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/10025/logos/thumb76_76.png'
     year: '2018'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '281'
     title: 'Costa Rican Household Poverty Level Prediction'
@@ -2850,7 +2973,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/9840/logos/thumb76_76.png'
     year: '2018'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '280'
     title: 'Google AI Open Images - Object Detection Track'
@@ -3123,7 +3246,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/6961/logos/thumb76_76.png'
     year: '2018'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '272'
     title: 'Avito Demand Prediction Challenge'
@@ -3213,7 +3336,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/8243/logos/thumb76_76.png'
     year: '2018'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '269'
     title: 'iMaterialist Challenge (Fashion) at FGVC5'
@@ -3516,7 +3639,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/7880/logos/thumb76_76.png'
     year: '2018'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '258'
     title: 'Dog Breed Identification'
@@ -3840,7 +3963,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/7163/logos/thumb76_76.png'
     year: '2017'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '247'
     title: 'WSDM - KKBoxs Music Recommendation Challenge'
@@ -4335,7 +4458,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/4003/media/FGVC4_LOGO.jpg'
     year: '2017'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '227'
     title: 'Sberbank Russian Housing Market'
@@ -4788,7 +4911,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/5408/logos/thumb76_76.png'
     year: '2017'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '213'
     title: 'Santas Uncertain Bags'
@@ -4800,7 +4923,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/5977/logos/thumb76_76.png'
     year: '2017'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '212'
     title: 'Outbrain Click Prediction'
@@ -4866,7 +4989,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3947/logos/thumb76_76.png'
     year: '2016'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '209'
     title: 'Santander Product Recommendation'
@@ -4983,7 +5106,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/5708/logos/thumb76_76.png'
     year: '2016'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '205'
     title: 'Bosch Production Line Performance'
@@ -5199,7 +5322,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/5039/logos/thumb76_76.png'
     year: '2016'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '196'
     title: 'Avito Duplicate Ads Detection'
@@ -5850,7 +5973,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/4523/logos/thumb76_76.png'
     year: '2015'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '170'
     title: 'Springleaf Marketing Response'
@@ -5979,7 +6102,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/4459/logos/thumb76_76.png'
     year: '2015'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '164'
     title: 'Caterpillar Tube Pricing'
@@ -6264,7 +6387,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3949/logos/thumb76_76.png'
     year: '2015'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '151'
     title: 'Poker Rule Induction'
@@ -6276,7 +6399,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/4128/logos/thumb76_76.png'
     year: '2015'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '150'
     title: 'Bike Sharing Demand'
@@ -6372,7 +6495,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3936/logos/thumb76_76.png'
     year: '2015'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '145'
     title: 'Restaurant Revenue Prediction'
@@ -6405,7 +6528,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/4347/logos/thumb76_76.png'
     year: '2015'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '143'
     title: 'Billion Word Imputation'
@@ -6474,7 +6597,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/4316/logos/thumb76_76.png'
     year: '2015'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '139'
     title: 'Finding Elo'
@@ -6486,7 +6609,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/4032/logos/thumb76_76.png'
     year: '2015'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '138'
     title: 'Driver Telematics Analysis'
@@ -6579,7 +6702,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3973/logos/thumb76_76.png'
     year: '2015'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '132'
     title: 'Data Science London + Scikit-learn'
@@ -6885,7 +7008,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3778/logos/thumb76_76.png'
     year: '2014'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '115'
     title: 'Allstate Purchase Prediction Challenge'
@@ -7011,7 +7134,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3706/logos/thumb76_76.png'
     year: '2014'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '109'
     title: 'Galaxy Zoo - The Galaxy Challenge'
@@ -7050,7 +7173,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3867/logos/thumb76_76.png'
     year: '2014'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '107'
     title: 'PAKDD 2014 - ASUS Malfunctional Components Prediction'
@@ -7062,7 +7185,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3772/logos/thumb76_76.png'
     year: '2014'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '106'
     title: 'Loan Default Prediction - Imperial College London'
@@ -7092,7 +7215,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3757/logos/thumb76_76.png'
     year: '2014'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '104'
     title: 'Conways Reverse Game of Life'
@@ -7134,7 +7257,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3670/logos/thumb76_76.png'
     year: '2014'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '101'
     title: 'Personalized Web Search Challenge'
@@ -7146,7 +7269,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3532/logos/thumb76_76.png'
     year: '2014'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '100'
     title: 'As the World Churns'
@@ -7158,7 +7281,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3618/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '99'
     title: 'Facebook Recruiting III - Keyword Extraction'
@@ -7266,7 +7389,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3504/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '92'
     title: 'StumbleUpon Evergreen Classification Challenge'
@@ -7296,7 +7419,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2969/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '90'
     title: 'The Big Data Combine Engineered by BattleFin'
@@ -7308,7 +7431,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3540/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '89'
     title: 'See Click Predict Fix - Hackathon'
@@ -7320,7 +7443,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3403/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '88'
     title: 'Cause-effect pairs'
@@ -7365,7 +7488,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3386/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '85'
     title: 'MLSP 2013 Bird Classification Challenge'
@@ -7398,7 +7521,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3525/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '83'
     title: 'Amazon.com - Employee Access Challenge'
@@ -7434,7 +7557,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3198/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '81'
     title: 'KDD Cup 2013 - Author-Paper Identification Challenge (Track 1)'
@@ -7467,7 +7590,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3507/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '79'
     title: 'The ICML 2013 Whale Challenge - Right Whale Redux'
@@ -7479,7 +7602,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3509/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '78'
     title: 'KDD Cup 2013 - Author Disambiguation Challenge (Track 2)'
@@ -7566,7 +7689,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3493/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '73'
     title: 'ICDAR2013 - Handwriting Stroke Recovery from Offline Data'
@@ -7578,7 +7701,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3385/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '72'
     title: 'Blue Book for Bulldozers'
@@ -7590,7 +7713,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3316/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '71'
     title: 'ICDAR2013 - Gender Prediction from Handwriting'
@@ -7602,7 +7725,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3377/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '70'
     title: 'Influencers in Social Networks'
@@ -7614,7 +7737,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3469/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '69'
     title: 'The Marinexplore and Cornell University Whale Detection Challenge'
@@ -7647,7 +7770,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2496/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '67'
     title: 'Job Salary Prediction'
@@ -7659,7 +7782,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3342/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '66'
     title: 'Predicting Parkinsons Disease Progression with Smartphone Data'
@@ -7671,7 +7794,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3300/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '65'
     title: 'Just the Basics - Strata 2013 After-party'
@@ -7683,7 +7806,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3412/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '64'
     title: 'Just the Basics - Strata 2013'
@@ -7695,7 +7818,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3337/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '63'
     title: 'Event Recommendation Engine Challenge'
@@ -7707,7 +7830,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3288/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '62'
     title: 'Leaping Leaderboard Leapfrogs'
@@ -7719,7 +7842,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3289/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '61'
     title: 'Prescription Volume Prediction'
@@ -7731,7 +7854,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3194/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '60'
     title: 'Visualize the State of Public Education in Colorado'
@@ -7743,7 +7866,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3250/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '59'
     title: 'Traveling Santa Problem'
@@ -7755,7 +7878,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3294/logos/thumb76_76.png'
     year: '2013'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '58'
     title: 'Observing Dark Worlds'
@@ -7785,7 +7908,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3077/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '56'
     title: 'Facebook II - Mapping the Internet'
@@ -7797,7 +7920,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3163/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '55'
     title: 'U.S. Census Return Rate Challenge'
@@ -7809,7 +7932,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3108/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '54'
     title: 'Predict Closed Questions on Stack Overflow'
@@ -7854,7 +7977,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3065/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '51'
     title: 'Merck Molecular Activity Challenge'
@@ -7866,7 +7989,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2975/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '50'
     title: 'Data Mining Hackathon on BIG DATA (7GB) Best Buy mobile web site'
@@ -7878,7 +8001,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3064/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '49'
     title: 'Data Mining Hackathon on (20 mb) Best Buy mobile web site - ACM SF Bay Area Chapter'
@@ -7890,7 +8013,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/3080/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '48'
     title: 'CPROD1; Consumer PRODucts contest #1'
@@ -7902,7 +8025,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2917/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '47'
     title: 'Detecting Insults in Social Commentary'
@@ -7950,7 +8073,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2863/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '45'
     title: 'CHALEARN Gesture Challenge 2'
@@ -7962,7 +8085,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2888/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '44'
     title: 'Practice Fusion Diabetes Classification'
@@ -7974,7 +8097,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2984/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '43'
     title: 'EMC Israel Data Science Challenge'
@@ -7986,7 +8109,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2958/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '42'
     title: 'Million Song Dataset Challenge'
@@ -7998,7 +8121,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2799/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '41'
     title: 'EMI Music Data Science Hackathon - July 21st - 24 hours'
@@ -8031,7 +8154,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2947/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '39'
     title: 'Online Product Sales'
@@ -8043,7 +8166,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2840/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '38'
     title: 'Psychopathy Prediction Based on Twitter Usage'
@@ -8055,7 +8178,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2860/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '37'
     title: 'Personality Prediction Based on Twitter Stream'
@@ -8067,7 +8190,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2895/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '36'
     title: 'Predicting a Biological Response'
@@ -8094,7 +8217,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2748/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '34'
     title: 'KDD Cup 2012, Track 2'
@@ -8106,7 +8229,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2749/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '33'
     title: 'The Hewlett Foundation; Automated Essay Scoring'
@@ -8118,7 +8241,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2667/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '32'
     title: 'Benchmark Bond Trade Price Challenge'
@@ -8130,7 +8253,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2732/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '31'
     title: 'EMC Data Science Global Hackathon (Air Quality Prediction)'
@@ -8142,7 +8265,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2889/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '30'
     title: 'ICFHR 2012 - Arabic Writer Identification'
@@ -8154,7 +8277,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2762/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '29'
     title: 'Eye Movements Verification and Identification Competition'
@@ -8166,7 +8289,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2742/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '28'
     title: 'CHALEARN Gesture Challenge'
@@ -8178,7 +8301,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2602/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '27'
     title: 'What Do You Know?'
@@ -8190,7 +8313,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2606/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '26'
     title: 'Getting Started'
@@ -8202,7 +8325,7 @@ competitions:
     image: 'https://www.kaggle.com/static/images/competition-noimage-thumb.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '25'
     title: 'Algorithmic Trading Challenge'
@@ -8232,7 +8355,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2564/logos/thumb76_76.png'
     year: '2012'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '23'
     title: 'Give Me Some Credit'
@@ -8283,7 +8406,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2549/logos/thumb76_76.png'
     year: '2011'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '20'
     title: 'Allstate Claim Prediction Challenge'
@@ -8376,7 +8499,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2489/logos/thumb76_76.png'
     year: '2011'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '15'
     title: 'Deloitte/FIDE Chess Rating Challenge'
@@ -8607,7 +8730,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2438/logos/thumb76_76.png'
     year: '2010'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '2'
     title: 'World Cup 2010 - Confidence Challenge'
@@ -8619,7 +8742,7 @@ competitions:
     image: 'https://storage.googleapis.com/kaggle-competitions/kaggle/2442/logos/thumb76_76.png'
     year: '2010'
     isHot: 'false'
-    done: 'true'
+    done: 'false'
     solutions: 
   - number: '1'
     title: 'Forecast Eurovision Voting'
