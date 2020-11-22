@@ -1,16 +1,14 @@
+lastnumber = 399
 from bs4 import BeautifulSoup
 import sys
-
 which = '2 months ago'
-lastnumber = 394
-
 with open('url.html', 'r') as f:
     contents = f.read()
     soup = BeautifulSoup(contents, features="html.parser")
-
 i = 0
+fout = open('new.txt', 'w') # fout = sys.stdout
 for item in soup.find_all("li", {"class": "mdc-list-item"}):
-    date = item.find("span", {"class": "sc-qYhdC"})
+    date = item.find("span", {"class": "iNPTzy"})
     if date and date.text.split(' • ')[1] == which:
         i += 1
         kind = date.text.split(' • ')[0]
@@ -21,13 +19,10 @@ for item in soup.find_all("li", {"class": "mdc-list-item"}):
         year = '2020'
         isHot = 'false'
         done = 'false'
-        title = item.find("div", {"class": "sc-prQTI"}).text
-        desc = item.find("span", {"class": "sc-qQkqj"}).text
+        title = item.find("div", {"class": "AVXQL"}).text
+        desc = item.find("span", {"class": "jrEmlo"}).text
         desc = desc.replace(":", ";").replace("'","")
-        prize = item.find("div", {"class": "sc-pbMuv"}).text
-
-        # fout = open('new2.txt', 'a')
-        fout = sys.stdout
+        prize = item.find("div", {"class": "hscaIv"}).text
         print(f"  - number: '{lastnumber+i}'", file=fout)
         print(f"    title: '{title}'", file=fout)
         print(f"    desc: '{desc}'", file=fout)
@@ -40,4 +35,4 @@ for item in soup.find_all("li", {"class": "mdc-list-item"}):
         print(f"    isHot: '{isHot}'", file=fout)
         print(f"    done: '{done}'", file=fout)
         print(f"    solutions: ", file=fout)
-        # fout.close()
+fout.close()
