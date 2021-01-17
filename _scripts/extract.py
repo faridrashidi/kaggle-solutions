@@ -1,4 +1,4 @@
-lastnumber = 399
+lastnumber = 403
 from bs4 import BeautifulSoup
 import sys
 which = '2 months ago'
@@ -8,7 +8,7 @@ with open('url.html', 'r') as f:
 i = 0
 fout = open('new.txt', 'w') # fout = sys.stdout
 for item in soup.find_all("li", {"class": "mdc-list-item"}):
-    date = item.find("span", {"class": "iNPTzy"})
+    date = item.find("span", {"class": "dFGtzH"})
     if date and date.text.split(' • ')[1] == which:
         i += 1
         kind = date.text.split(' • ')[0]
@@ -19,10 +19,10 @@ for item in soup.find_all("li", {"class": "mdc-list-item"}):
         year = '2020'
         isHot = 'false'
         done = 'false'
-        title = item.find("div", {"class": "AVXQL"}).text
-        desc = item.find("span", {"class": "jrEmlo"}).text
+        title = item.find("div", {"class": "cUUGcu"}).text
+        desc = item.find("span", {"class": "jTyItw"}).text
         desc = desc.replace(":", ";").replace("'","")
-        prize = item.find("div", {"class": "hscaIv"}).text
+        prize = item.find("div", {"class": "ZCsGz"}).text
         print(f"  - number: '{lastnumber+i}'", file=fout)
         print(f"    title: '{title}'", file=fout)
         print(f"    desc: '{desc}'", file=fout)
