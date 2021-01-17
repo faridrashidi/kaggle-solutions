@@ -1,7 +1,7 @@
 competitions:
   - number: '403'
     title: 'Lyft Motion Prediction for Autonomous Vehicles'
-    desc: 'Build motion prediction models for self-driving vehicles '
+    desc: 'Build motion prediction models for self-driving vehicles'
     kind: 'Featured'
     prize: '$30,000'
     team: '935'
@@ -57,7 +57,7 @@ competitions:
         link: 'https://www.kaggle.com/c/lyft-motion-prediction-autonomous-vehicles/discussion/201470'
         kind: 'kernel'
   - number: '402'
-    title: 'Conway's Reverse Game of Life 2020'
+    title: 'Conways Reverse Game of Life 2020'
     desc: 'Reverse the arrow of time in the Game of Life'
     kind: 'Playground'
     prize: 'Swag'
