@@ -4,6 +4,13 @@ title: Top Kagglers Interviews and Lectures
 ---
 
 
+◾️ The Journey to Becoming the #1 Kaggle Grandmaster ([Guanshuo Xu](https://www.kaggle.com/wowfattie), [Marios Michailidis](https://www.kaggle.com/kazanova) and [Olivier Grellier](https://www.kaggle.com/ogrellier)) on Aug 18, 2020
+<div class="ytcontainer">
+  <iframe class="yt" allowfullscreen src="https://www.youtube.com/embed/pRHM6rywOIQ"></iframe>
+</div>
+<br/><br/>
+
+
 ◾️ Meet the Kaggle Grandmasters - #H2OWorld 2019 NYC ([Sudalai Rajkumar](https://www.kaggle.com/sudalairajkumar), [Kim Montgomery](https://www.linkedin.com/in/kim-montgomery-70b8189/), [Branden Murray](https://www.kaggle.com/brandenkmurray), [Mark Landry](https://www.kaggle.com/mlandry), [Yauhen Babakhin](https://www.kaggle.com/ybabakhin), [Arno Candel](https://www.kaggle.com/arnocandel), [Olivier Grellier](https://www.kaggle.com/ogrellier), [Shivam Bansal](https://www.kaggle.com/shivamb), [Rohan Rao](https://www.kaggle.com/rohanrao), [Dmitry Larko](https://www.kaggle.com/dmitrylarko) and [Pavel Pleskov](https://www.kaggle.com/ppleskov)) on Oct 23, 2019
 <div class="ytcontainer">
   <iframe class="yt" allowfullscreen src="https://www.youtube.com/embed/NPJ7ORvcmU4"></iframe>
