@@ -32,12 +32,12 @@
 
 <p align="center">
   <a href="https://farid.one/kaggle-solutions/">
-    <img src="assets/images/homepage1.png" height="550">
+    <img src="assets/images/homepage1.png" style="max-width:100%;">
   </a>
 </p>
 <p align="center">
   <a href="https://farid.one/kaggle-solutions/resources/videos.html">
-    <img src="assets/images/homepage2.png" height="550">
+    <img src="assets/images/homepage2.png" style="max-width:100%;">
   </a>
 </p>
 
