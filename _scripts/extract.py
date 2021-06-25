@@ -1,41 +1,37 @@
-lastnumber = 426
-title_id = "bgXMMo"
-desc_id = "dMkZbA"
-subdesc_id = "ezSgZH"
-prize_id = "hpSMec"
-which = '2 months ago'
+from datetime import datetime
 
+from kaggle import api
 
-from bs4 import BeautifulSoup
-import sys
-with open('url.html', 'r') as f:
-    contents = f.read()
-    soup = BeautifulSoup(contents, features="html.parser")
-i = lastnumber + 1
-for item in soup.find_all("li", {"class": "mdc-list-item"}):
-    date = item.find("span", {"class": subdesc_id})
-    if date and date.text.split(' • ')[1] == which:
+lastnumber = 430
+start = datetime.strptime("2021-04-07", "%Y-%m-%d")
+end = datetime.strptime("2021-06-01", "%Y-%m-%d")
+
+comps = api.competitions_list(page=2)
+i = lastnumber
+for comp in comps:
+    deadline = getattr(comp, "deadline")
+    if start.date() < deadline.date() and deadline.date() < end.date():
         i += 1
-fout = open('new.txt', 'w') # fout = sys.stdout
-for item in soup.find_all("li", {"class": "mdc-list-item"}):
-    date = item.find("span", {"class": subdesc_id})
-    if date and date.text.split(' • ')[1] == which:
-        i -= 1
-        kind = date.text.split(' • ')[0]
-        team = date.text.split(' • ')[-1].replace(' Teams','')
-        try:
-            team = "{:,}".format(int(team))
-        except:
-            team = "-"
-        link = "https://www.kaggle.com" + item.find("a")["href"]
-        image = item.find("img")["src"].split("?t=")[0]
-        year = '2021'
-        isHot = 'false'
-        done = 'false'
-        title = item.find("div", {"class": title_id}).text
-        desc = item.find("span", {"class": desc_id}).text
-        desc = desc.replace(":", ";").replace("'","")
-        prize = item.find("div", {"class": prize_id}).text
+fout = open("/Users/farid/Desktop/new.txt", "w")
+for comp in comps:
+    deadline = getattr(comp, "deadline")
+    if start.date() < deadline.date() and deadline.date() < end.date():
+        # page = requests.get(link)
+        # soup = BeautifulSoup(page.content, "html.parser")
+        # print(soup.find_all("script", {"class": "kaggle-component"})[1])
+
+        # print(comp.evaluationMetric)
+        title = comp.title
+        desc = comp.description
+        desc = desc.replace(":", ";").replace("'", "")
+        kind = comp.category
+        prize = comp.reward
+        team = comp.teamCount
+        link = "https://www.kaggle.com/c/" + comp.ref
+        image = ""
+        year = "2021"
+        isHot = "false"
+        done = "false"
         print(f"  - number: '{i}'", file=fout)
         print(f"    title: '{title}'", file=fout)
         print(f"    desc: '{desc}'", file=fout)
@@ -52,4 +48,5 @@ for item in soup.find_all("li", {"class": "mdc-list-item"}):
             print(f"      - rank: ''", file=fout)
             print(f"        link: ''", file=fout)
             print(f"        kind: 'description'", file=fout)
+        i -= 1
 fout.close()
