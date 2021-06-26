@@ -18,13 +18,20 @@ fout = open("/Users/farid/Desktop/new.txt", "w")
 for comp in comps:
     deadline = getattr(comp, "deadline")
     if start.date() < deadline.date() and deadline.date() < end.date():
-        title = comp.title
-        desc = comp.description
-        desc = desc.replace(":", ";").replace("'", "")
+        title = comp.title.replace(":", ";").replace("'", "")
+        desc = comp.description.replace(":", ";").replace("'", "")
         kind = comp.category
         prize = comp.reward
         team = comp.teamCount
+        try:
+            team = "{:,}".format(int(team))
+        except:
+            team = "-"
         metric = comp.evaluationMetric
+        if metric is not None and len(metric) > 0:
+            metric = metric.replace(":", ";").replace("'", "")
+        else:
+            metric = "-"
         link = "https://www.kaggle.com/c/" + comp.ref
         image = "https://storage.googleapis.com/kaggle-competitions/kaggle/---/logos/thumb76_76.png"
         year = "2021"
