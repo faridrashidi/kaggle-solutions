@@ -25,7 +25,7 @@ for comp in comps:
         team = comp.teamCount
         try:
             team = "{:,}".format(int(team))
-        except:
+        except Exception:
             team = "-"
         metric = comp.evaluationMetric
         if metric is not None and len(metric) > 0:
