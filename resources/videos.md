@@ -4,6 +4,20 @@ title: Top Kagglers Interviews and Lectures
 ---
 
 
+◾️ What it takes to become a Quadruple Kaggle Grandmaster? ([Bojan Tunguz](https://www.kaggle.com/tunguz), [Rohan Rao](https://www.kaggle.com/rohanrao), [Chris Deotte](https://www.kaggle.com/cdeotte) and [Abhishek Thakur](https://www.kaggle.com/abhishek)) on Jun 25, 2021
+<div class="ytcontainer">
+  <iframe class="yt" allowfullscreen src="https://www.youtube.com/embed/d7YvGX3oi3A"></iframe>
+</div>
+<br/><br/>
+
+
+◾️ My journey to Kaggle #1 with Philipp Singer ([Philipp Singer](https://www.kaggle.com/philippsinger)) on Mar 24, 2021
+<div class="ytcontainer">
+  <iframe class="yt" allowfullscreen src="https://www.youtube.com/embed/OenmJTdF0-M"></iframe>
+</div>
+<br/><br/>
+
+
 ◾️ The Journey to Becoming the #1 Kaggle Grandmaster ([Guanshuo Xu](https://www.kaggle.com/wowfattie), [Marios Michailidis](https://www.kaggle.com/kazanova) and [Olivier Grellier](https://www.kaggle.com/ogrellier)) on Aug 18, 2020
 <div class="ytcontainer">
   <iframe class="yt" allowfullscreen src="https://www.youtube.com/embed/pRHM6rywOIQ"></iframe>
