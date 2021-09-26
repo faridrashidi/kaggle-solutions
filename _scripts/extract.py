@@ -1,20 +1,24 @@
+import os
+import sys
 from datetime import datetime
 
 import yaml
 from kaggle import api
 
-start = datetime.strptime("2021-04-07", "%Y-%m-%d")
-end = datetime.strptime("2021-06-01", "%Y-%m-%d")
+start = datetime.strptime(sys.argv[1], "%Y-%m-%d")
+end = datetime.strptime(sys.argv[2], "%Y-%m-%d")
 
 comps = api.competitions_list(page=2)
-with open("../_data/competitions.yml") as fin:
+filepath = os.path.abspath(os.path.dirname(sys.argv[0]))
+filepath = "/".join(os.path.split(filepath)[:-1])
+with open(f"{filepath}/_data/competitions.yml") as fin:
     config = yaml.load(fin, Loader=yaml.FullLoader)
 i = int(config["competitions"][0]["number"])
 for comp in comps:
     deadline = getattr(comp, "deadline")
     if start.date() < deadline.date() and deadline.date() < end.date():
         i += 1
-fout = open("/Users/farid/Desktop/new.txt", "w")
+fout = open(f"{os.environ['HOME']}/Desktop/new.txt", "w")
 for comp in comps:
     deadline = getattr(comp, "deadline")
     if start.date() < deadline.date() and deadline.date() < end.date():
