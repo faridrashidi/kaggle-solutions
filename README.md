@@ -23,10 +23,10 @@
     <img src="https://img.shields.io/badge/License-MIT-yellow.svg">
   </a>
   <a href="https://github.com/jekyll/jekyll">
-    <img src="https://img.shields.io/badge/Platform-jekyll-red.svg">
+    <img src="https://img.shields.io/badge/Platform-Jekyll-red.svg">
   </a>
   <a href="https://guides.github.com/features/mastering-markdown/">
-    <img src="https://img.shields.io/badge/Language-markdown-green.svg">
+    <img src="https://img.shields.io/badge/Language-Markdown-green.svg">
   </a>
 </p>
 
@@ -54,7 +54,7 @@ What you only need to do is fork the repo. Then it automatically comes to your G
 
 
 ## Suggestion
-If you want to learn a lot from the past competitions, try carefully read the followings for every single competition:
+If you want to learn a lot from the past competitions, try carefully read the following for every single competition:
 <ul>
   <li>Description (Task)</li>
   <li>Evaluation (Metric)</li>
@@ -66,4 +66,4 @@ If you want to learn a lot from the past competitions, try carefully read the fo
 
 
 ## Contribution
-If you find other solutions besides the ones listed here I would suggest you contribute to this repo by making a pull request.
+If you found any solution besides the ones listed here, I would suggest you contribute to this repo by making a pull request.
