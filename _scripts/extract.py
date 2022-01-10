@@ -38,7 +38,7 @@ for comp in comps:
             metric = "-"
         link = "https://www.kaggle.com/c/" + comp.ref
         image = "https://storage.googleapis.com/kaggle-competitions/kaggle/---/logos/thumb76_76.png"
-        year = "2021"
+        year = deadline.year
         isHot = "false"
         done = "false"
         print(f"  - number: '{i}'", file=fout)
