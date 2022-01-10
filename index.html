@@ -68,24 +68,24 @@ layout: default
               {% for item in site.data.competitions.competitions %}
                 
                 <tr>
-                  <td width="10%">
+                  <td class="td-image">
                     <a style="border-bottom:none" href="{{ item.link }}">
-                      <img src="{{ item.image }}" style="border-radius:5%; max-width:70px;">
+                      <img class="img-competition" src="{{ item.image }}">
                     </a>
                   </td>
-                  <td width="45%">
+                  <td class="td-title">
                     <a href="{{ item.link }}"><b>{{ item.number }}. {{ item.title }}</b></a>
                     <br></br>
                     <p>{{ item.desc }}</p>
                   </td>
-                  <td width="20%">
+                  <td class="td-details">
                     <p>Prize: {{ item.prize }}</p>
                     <p>Team: {{ item.team }}</p>
                     <p>Kind: {{ item.kind }}</p>
                     <p>Metric: {{ item.metric }}</p>
                     <p>Year: {{ item.year }}</p>
                   </td>
-                  <td width="20%">
+                  <td class="td-solutions">
                     <ul style="list-style: none; padding-left: 0;">
                       {% if item.done == 'true' %}
                         {% for entry in item.solutions %}
@@ -151,7 +151,7 @@ layout: default
                       {% endif %}
                     </ul>
                   </td>
-                  <td width="5%">
+                  <td class="td-pins">
                     {% if item.done == 'true' %}
                       <i class="far fa-check-circle" style="font-size:15px"></i>
                     {% elsif item.done == 'false' %}
