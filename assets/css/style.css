@@ -17,6 +17,10 @@ p {
   background-color: #8C1515;
 }
 
+.container {
+  padding-top: 12px;
+}
+
 .site-title,
 .site-title:hover,
 .site-title:visited {
@@ -27,6 +31,7 @@ p {
   z-index: 1;
   color: #FFF;
   font-weight: 200;
+  text-decoration: none;
 }
 
 h2 {
@@ -70,16 +75,6 @@ iframe.yt {
   border: 0;
 }
 
-/*#myInput {
-  background-image: url('/css/searchicon.png');
-  background-position: 10px 12px;
-  background-repeat: no-repeat;
-  width: 100%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}*/
 #search-demo-container {
   max-width: 40em;
   padding: 1em;
@@ -97,144 +92,34 @@ iframe.yt {
   box-sizing: border-box;
 }
 
-
-
-
-.post-header { margin: 10px 0 30px; }
-
-.post-header h1 {
-  font-size: 30px;
-  letter-spacing: -1.75px;
-  line-height: 1;
-  font-weight: 300;
+.img-competition {
+  border-radius: 5%;
+  max-width: 70px;
 }
 
-.post-header .meta {
-  font-size: 15px;
-  color: #818181;
-  margin-top: 5px;
+.td-image {
+  width: 10%;
+}
+.td-title {
+  width: 45%;
+}
+.td-details {
+  width: 20%;
+}
+.td-solutions {
+  width: 20%;
+}
+.td-pins {
+  width: 5%;
 }
 
-.post-content { margin: 0 0 30px; }
-
-.post-content > * { margin: 20px 0; }
-
-
-.post-content h1,
-.post-content h2,
-.post-content h3,
-.post-content h4,
-.post-content h5,
-.post-content h6 {
-  line-height: 1;
-  font-weight: 300;
-  margin: 40px 0 20px;
-}
-
-.post-content h2 {
-  font-size: 32px;
-  letter-spacing: -1.25px;
-}
-
-.post-content h3 {
-  font-size: 26px;
-  letter-spacing: -1px;
-}
-
-.post-content h4 {
-  font-size: 20px;
-  letter-spacing: -1px;
-}
-
-.post-content blockquote {
-  border-left: 4px solid #e8e8e8;
-  padding-left: 20px;
-  font-size: 18px;
-  opacity: .6;
-  letter-spacing: -1px;
-  font-style: italic;
-  margin: 30px 0;
-}
-
-.post-content ul,
-.post-content ol { padding-left: 20px; }
-
-.post pre,
-.post code {
-  border: 1px solid #d5d5e9;
-  background-color: #eef;
-  padding: 8px 12px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  font-size: 13px;
-  overflow:scroll;
-}
-
-.post code { padding: 1px 5px; }
-
-.post ul,
-.post ol { margin-left: 1.35em; }
-
-.post pre code {
-  border: 0;
-  padding-right: 0;
-  padding-left: 0;
-}
-
-.post pre.terminal {
-  border: 1px solid #000;
-  background-color: #333;
-  color: #FFF;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-
-.post pre.terminal code { background-color: #333; }
-
-@media (max-width: 600px) {
-  span.best-project {
-      display: block;
-      text-align: center;
-      margin-top: 12px;
-  }
-  h1 {
-      font-size: 180%;
-  }
+@media (max-width: 995px) {
   .table {
-      font-size: 70%;
-      padding: 4px !important;
+    font-size: 70%;
+    table-layout: fixed;
+    word-wrap: break-word;
   }
-  .table ul {
-      margin-left: 10px;
-      padding-left: 2px;
-      font-size: 90%;
-  }
-  .table li {
-      margin-bottom: 10px;
-  }
-  .calendar-date {
-      font-size: 90%;
-      width: 15%;
-  }
-  .calendar-video, .calendar-slides, .calendar-notes {
-      width: 5%;
-  }
-  #banner h1 {
-      font-size: 175%;
-  }
-  .course-info p {
-      font-size: 95%;
-      padding-bottom: 10px;
-  }
-  #footer-well {
-      font-size: 85%;
-  }
-  footer div.well {
-      padding: 10px;
-  }
-  .showcase img {
-      margin-bottom: 20px;
+  .img-competition {
+    max-width:70px;
   }
 }
