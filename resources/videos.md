@@ -4,6 +4,69 @@ title: Top Kagglers Interviews and Lectures
 ---
 
 
+◾️ A list of inverviews of Chai with top Kagglers
+[Jeremy Howard](https://www.kaggle.com/jhoward),
+[Chris Deotte](https://www.kaggle.com/cdeotte),
+[Parul Pandey](https://www.kaggle.com/parulpandey),
+[Sudalai Rajkumar](https://www.kaggle.com/sudalairajkumar),
+[Tim Dettmers](https://www.kaggle.com/timdettmers),
+[Abhishek Thakur](https://www.kaggle.com/abhishek),
+[Mikel Bober-Irizar](https://www.kaggle.com/anokas),
+[Guanshuo Xu](https://www.kaggle.com/wowfattie),
+[Rohan Rao](https://www.kaggle.com/rohanrao),
+[Gilberto Titericz](https://www.kaggle.com/titericz),
+[Philipp Singer](https://www.kaggle.com/philippsinger),
+[Christof Henkel](https://www.kaggle.com/christofhenkel),
+[Dmitry Gordeev](https://www.kaggle.com/dott1718),
+[Radek Osmulski](https://www.kaggle.com/radek1),
+<!-- [Sylvain Gugger](), -->
+[John Miller](https://www.kaggle.com/jpmiller),
+[Jean Francois Puget](https://www.kaggle.com/cpmpml),
+[Marios Michailidis](https://www.kaggle.com/kazanova),
+[Eugene Khvedchenya](https://www.kaggle.com/bloodaxe),
+<!-- [Aakash Nain](), -->
+[Arno Candel](https://www.kaggle.com/arnocandel),
+[Olivier Grellier](https://www.kaggle.com/ogrellier),
+[Shivam Bansal](https://www.kaggle.com/shivamb),
+<!-- [Zachary Mueller](), -->
+[Ahmet Erdem](https://www.kaggle.com/aerdem4),
+[Rachael Tatman](https://www.kaggle.com/rtatman),
+[Andres Torrubia](https://www.kaggle.com/antorsae),
+[Dan Becker](https://www.kaggle.com/dansbecker),
+<!-- [Anthony Goldbloom](), -->
+[Laura Fink](https://www.kaggle.com/allunia),
+<!-- [Addison Howard](https://www.kaggle.com/addisonhoward), -->
+<!-- [Maggie Demkin](), -->
+<!-- [Phil Culliton](https://www.kaggle.com/philculliton), -->
+<!-- [Anastasiia Mishchuk](), -->
+[Mark Landry](https://www.kaggle.com/mlandry),
+<!-- [Even Oldridge](), -->
+[Dmitry Larko](https://www.kaggle.com/dmitrylarko),
+[Dmitry Danevskiy](https://www.kaggle.com/ddanevskyi),
+[Darius Barušauskas](https://www.kaggle.com/raddar),
+[Yauhen Babakhin](https://www.kaggle.com/ybabakhin),
+[Vladimir Iglovikov](https://www.kaggle.com/iglovikov),
+[Rob Mulla](https://www.kaggle.com/robikscube),
+[Dmytro Mishkin](https://www.kaggle.com/oldufo),
+<!-- [Alexey Grigorev](), -->
+[Yifan Xie](https://www.kaggle.com/yifanxie),
+[Kun Hao Yeh](https://www.kaggle.com/khyeh0719),
+[Shivam Bansal](https://www.kaggle.com/shivamb),
+[Habib Bukhari](https://www.kaggle.com/drhabib),
+[Igor Zubarev](https://www.kaggle.com/cateek),
+[Ryan Chesler](https://www.kaggle.com/ryches),
+[Shaikat Galib](https://www.kaggle.com/sgalib),
+<!-- [Walter Reade](), -->
+[Maximilian Jeblick](https://www.kaggle.com/maxjeblick),
+<!-- [Boris Dorado](), -->
+[Yury Kashnitsky](https://www.kaggle.com/kashnitsky),
+[Andrew Lukyanenko](https://www.kaggle.com/artgor)
+<div class="ytcontainer">
+  <iframe class="yt" allowfullscreen src="https://www.youtube.com/embed/videoseries?list=PLLvvXm0q8zUZL0vL-XflubRioHlQ4fGpr"></iframe>
+</div>
+<br/><br/>
+
+
 ◾️ What it takes to become a Quadruple Kaggle Grandmaster? ([Bojan Tunguz](https://www.kaggle.com/tunguz), [Rohan Rao](https://www.kaggle.com/rohanrao), [Chris Deotte](https://www.kaggle.com/cdeotte) and [Abhishek Thakur](https://www.kaggle.com/abhishek)) on Jun 25, 2021
 <div class="ytcontainer">
   <iframe class="yt" allowfullscreen src="https://www.youtube.com/embed/d7YvGX3oi3A"></iframe>
