@@ -4,7 +4,7 @@ title: Top Kagglers Interviews and Lectures
 ---
 
 
-◾️ A list of inverviews of Chai with top Kagglers
+◾️ A list of inverviews of Sanyam Bhutani with top Kagglers
 [Jeremy Howard](https://www.kaggle.com/jhoward),
 [Chris Deotte](https://www.kaggle.com/cdeotte),
 [Parul Pandey](https://www.kaggle.com/parulpandey),
