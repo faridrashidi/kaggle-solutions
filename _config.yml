@@ -22,3 +22,5 @@ description_bronze: '<img style="padding-bottom:4px;" src="/kaggle-solutions/ass
 kernel_gold: '<img style="padding-bottom:4px;" src="/kaggle-solutions/assets/images/kernel-gold.png" width="15px"/>'
 kernel_silver: '<img style="padding-bottom:4px;" src="/kaggle-solutions/assets/images/kernel-silver.png" width="15px"/>'
 kernel_bronze: '<img style="padding-bottom:4px;" src="/kaggle-solutions/assets/images/kernel-bronze.png" width="15px"/>'
+
+theme: jekyll-theme-cayman
