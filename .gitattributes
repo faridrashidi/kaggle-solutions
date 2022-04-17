@@ -1,0 +1,8 @@
+*.md linguist-detectable=true
+*.html linguist-detectable=false
+*.css linguist-detectable=false
+*.yml linguist-detectable=false
+*.lock linguist-detectable=false
+*Gemfile linguist-detectable=false
+*.py linguist-detectable=false
+*.gitignore linguist-detectable=false
