@@ -1,5 +1,5 @@
-*.md linguist-detectable=true
-*.html linguist-detectable=false
+*.html linguist-detectable=true
+*.md linguist-detectable=false
 *.css linguist-detectable=false
 *.yml linguist-detectable=false
 *.lock linguist-detectable=false
