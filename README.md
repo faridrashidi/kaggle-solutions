@@ -1,3 +1,7 @@
+<img width="166" alt="image" src="https://user-images.githubusercontent.com/62583018/178295132-011989d7-1562-4119-b725-22cc3040c87f.png">
+
+
+
 <p align="center">
   <a href="https://farid.one/kaggle-solutions/">
     <img src="assets/images/logo.png" height="150">
