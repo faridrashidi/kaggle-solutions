@@ -1,12 +1,11 @@
-<img width="166" alt="image" src="https://user-images.githubusercontent.com/62583018/178295132-011989d7-1562-4119-b725-22cc3040c87f.png">
-
-
 
 <p align="center">
   <a href="https://farid.one/kaggle-solutions/">
     <img src="assets/images/logo.png" height="150">
   </a>
 </p>
+<img width="166" alt="image" src="https://user-images.githubusercontent.com/62583018/178295132-011989d7-1562-4119-b725-22cc3040c87f.png">
+
 <p align="center">
   <h1 align="center"></h1>
 </p>
@@ -14,6 +13,7 @@
 <p align="center">
   <h3 align="center" style=" border-bottom: 0px;">The Most Comprehensive List of Kaggle Solutions and Ideas</h3>
 </p>
+
 
 <p align="center">
   <a href="#Overview"><strong>Overview</strong></a> •
@@ -34,11 +34,15 @@
   </a>
 </p>
 
+
+
 <p align="center">
   <a href="https://farid.one/kaggle-solutions/">
     <img src="assets/images/homepage1.png" style="max-width:100%;">
   </a>
 </p>
+
+
 <p align="center">
   <a href="https://farid.one/kaggle-solutions/resources/videos.html">
     <img src="assets/images/homepage2.png" style="max-width:100%;">
