@@ -36,7 +36,7 @@ for comp in comps:
             metric = metric.replace(":", ";").replace("'", "")
         else:
             metric = "-"
-        link = "https://www.kaggle.com/c/" + comp.ref
+        link = comp.ref
         image = "https://storage.googleapis.com/kaggle-competitions/kaggle/---/logos/thumb76_76.png"
         year = deadline.year
         isHot = "false"
