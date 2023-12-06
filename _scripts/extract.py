@@ -3,6 +3,7 @@ import sys
 from datetime import datetime
 
 import yaml
+
 from kaggle import api
 
 start = datetime.strptime(sys.argv[1], "%Y-%m-%d")
@@ -18,7 +19,7 @@ for comp in comps:
     deadline = getattr(comp, "deadline")
     if start.date() < deadline.date() and deadline.date() < end.date():
         i += 1
-fout = open(f"{os.environ['HOME']}/Desktop/kaggle-{end.date()}.txt", "w")
+fout = open(f"{os.environ['HOME']}/Desktop/kaggle-{start.date()}.txt", "w")
 for comp in comps:
     deadline = getattr(comp, "deadline")
     if start.date() < deadline.date() and deadline.date() < end.date():
