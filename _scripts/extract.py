@@ -38,7 +38,7 @@ for comp in comps:
         else:
             metric = "-"
         link = comp.ref
-        image = "https://storage.googleapis.com/kaggle-competitions/kaggle/---/logos/thumb76_76.png"
+        image = "/kaggle-solutions/assets/logos/---.png"
         year = deadline.year
         isHot = "false"
         done = "false"
