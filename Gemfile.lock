@@ -66,12 +66,13 @@ GEM
     terminal-table (2.0.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     unicode-display_width (1.8.0)
-    webrick (1.7.0)
+    webrick (1.8.2)
 
 PLATFORMS
   arm64-darwin-21
   arm64-darwin-22
   arm64-darwin-23
+  arm64-darwin-24
   x86_64-linux
 
 DEPENDENCIES
