@@ -27,6 +27,8 @@ for comp in comps:
         desc = comp.description.replace(":", ";").replace("'", "")
         kind = comp.category
         prize = comp.reward
+        if " Usd" in prize:
+            prize = f"${prize.replace(' Usd', '')}"
         team = comp.teamCount
         try:
             team = "{:,}".format(int(team))
@@ -37,7 +39,7 @@ for comp in comps:
             metric = metric.replace(":", ";").replace("'", "")
         else:
             metric = "-"
-        link = comp.ref
+        link = comp.ref.replace("/competitions/", "/c/")
         image = "/kaggle-solutions/assets/logos/---.png"
         year = deadline.year
         isHot = "false"
