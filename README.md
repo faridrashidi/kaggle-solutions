@@ -8,6 +8,10 @@
 </p>
 
 <p align="center">
+<a href="https://www.buymeacoffee.com/faridrashidi" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="display: block; margin-left: auto; margin-right: auto; height: 60px !important;width: 217px !important;" ></a>
+</p>
+
+<p align="center">
   <h3 align="center" style=" border-bottom: 0px;">The Most Comprehensive List of Kaggle Solutions and Ideas</h3>
 </p>
 
