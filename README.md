@@ -50,15 +50,15 @@
 
 
 ## Overview
-This repo consists of almost all available solutions and ideas shared by top performers in the past Kaggle competitions. This list gets updated as soon as a new competition finishes. It allows you to search over the Kaggle past competition solutions and ideas.
+This repository compiles a comprehensive collection of solutions and ideas from top performers in past Kaggle competitions. The list is regularly updated after each competition concludes, making it easy to explore and search through previous winning strategies and insights.
 
 
 ## Usage
-What you only need to do is fork the repo. Then it automatically comes to your Github website to which you can access `https://<YOUR_USER_NAME>.github.io/kaggle-solutions`. After that, you would be able to start learning from the past solutions of each competition and take a note in markdown language.
+All you need to do is fork the repository. This will automatically create a copy on your GitHub account, accessible at `https://<YOUR_USER_NAME>.github.io/kaggle-solutions`. From there, you can easily explore past competition solutions and take notes in markdown format to enhance your learning experience.
 
 
 ## Suggestion
-If you want to learn a lot from the past competitions, try carefully read the following for every single competition:
+To maximize your learning from past competitions, make sure to carefully review the following for each competition:
 <ul>
   <li>Description (Task)</li>
   <li>Evaluation (Metric)</li>
@@ -70,4 +70,4 @@ If you want to learn a lot from the past competitions, try carefully read the fo
 
 
 ## Contribution
-If you found any solution besides the ones listed here, I would suggest you contribute to this repo by making a pull request.
+If you discover a solution not listed here, please consider contributing to this repository by submitting a pull request.
