@@ -30,5 +30,6 @@ def download_images_in_a_page(page):
             else:
                 print(f"Failed to download image: {image_url}")
 
+
 for page in range(3):
     download_images_in_a_page(page)

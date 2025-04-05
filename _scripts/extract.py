@@ -3,7 +3,6 @@ import sys
 from datetime import datetime
 
 import yaml
-
 from kaggle import api
 
 start = datetime.strptime(sys.argv[1], "%Y-%m-%d")
@@ -29,12 +28,12 @@ for comp in comps:
         prize = comp.reward
         if " Usd" in prize:
             prize = f"${prize.replace(' Usd', '')}"
-        team = comp.teamCount
+        team = comp.team_count
         try:
             team = "{:,}".format(int(team))
         except Exception:
             team = "-"
-        metric = comp.evaluationMetric
+        metric = comp.evaluation_metric
         if metric is not None and len(metric) > 0:
             metric = metric.replace(":", ";").replace("'", "")
         else:
