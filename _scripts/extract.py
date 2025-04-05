@@ -20,6 +20,7 @@ for comp in comps:
         i += 1
 fout = open(f"{os.environ['HOME']}/Desktop/kaggle-{start.date()}.txt", "w")
 for comp in comps:
+    print(comp)
     deadline = getattr(comp, "deadline")
     if start.date() < deadline.date() and deadline.date() < end.date():
         title = comp.title.replace(":", ";").replace("'", "")
@@ -39,7 +40,7 @@ for comp in comps:
         else:
             metric = "-"
         link = comp.ref.replace("/competitions/", "/c/")
-        image = "/kaggle-solutions/assets/logos/---.png"
+        image = f"/kaggle-solutions/assets/logos/{comp.id}.png"
         year = deadline.year
         isHot = "false"
         done = "false"
