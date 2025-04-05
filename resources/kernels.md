@@ -3,7 +3,6 @@ layout: resource
 title: Kernels of The Week
 ---
 
-
 - [November 30, 2018](https://www.kaggle.com/ogakulov/the-mooc-wars-kaggle-s-perspective?utm_medium=social&utm_source=twitter.com&utm_campaign=Weekly-Kernel-Awards)
 - [November 23, 2018](https://www.kaggle.com/andresionek/what-makes-a-kaggler-valuable?utm_medium=social&utm_source=twitter.com&utm_campaign=Weekly-Kernel-Awards)
 - [November 16, 2018](https://www.kaggle.com/robikscube/a-tale-of-4-kaggler-types-by-ide-use-2018-survey?utm_medium=social&utm_source=twitter.com&utm_campaign=Weekly-Kernel-Awards)

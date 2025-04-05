@@ -3,7 +3,6 @@ layout: resource
 title: Symbols
 ---
 
-
 <ul style="list-style: none; padding-left: 0;">
   <li class="secondary"> {{ site.code_gold }}, {{ site.code_silver }}, {{ site.code_bronze }}: code+description </li>
   <li class="secondary"> {{ site.description_gold }}, {{ site.description_silver }}, {{ site.description_bronze }}: only description </li>

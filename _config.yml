@@ -1,7 +1,7 @@
-last_updated: March 5, 2025
+last_updated: April 5, 2025
 title: Kaggle Solutions
 description: Kaggle Solutions and Ideas by Farid Rashidi
-baseurl: '/kaggle-solutions'
+baseurl: "/kaggle-solutions"
 google_analytics_tracking_id: UA-122994885-1
 
 markdown: kramdown
