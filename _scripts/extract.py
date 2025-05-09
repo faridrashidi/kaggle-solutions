@@ -40,7 +40,7 @@ for comp in comps:
         else:
             metric = "-"
         link = comp.ref.replace("/competitions/", "/c/")
-        image = f"/kaggle-solutions/assets/logos/{comp.id}.png"
+        image = f"/kaggle-solutions/assets/logos/{comp.id}.webp"
         year = deadline.year
         isHot = "false"
         done = "false"
@@ -63,3 +63,5 @@ for comp in comps:
             print(f"        kind: 'description'", file=fout)
         i -= 1
 fout.close()
+
+# squoosh-cli --webp '{quality: 75}' -d ./_output ./*.png
