@@ -20,7 +20,6 @@ for comp in comps:
         i += 1
 fout = open(f"{os.environ['HOME']}/Desktop/kaggle-{start.date()}.txt", "w")
 for comp in comps:
-    print(comp)
     deadline = getattr(comp, "deadline")
     if start.date() < deadline.date() and deadline.date() < end.date():
         title = comp.title.replace(":", ";").replace("'", "")
