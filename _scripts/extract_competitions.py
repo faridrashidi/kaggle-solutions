@@ -55,7 +55,7 @@ for comp in comps:
         print(f'    year: "{year}"', file=fout)
         print(f'    isHot: "{isHot}"', file=fout)
         print(f'    done: "{done}"', file=fout)
-        print(f'    solutions:', file=fout)
+        print(f"    solutions:", file=fout)
         for _ in range(3):
             print(f'      - rank: ""', file=fout)
             print(f'        link: ""', file=fout)
