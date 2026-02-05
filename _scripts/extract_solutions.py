@@ -1,6 +1,9 @@
 import argparse
+import html
+import os
 import re
 import time
+import urllib.request
 
 import yaml
 from selenium import webdriver
@@ -15,6 +18,61 @@ def get_competition_slug(link):
     return None
 
 
+def format_yaml_value(value):
+    """Format a value with double quotes."""
+    if value is None:
+        return ""
+    return f'"{value}"'
+
+
+def format_competition_yaml(comp, indent="  "):
+    """Format a competition entry with custom YAML style (unquoted keys, quoted values)."""
+    lines = []
+
+    # Add "- number:" as first field with list syntax
+    if "number" in comp:
+        lines.append(f"{indent}- number: {format_yaml_value(comp['number'])}")
+        field_indent = indent + "  "  # Extra indent for subsequent fields
+    else:
+        field_indent = indent
+
+    # Add all other simple fields in order
+    for key in [
+        "title",
+        "desc",
+        "kind",
+        "prize",
+        "team",
+        "metric",
+        "link",
+        "image",
+        "year",
+        "isHot",
+        "done",
+    ]:
+        if key in comp:
+            lines.append(f"{field_indent}{key}: {format_yaml_value(comp[key])}")
+
+    # Add solutions
+    if "solutions" in comp:
+        if comp["solutions"]:
+            lines.append(f"{field_indent}solutions:")
+            for sol in comp["solutions"]:
+                lines.append(
+                    f"{field_indent}  - rank: {format_yaml_value(sol.get('rank', ''))}"
+                )
+                lines.append(
+                    f"{field_indent}    link: {format_yaml_value(sol.get('link', ''))}"
+                )
+                lines.append(
+                    f"{field_indent}    kind: {format_yaml_value(sol.get('kind', ''))}"
+                )
+        else:
+            lines.append(f"{field_indent}solutions:")
+
+    return "\n".join(lines)
+
+
 def create_driver():
     """Create a headless Chrome driver."""
     options = Options()
@@ -25,6 +83,77 @@ def create_driver():
 
     driver = webdriver.Chrome(options=options)
     return driver
+
+
+def build_competition_image_mapping(driver):
+    """
+    Visit the competitions listing page and build a mapping of slug -> (image_url, comp_id).
+    """
+    url = "https://www.kaggle.com/competitions?listOption=completed"
+    print(f"  Building image mapping from: {url}")
+    driver.get(url)
+    time.sleep(5)
+
+    # Scroll to load more competitions
+    for _ in range(3):
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(2)
+
+    page_source = driver.page_source
+
+    # Split by competition links and find nearby image URLs
+    chunks = re.split(r'href="/competitions/', page_source)
+    mapping = {}
+
+    for chunk in chunks[1:]:  # Skip first chunk (before first competition)
+        slug_match = re.match(r"([a-z0-9-]+)\"", chunk)
+        if slug_match:
+            slug = slug_match.group(1)
+            # Look for image URL in nearby content (within same card/container)
+            img_match = re.search(
+                r'src="(https://storage\.googleapis\.com/kaggle-competitions/kaggle/(\d+)/logos/[^"]+)"',
+                chunk[:3000],
+            )
+            if img_match:
+                img_url = img_match.group(1)
+                comp_id = img_match.group(2)
+                if slug not in mapping:  # Keep first match for each slug
+                    mapping[slug] = (html.unescape(img_url), comp_id)
+
+    print(f"  Found {len(mapping)} competition image mappings")
+    return mapping
+
+
+def download_competition_image(competition_slug, output_dir, image_mapping):
+    """
+    Download the image for a single competition using the pre-built mapping.
+    Returns the filename if successful, None otherwise.
+    """
+    if competition_slug not in image_mapping:
+        print(f"  No image mapping found for: {competition_slug}")
+        return None
+
+    img_url, comp_id = image_mapping[competition_slug]
+
+    try:
+        # Get file extension
+        ext_match = re.search(r"\.(png|jpg|jpeg|gif|svg|webp)", img_url.lower())
+        ext = ext_match.group(1) if ext_match else "png"
+
+        filename = f"{comp_id}.{ext}"
+        filepath = os.path.join(output_dir, filename)
+
+        if not os.path.exists(filepath):
+            print(f"  Downloading image: {filename}")
+            urllib.request.urlretrieve(img_url, filepath)
+            return filename
+        else:
+            print(f"  Image exists: {filename}")
+            return filename
+    except Exception as e:
+        print(f"  Error downloading image: {e}")
+
+    return None
 
 
 def get_kaggle_solutions(driver, competition_slug):
@@ -101,9 +230,10 @@ def get_kaggle_solutions(driver, competition_slug):
     return solutions
 
 
-def process_yaml_file(input_path, output_path=None):
+def process_yaml_file(input_path, output_path=None, image_dir=None):
     """
     Process a YAML file containing Kaggle competitions and fill in solutions.
+    Optionally download competition images if image_dir is provided.
     """
     with open(input_path, "r", encoding="utf-8") as f:
         competitions = yaml.safe_load(f)
@@ -114,9 +244,18 @@ def process_yaml_file(input_path, output_path=None):
 
     print(f"Found {len(competitions)} competitions to process.\n")
 
+    if image_dir:
+        os.makedirs(image_dir, exist_ok=True)
+        print(f"Images will be saved to: {image_dir}\n")
+
     # Create driver once for all competitions
     print("Starting browser...")
     driver = create_driver()
+
+    # Build image mapping if we need to download images
+    image_mapping = {}
+    if image_dir:
+        image_mapping = build_competition_image_mapping(driver)
 
     try:
         for i, comp in enumerate(competitions):
@@ -144,26 +283,27 @@ def process_yaml_file(input_path, output_path=None):
             if solutions:
                 comp["solutions"] = solutions
                 comp["done"] = "true"
-                print(f"  Found {len(solutions)} solutions.\n")
+                print(f"  Found {len(solutions)} solutions.")
             else:
                 comp["solutions"] = []
-                print("  No solutions found.\n")
+                print("  No solutions found.")
+
+            # Download image if image_dir is provided
+            if image_dir:
+                download_competition_image(competition_slug, image_dir, image_mapping)
+
+            print()  # Empty line between competitions
 
     finally:
         driver.quit()
         print("Browser closed.")
 
-    output_yaml = yaml.dump(
-        competitions,
-        sort_keys=False,
-        allow_unicode=True,
-        default_flow_style=False,
-        default_style='"',
-        width=1000,
-    )
+    # Format output using custom YAML formatter
+    output_lines = []
+    for comp in competitions:
+        output_lines.append(format_competition_yaml(comp))
 
-    # Add 2-space indentation for easy copy-paste into parent YAML
-    indented_yaml = "\n".join("  " + line for line in output_yaml.splitlines())
+    indented_yaml = "\n".join(output_lines)
 
     if output_path:
         with open(output_path, "w", encoding="utf-8") as f:
@@ -180,12 +320,24 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "input_file",
+        nargs="?",
         help="Path to the input YAML file (e.g., kaggle-2026-01-01.txt)",
     )
     parser.add_argument(
-        "-o",
         "--output",
+        metavar="OUTPUT",
         help="Path to save the output file. If not specified, prints to stdout.",
     )
+    parser.add_argument(
+        "--images",
+        metavar="DIR",
+        help="Extract competition images to the specified directory (e.g., ~/Desktop/images)",
+    )
     args = parser.parse_args()
-    process_yaml_file(args.input_file, args.output)
+
+    if args.input_file:
+        output_path = os.path.expanduser(args.output) if args.output else None
+        image_dir = os.path.expanduser(args.images) if args.images else None
+        process_yaml_file(args.input_file, output_path, image_dir)
+    else:
+        parser.print_help()
