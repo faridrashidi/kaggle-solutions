@@ -1,133 +1,191 @@
+import argparse
+import re
 import time
 
-import yaml  # Used for clean printing
-from bs4 import BeautifulSoup
+import yaml
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
 
 
-def get_kaggle_solutions(leaderboard_url, max_rank=50):
+def get_competition_slug(link):
+    """Extract competition slug from Kaggle URL."""
+    match = re.search(r"kaggle\.com/(?:competitions|c)/([^/]+)", link)
+    if match:
+        return match.group(1)
+    return None
+
+
+def create_driver():
+    """Create a headless Chrome driver."""
+    options = Options()
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--window-size=1920,1080")
+
+    driver = webdriver.Chrome(options=options)
+    return driver
+
+
+def get_kaggle_solutions(driver, competition_slug):
     """
-    Scrapes a Kaggle competition leaderboard to extract solution links using Selenium
-    to handle dynamically loaded content.
-
-    Args:
-        leaderboard_url (str): The full URL of the Kaggle leaderboard.
-        max_rank (int): The maximum rank to scrape for solutions.
-
-    Returns:
-        list: A list of dictionaries, where each dictionary contains the
-              rank, link, and kind of solution. Returns an empty list
-              if the page cannot be fetched or parsed.
+    Fetch leaderboard page with Selenium and extract solution links.
     """
     solutions = []
-    # Setup Chrome options for headless browsing
-    chrome_options = Options()
-    chrome_options.add_argument(
-        "--headless"
-    )  # Ensures the browser window doesn't pop up
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument(
-        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-    )
+    url = f"https://www.kaggle.com/competitions/{competition_slug}/leaderboard"
 
-    driver = None
     try:
-        # Step 1: Initialize the Selenium WebDriver
-        # Selenium 4.6.0 and newer can manage the driver automatically.
-        # This removes the need for webdriver-manager and is more reliable.
-        print("Initializing browser (Selenium will automatically manage the driver)...")
-        driver = webdriver.Chrome(options=chrome_options)
+        print(f"  Loading: {url}")
+        driver.get(url)
 
-        # Step 2: Fetch the page
-        print(f"Fetching leaderboard from: {leaderboard_url}")
-        driver.get(leaderboard_url)
+        # Wait for page to fully load
+        time.sleep(10)
 
-        # Step 3: Wait for the dynamic content (the table body) to load
-        print("Waiting for leaderboard table to load...")
-        wait = WebDriverWait(driver, 20)  # Wait for a maximum of 20 seconds
-        wait.until(EC.presence_of_element_located((By.TAG_NAME, "tbody")))
-        print("Successfully loaded page content.")
-
-        # Give it an extra moment for all rows to render, just in case
-        time.sleep(2)
-
-        # Step 4: Get the page source after JavaScript has run and parse it
-        html_content = driver.page_source
-        soup = BeautifulSoup(html_content, "html.parser")
-
-        leaderboard_table_body = soup.find("tbody")
-
-        if not leaderboard_table_body:
-            print(
-                "Error: Could not find the leaderboard table body (tbody) even after waiting."
-            )
-            return []
-
-        # Step 5: Iterate through each row in the table body
-        rows = leaderboard_table_body.find_all("tr")
-        print(
-            f"Found {len(rows)} rows in the table. Processing up to rank {max_rank}..."
+        # Get page source and find writeup links using regex
+        page_source = driver.page_source
+        writeup_pattern = (
+            rf'href="(/competitions/{re.escape(competition_slug)}/writeups/[^"]+)"'
         )
+        writeup_matches = re.findall(writeup_pattern, page_source)
 
-        for row in rows:
-            cells = row.find_all("td")
-            if not cells:
-                continue
+        # Get unique writeups preserving order
+        seen = set()
+        unique_writeups = []
+        for href in writeup_matches:
+            # Use shorter /c/ URL format
+            full_url = "https://www.kaggle.com" + href.replace("/competitions/", "/c/")
+            if full_url not in seen:
+                seen.add(full_url)
+                unique_writeups.append(full_url)
 
-            try:
-                rank_str = cells[0].get_text(strip=True)
-                if not rank_str.isdigit():
-                    continue
-                rank = int(rank_str)
-            except (IndexError, ValueError):
-                continue
+        print(f"  Found {len(unique_writeups)} writeup links")
 
-            if rank > max_rank:
-                print(f"Reached rank {rank}, stopping scrape.")
-                break
+        # Extract rank from URL (e.g., "1st-place", "2nd-place")
+        # Include all writeups, using URL order for those without rank pattern
+        ranked_solutions = []
+        unranked_solutions = []
 
-            solution_link = None
-            # The solution link is in the last cell
-            link_cell = cells[-1]
-            link_tag = link_cell.find(
-                "a", href=lambda href: href and "discussion" in href
-            )
-            if link_tag:
-                base_url = "https://www.kaggle.com"
-                # Ensure we handle both relative and absolute URLs
-                href = link_tag["href"]
-                solution_link = href if href.startswith("http") else base_url + href
-
-            if solution_link:
-                solutions.append(
-                    {"rank": str(rank), "link": solution_link, "kind": "description"}
+        for href in unique_writeups:
+            rank_match = re.search(r"(\d+)(?:st|nd|rd|th)-place", href)
+            if rank_match:
+                rank = int(rank_match.group(1))
+                ranked_solutions.append(
+                    {
+                        "rank": str(rank),
+                        "link": href,
+                        "kind": "description",
+                    }
+                )
+            else:
+                unranked_solutions.append(
+                    {
+                        "rank": "?",
+                        "link": href,
+                        "kind": "description",
+                    }
                 )
 
+        # Sort ranked solutions by rank
+        ranked_solutions.sort(key=lambda x: int(x["rank"]))
+
+        # Add all solutions (ranked first, then unranked)
+        solutions = ranked_solutions + unranked_solutions
+        print(f"  Extracted {len(solutions)} solutions")
+
     except Exception as e:
-        print(f"An unexpected error occurred: {e}")
-        return []
-    finally:
-        # Step 6: Always close the browser
-        if driver:
-            print("Closing browser.")
-            driver.quit()
+        print(f"  Error: {e}")
+        import traceback
+
+        traceback.print_exc()
 
     return solutions
 
 
-if __name__ == "__main__":
-    url = "https://www.kaggle.com/c/birdclef-2025/leaderboard"
-    extracted_solutions = get_kaggle_solutions(url, max_rank=50)
+def process_yaml_file(input_path, output_path=None):
+    """
+    Process a YAML file containing Kaggle competitions and fill in solutions.
+    """
+    with open(input_path, "r", encoding="utf-8") as f:
+        competitions = yaml.safe_load(f)
 
-    if extracted_solutions:
-        print("\n--- Extracted Solutions ---")
-        print(yaml.dump(extracted_solutions, sort_keys=False, allow_unicode=True))
+    if not competitions:
+        print("No competitions found in the input file.")
+        return
+
+    print(f"Found {len(competitions)} competitions to process.\n")
+
+    # Create driver once for all competitions
+    print("Starting browser...")
+    driver = create_driver()
+
+    try:
+        for i, comp in enumerate(competitions):
+            title = comp.get("title", "Unknown")
+            link = comp.get("link", "")
+            done = comp.get("done", "false")
+
+            print(f"[{i + 1}/{len(competitions)}] {title}")
+
+            if done == "true":
+                print("  Skipping (already done).\n")
+                continue
+
+            if not link:
+                print("  Skipping (no link).\n")
+                continue
+
+            competition_slug = get_competition_slug(link)
+            if not competition_slug:
+                print(f"  Could not extract competition slug from: {link}\n")
+                continue
+
+            solutions = get_kaggle_solutions(driver, competition_slug)
+
+            if solutions:
+                comp["solutions"] = solutions
+                comp["done"] = "true"
+                print(f"  Found {len(solutions)} solutions.\n")
+            else:
+                comp["solutions"] = []
+                print("  No solutions found.\n")
+
+    finally:
+        driver.quit()
+        print("Browser closed.")
+
+    output_yaml = yaml.dump(
+        competitions,
+        sort_keys=False,
+        allow_unicode=True,
+        default_flow_style=False,
+        default_style='"',
+        width=1000,
+    )
+
+    # Add 2-space indentation for easy copy-paste into parent YAML
+    indented_yaml = "\n".join("  " + line for line in output_yaml.splitlines())
+
+    if output_path:
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(indented_yaml)
+        print(f"\nOutput saved to: {output_path}")
     else:
-        print(
-            "\nNo solutions were extracted. Please check the URL or try increasing the wait time."
-        )
+        print("\n--- Output YAML ---")
+        print(indented_yaml)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Extract Kaggle competition solutions from a YAML file."
+    )
+    parser.add_argument(
+        "input_file",
+        help="Path to the input YAML file (e.g., kaggle-2026-01-01.txt)",
+    )
+    parser.add_argument(
+        "-o",
+        "--output",
+        help="Path to save the output file. If not specified, prints to stdout.",
+    )
+    args = parser.parse_args()
+    process_yaml_file(args.input_file, args.output)
