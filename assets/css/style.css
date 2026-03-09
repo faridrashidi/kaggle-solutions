@@ -113,13 +113,53 @@ iframe.yt {
   width: 5%;
 }
 
+#myTable > thead {
+  border-top: 0;
+}
+
 @media (max-width: 995px) {
-  .table {
-    font-size: 70%;
+  .td-image {
+    width: 14%;
+  }
+  .td-title {
+    width: 34%;
+  }
+  .td-details {
+    width: 20%;
+  }
+  .td-solutions {
+    width: 26%;
+  }
+  .td-pins {
+    width: 6%;
+  }
+  #myTable {
+    font-size: 62%;
+    line-height: 1.35;
     table-layout: fixed;
     word-wrap: break-word;
   }
+  #myTable th,
+  #myTable td {
+    padding: 0.45rem 0.35rem;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  #myTable th {
+    white-space: normal;
+  }
+  .td-title p,
+  .td-details p {
+    margin-bottom: 0;
+  }
+  .td-solutions ul {
+    margin: 0;
+  }
+  .td-solutions li {
+    line-height: 1.25;
+  }
   .img-competition {
-    max-width:70px;
+    max-width: 52px;
   }
 }

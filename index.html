@@ -51,6 +51,13 @@ layout: default
         </span>
         <div class="entry-content">
           <table id="myTable" class="table table-striped">
+            <colgroup>
+              <col class="td-image">
+              <col class="td-title">
+              <col class="td-details">
+              <col class="td-solutions">
+              <col class="td-pins">
+            </colgroup>
             <thead>
               <tr>
                 <th></th>
@@ -175,7 +182,7 @@ layout: default
   $(document).ready(function(){
     $("#myInput").on("keyup", function() {
       var value = $(this).val().toLowerCase();
-      $("#myTable tr").filter(function() {
+      $("#myTable tbody tr").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
     });
