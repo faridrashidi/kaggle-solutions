@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://farid.one/kaggle-solutions/">
+  <a href="https://kaggle.farid.one/">
     <img src="assets/images/logo.png" height="150">
   </a>
 </p>
@@ -31,12 +31,12 @@
 </p>
 
 <p align="center">
-  <a href="https://farid.one/kaggle-solutions/">
+  <a href="https://kaggle.farid.one/">
     <img src="assets/images/homepage1.png" style="max-width:100%;">
   </a>
 </p>
 <p align="center">
-  <a href="https://farid.one/kaggle-solutions/resources/videos.html">
+  <a href="https://kaggle.farid.one/resources/videos.html">
     <img src="assets/images/homepage2.png" style="max-width:100%;">
   </a>
 </p>
@@ -59,7 +59,7 @@ The repository is regularly updated as competitions conclude, making it a living
 
 ### Browsing Solutions
 
-Visit the live website at **[farid.one/kaggle-solutions](https://farid.one/kaggle-solutions/)** to:
+Visit the live website at **[kaggle.farid.one](https://kaggle.farid.one/)** to:
 
 - Browse competitions by category (Computer Vision, NLP, Tabular, Time Series, etc.)
 - Search for specific competitions or techniques
