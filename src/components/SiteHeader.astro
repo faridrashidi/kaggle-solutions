@@ -1,0 +1,20 @@
+---
+import { siteConfig } from "../config/site";
+---
+
+<header class="site-header">
+  <div class="shell site-header__inner">
+    <div class="site-header__spacer" aria-hidden="true"></div>
+    <a class="brand" href="/">{siteConfig.title}</a>
+    <div class="site-header__actions">
+      <a
+        class="site-nav__link site-nav__link--external"
+        href={siteConfig.repositoryUrl}
+        target="_blank"
+        rel="noreferrer"
+      >
+        GitHub
+      </a>
+    </div>
+  </div>
+</header>

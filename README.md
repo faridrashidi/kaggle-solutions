@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://kaggle.farid.one/">
-    <img src="assets/images/logo.png" height="150">
+    <img src="public/assets/images/logo.png" height="150">
   </a>
 </p>
 <p align="center">
@@ -22,8 +22,8 @@
   <a href="https://github.com/faridrashidi/kaggle-solutions/blob/main/LICENSE.md">
     <img src="https://img.shields.io/badge/License-MIT-yellow.svg">
   </a>
-  <a href="https://github.com/jekyll/jekyll">
-    <img src="https://img.shields.io/badge/Platform-Jekyll-red.svg">
+  <a href="https://astro.build/">
+    <img src="https://img.shields.io/badge/Platform-Astro-0f6d8c.svg">
   </a>
   <a href="https://guides.github.com/features/mastering-markdown/">
     <img src="https://img.shields.io/badge/Language-Markdown-green.svg">
@@ -32,12 +32,12 @@
 
 <p align="center">
   <a href="https://kaggle.farid.one/">
-    <img src="assets/images/homepage1.png" style="max-width:100%;">
+    <img src="public/assets/images/homepage1.png" style="max-width:100%;">
   </a>
 </p>
 <p align="center">
   <a href="https://kaggle.farid.one/resources/videos.html">
-    <img src="assets/images/homepage2.png" style="max-width:100%;">
+    <img src="public/assets/images/homepage2.png" style="max-width:100%;">
   </a>
 </p>
 
@@ -75,7 +75,16 @@ Fork this repository to create your personal version:
 3. Add your own notes, solutions, and insights in markdown format
 4. Customize the content to match your learning journey
 
-This Jekyll-based site automatically deploys via GitHub Pages, giving you a personal knowledge base for Kaggle competitions.
+This Astro-based site builds to static files, so it can deploy cleanly to modern hosts such as Cloudflare Pages, Netlify, or Vercel while keeping the content workflow lightweight.
+
+### Running Locally
+
+```bash
+npm install
+npm run dev
+```
+
+The competition archive still reads from `data/competitions.yml`, and the helper scripts in `scripts/` can keep updating that file without changing the frontend stack.
 
 ## Suggestions
 

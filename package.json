@@ -1,0 +1,28 @@
+{
+  "name": "kaggle-solutions",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.1",
+    "astro": "^6.0.3",
+    "js-yaml": "^4.1.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.2",
+    "@types/js-yaml": "^4.0.9",
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "volar-service-yaml": {
+      "yaml-language-server": "1.20.0"
+    }
+  }
+}

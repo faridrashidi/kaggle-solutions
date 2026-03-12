@@ -1,9 +1,7 @@
-### Jekyll ###
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
-
+### Astro ###
+dist/
+.astro/
+node_modules/
 
 ### Python ###
 .venv/

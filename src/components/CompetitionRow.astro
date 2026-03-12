@@ -1,0 +1,113 @@
+---
+import type { Competition } from "../data/competitions";
+import SolutionBadge from "./SolutionBadge.astro";
+import StatusPill from "./StatusPill.astro";
+
+interface Props {
+  competition: Competition;
+}
+
+const { competition } = Astro.props;
+
+const reviewLabel =
+  competition.reviewState === "curated"
+    ? "Curated"
+    : competition.reviewState === "needs-review"
+      ? "Needs review"
+      : "Missing";
+
+const reviewTone =
+  competition.reviewState === "curated"
+    ? "success"
+    : competition.reviewState === "needs-review"
+      ? "warning"
+      : "muted";
+---
+
+<tr
+  class="competition-row"
+  data-competition-row
+  data-id={competition.number}
+  data-kind={competition.kind}
+  data-year={competition.year}
+  data-status={competition.status}
+  data-hot={competition.isHot ? "true" : "false"}
+  data-number={competition.number}
+  data-team-count={competition.teamCount ?? -1}
+  data-solution-count={competition.solutionCount}
+  data-search={competition.searchText}
+>
+  <td>
+    <div class="competition-main">
+      <img
+        class="competition-main__image"
+        src={competition.image}
+        alt={`Logo for ${competition.title}`}
+        loading="lazy"
+        width="72"
+        height="72"
+      />
+
+      <div class="competition-main__copy">
+        <p class="competition-main__index">#{competition.number}</p>
+        <a
+          class="competition-main__title"
+          href={competition.link}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {competition.title}
+        </a>
+        <p class="competition-main__description">{competition.description}</p>
+        <div class="competition-main__tags">
+          <span class="meta-chip">{competition.kind}</span>
+          <span class="meta-chip">{competition.year}</span>
+        </div>
+      </div>
+    </div>
+  </td>
+
+  <td>
+    <dl class="detail-list">
+      <div>
+        <dt>Prize</dt>
+        <dd>{competition.prize}</dd>
+      </div>
+      <div>
+        <dt>Teams</dt>
+        <dd>{competition.team}</dd>
+      </div>
+      <div>
+        <dt>Metric</dt>
+        <dd>{competition.metric}</dd>
+      </div>
+      <div>
+        <dt>Links</dt>
+        <dd>{competition.solutionCount}</dd>
+      </div>
+    </dl>
+  </td>
+
+  <td>
+    {
+      competition.solutionCount > 0 ? (
+        <ul class="solution-list" aria-label={`Solution links for ${competition.title}`}>
+          {competition.solutions.map((solution) => (
+            <li>
+              <SolutionBadge solution={solution} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="solution-empty">No solution links added yet.</p>
+      )
+    }
+  </td>
+
+  <td>
+    <div class="competition-status-stack">
+      <StatusPill label={reviewLabel} tone={reviewTone} />
+      {competition.isHot && <StatusPill label="Hot" tone="hot" />}
+    </div>
+  </td>
+</tr>

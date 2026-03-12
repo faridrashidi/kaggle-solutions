@@ -1,0 +1,452 @@
+---
+import CompetitionCard from "../components/CompetitionCard.astro";
+import CompetitionRow from "../components/CompetitionRow.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  competitionKinds,
+  competitionStats,
+  competitions,
+  competitionYears,
+} from "../data/competitions";
+import { siteConfig } from "../config/site";
+
+const statCards = [
+  {
+    label: "Competitions",
+    value: competitionStats.total.toLocaleString(),
+  },
+  {
+    label: "Curated",
+    value: competitionStats.curated.toLocaleString(),
+  },
+  {
+    label: "Hot",
+    value: competitionStats.hot.toLocaleString(),
+  },
+  {
+    label: "Years covered",
+    value: `${competitionStats.firstYear}-${competitionStats.latestYear}`,
+  },
+];
+---
+
+<BaseLayout title={siteConfig.title} description={siteConfig.description} canonicalPath="/">
+  <section class="hero">
+    <div class="shell hero__simple">
+      <p class="section-kicker">Competition Archive</p>
+      <h1>The Most Comprehensive List of Kaggle Solutions and Ideas</h1>
+      <p class="hero__lede">
+        This repository contains a curated collection of Kaggle competition
+        solutions, write-ups, and notebooks shared by top performers across years of
+        competitions.
+      </p>
+      <p class="hero__meta">
+        Last updated <strong>{siteConfig.lastUpdated}</strong>. Search, filter, and
+        sort the archive below.
+      </p>
+
+      <div class="hero__actions">
+        <a class="hero-link hero-link--primary" href="#competition-index">
+          Jump to the index
+        </a>
+        <a class="hero-link" href={siteConfig.repositoryUrl} target="_blank" rel="noreferrer">
+          Open GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="overview-section">
+    <div class="shell overview-simple">
+      <div class="overview-copy">
+        <p class="section-kicker">Overview</p>
+        <h2>Useful pages and archive stats</h2>
+        <p>
+          Browse competitions by title, description, prize, team size, year, metric,
+          or solution count. These resource pages are also available:
+        </p>
+      </div>
+
+      <ul class="overview-links">
+        {
+          siteConfig.resourceCards.map((card) => (
+            <li>
+              <a class="overview-links__link" href={card.href}>
+                <strong>{card.title}</strong>
+                <span>{card.summary}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="overview-stats" aria-label="Archive statistics">
+        {
+          statCards.map((stat) => (
+            <article class="stat-card">
+              <span class="stat-card__label">{stat.label}</span>
+              <strong class="stat-card__value">{stat.value}</strong>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="explorer-section" id="competition-index">
+    <div class="shell" data-competition-explorer>
+      <div class="explorer-heading">
+        <div>
+          <p class="section-kicker">Competition Index</p>
+          <h2>Searchable, filterable, and shareable.</h2>
+        </div>
+        <p class="explorer-heading__text">
+          Press <kbd>/</kbd> to focus search when you are not already typing in a
+          field.
+        </p>
+      </div>
+
+      <div class="explorer-toolbar">
+        <label class="control control--search">
+          <span class="control__label">Search</span>
+          <input
+            data-filter="q"
+            id="competition-search"
+            type="search"
+            name="q"
+            placeholder="Title, description, metric, team size, year, ranking..."
+            autocomplete="off"
+          />
+        </label>
+
+        <label class="control">
+          <span class="control__label">Kind</span>
+          <select data-filter="kind" name="kind">
+            <option value="all">All kinds</option>
+            {competitionKinds.map((kind) => <option value={kind}>{kind}</option>)}
+          </select>
+        </label>
+
+        <label class="control">
+          <span class="control__label">Year</span>
+          <select data-filter="year" name="year">
+            <option value="all">All years</option>
+            {competitionYears.map((year) => <option value={year}>{year}</option>)}
+          </select>
+        </label>
+
+        <label class="control">
+          <span class="control__label">Status</span>
+          <select data-filter="status" name="status">
+            <option value="all">All statuses</option>
+            <option value="curated">Curated</option>
+            <option value="missing">Missing</option>
+            <option value="hot">Hot</option>
+          </select>
+        </label>
+
+        <label class="control">
+          <span class="control__label">Sort</span>
+          <select data-filter="sort" name="sort">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="most-solutions">Most links</option>
+            <option value="largest-teams">Largest fields</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="explorer-meta">
+        <p class="explorer-meta__count" data-results-count>
+          {competitionStats.total.toLocaleString()} competitions in the archive.
+        </p>
+        <p class="explorer-meta__hint">
+          Missing competitions may still contain partial links; the curation status
+          reflects whether the entry has been fully reviewed.
+        </p>
+      </div>
+
+      <div class="desktop-table">
+        <table class="competition-table">
+          <colgroup>
+            <col class="competition-table__col competition-table__col--main" />
+            <col class="competition-table__col competition-table__col--details" />
+            <col class="competition-table__col competition-table__col--solutions" />
+            <col class="competition-table__col competition-table__col--status" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Competition</th>
+              <th scope="col">Details</th>
+              <th scope="col">Solutions</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody data-table-body>
+            {competitions.map((competition) => <CompetitionRow competition={competition} />)}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="competition-grid" data-card-grid>
+        {competitions.map((competition) => <CompetitionCard competition={competition} />)}
+      </div>
+
+      <div class="empty-state" data-empty-state hidden>
+        <p>No competitions match the current filters.</p>
+        <button class="hero-link hero-link--primary" type="button" data-clear-filters>
+          Clear filters
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (() => {
+      const root = document.querySelector("[data-competition-explorer]");
+
+      if (!root) {
+        return;
+      }
+
+      const searchInput = root.querySelector("[data-filter='q']");
+      const kindSelect = root.querySelector("[data-filter='kind']");
+      const yearSelect = root.querySelector("[data-filter='year']");
+      const statusSelect = root.querySelector("[data-filter='status']");
+      const sortSelect = root.querySelector("[data-filter='sort']");
+      const resultsCount = root.querySelector("[data-results-count]");
+      const emptyState = root.querySelector("[data-empty-state]");
+      const clearFiltersButton = root.querySelector("[data-clear-filters]");
+      const tableBody = root.querySelector("[data-table-body]");
+      const cardGrid = root.querySelector("[data-card-grid]");
+      const rowElements = Array.from(root.querySelectorAll("[data-competition-row]"));
+      const cardElements = Array.from(root.querySelectorAll("[data-competition-card]"));
+
+      const cardById = new Map(
+        cardElements.map((card) => [card.dataset.id, card]),
+      );
+
+      const records = rowElements.map((row) => {
+        const card = cardById.get(row.dataset.id);
+
+        return {
+          id: row.dataset.id ?? "",
+          row,
+          card,
+          search: row.dataset.search ?? "",
+          kind: row.dataset.kind ?? "",
+          year: row.dataset.year ?? "",
+          status: row.dataset.status ?? "",
+          isHot: row.dataset.hot === "true",
+          number: Number.parseInt(row.dataset.number ?? "0", 10),
+          teamCount: Number.parseInt(row.dataset.teamCount ?? "-1", 10),
+          solutionCount: Number.parseInt(row.dataset.solutionCount ?? "0", 10),
+        };
+      });
+
+      const validKinds = new Set(
+        Array.from(kindSelect.options).map((option) => option.value),
+      );
+      const validYears = new Set(
+        Array.from(yearSelect.options).map((option) => option.value),
+      );
+      const validStatuses = new Set(
+        Array.from(statusSelect.options).map((option) => option.value),
+      );
+      const validSorts = new Set(
+        Array.from(sortSelect.options).map((option) => option.value),
+      );
+
+      function currentState() {
+        return {
+          q: searchInput.value.trim().toLowerCase(),
+          kind: kindSelect.value,
+          year: yearSelect.value,
+          status: statusSelect.value,
+          sort: sortSelect.value,
+        };
+      }
+
+      function syncControlsFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        const q = params.get("q") ?? "";
+        const kind = params.get("kind") ?? "all";
+        const year = params.get("year") ?? "all";
+        const status = params.get("status") ?? "all";
+        const sort = params.get("sort") ?? "newest";
+
+        searchInput.value = q;
+        kindSelect.value = validKinds.has(kind) ? kind : "all";
+        yearSelect.value = validYears.has(year) ? year : "all";
+        statusSelect.value = validStatuses.has(status) ? status : "all";
+        sortSelect.value = validSorts.has(sort) ? sort : "newest";
+      }
+
+      function updateUrl(state) {
+        const params = new URLSearchParams();
+
+        if (state.q) params.set("q", state.q);
+        if (state.kind !== "all") params.set("kind", state.kind);
+        if (state.year !== "all") params.set("year", state.year);
+        if (state.status !== "all") params.set("status", state.status);
+        if (state.sort !== "newest") params.set("sort", state.sort);
+
+        const nextUrl = `${window.location.pathname}${
+          params.toString() ? `?${params.toString()}` : ""
+        }${window.location.hash}`;
+
+        window.history.replaceState({}, "", nextUrl);
+      }
+
+      function escapeRegExp(value) {
+        return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      }
+
+      function isOrdinalPlaceQuery(query) {
+        return /^\d+(st|nd|rd|th)\s+place$/i.test(query);
+      }
+
+      function matchesSearch(record, query) {
+        if (!query) {
+          return true;
+        }
+
+        if (isOrdinalPlaceQuery(query)) {
+          const exactPhrasePattern = new RegExp(
+            `(^|[^a-z0-9])${escapeRegExp(query)}($|[^a-z0-9])`,
+            "i",
+          );
+
+          return exactPhrasePattern.test(record.search);
+        }
+
+        return record.search.includes(query);
+      }
+
+      function matches(record, state) {
+        const searchMatches = matchesSearch(record, state.q);
+        const kindMatches = state.kind === "all" || record.kind === state.kind;
+        const yearMatches = state.year === "all" || record.year === state.year;
+
+        let statusMatches = true;
+
+        if (state.status === "curated") {
+          statusMatches = record.status === "curated";
+        } else if (state.status === "missing") {
+          statusMatches = record.status === "missing";
+        } else if (state.status === "hot") {
+          statusMatches = record.isHot;
+        }
+
+        return searchMatches && kindMatches && yearMatches && statusMatches;
+      }
+
+      function compareRecords(left, right, sort) {
+        if (sort === "oldest") {
+          return left.number - right.number;
+        }
+
+        if (sort === "most-solutions") {
+          if (right.solutionCount !== left.solutionCount) {
+            return right.solutionCount - left.solutionCount;
+          }
+
+          return right.number - left.number;
+        }
+
+        if (sort === "largest-teams") {
+          if (right.teamCount !== left.teamCount) {
+            return right.teamCount - left.teamCount;
+          }
+
+          return right.number - left.number;
+        }
+
+        return right.number - left.number;
+      }
+
+      function applyFilters(updateLocation) {
+        const state = currentState();
+        const sortedRecords = [...records].sort((left, right) =>
+          compareRecords(left, right, state.sort),
+        );
+
+        sortedRecords.forEach((record) => {
+          const visible = matches(record, state);
+
+          record.row.hidden = !visible;
+          if (record.card) {
+            record.card.hidden = !visible;
+          }
+
+          tableBody.appendChild(record.row);
+          if (record.card) {
+            cardGrid.appendChild(record.card);
+          }
+        });
+
+        const visibleCount = sortedRecords.filter((record) => !record.row.hidden).length;
+        resultsCount.textContent =
+          visibleCount === records.length
+            ? `${records.length.toLocaleString()} competitions in the archive.`
+            : `Showing ${visibleCount.toLocaleString()} of ${records.length.toLocaleString()} competitions.`;
+
+        emptyState.hidden = visibleCount !== 0;
+
+        if (updateLocation) {
+          updateUrl(state);
+        }
+      }
+
+      function resetFilters() {
+        searchInput.value = "";
+        kindSelect.value = "all";
+        yearSelect.value = "all";
+        statusSelect.value = "all";
+        sortSelect.value = "newest";
+        applyFilters(true);
+      }
+
+      function isTypingTarget(target) {
+        if (!(target instanceof HTMLElement)) {
+          return false;
+        }
+
+        if (target.isContentEditable) {
+          return true;
+        }
+
+        return ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName);
+      }
+
+      [searchInput, kindSelect, yearSelect, statusSelect, sortSelect].forEach((control) => {
+        control.addEventListener("input", () => applyFilters(true));
+        control.addEventListener("change", () => applyFilters(true));
+      });
+
+      clearFiltersButton.addEventListener("click", resetFilters);
+
+      document.addEventListener("keydown", (event) => {
+        if (
+          event.key === "/" &&
+          !event.metaKey &&
+          !event.ctrlKey &&
+          !event.altKey &&
+          !isTypingTarget(document.activeElement)
+        ) {
+          event.preventDefault();
+          searchInput.focus();
+          searchInput.select();
+        }
+      });
+
+      window.addEventListener("popstate", () => {
+        syncControlsFromUrl();
+        applyFilters(false);
+      });
+
+      syncControlsFromUrl();
+      applyFilters(false);
+    })();
+  </script>
+</BaseLayout>

@@ -1,0 +1,110 @@
+---
+import SolutionBadge from "../../components/SolutionBadge.astro";
+import StatusPill from "../../components/StatusPill.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const solutionExamples = [
+  {
+    rank: "1",
+    link: "#gold",
+    kind: "code",
+    kindLabel: "Code",
+    label: "1st place",
+    tone: "gold",
+    sortRank: 1,
+  },
+  {
+    rank: "2",
+    link: "#silver",
+    kind: "description",
+    kindLabel: "Write-up",
+    label: "2nd place",
+    tone: "silver",
+    sortRank: 2,
+  },
+  {
+    rank: "3",
+    link: "#bronze",
+    kind: "kernel",
+    kindLabel: "Notebook",
+    label: "3rd place",
+    tone: "bronze",
+    sortRank: 3,
+  },
+  {
+    rank: "?",
+    link: "#community",
+    kind: "description",
+    kindLabel: "Write-up",
+    label: "Community pick",
+    tone: "neutral",
+    sortRank: null,
+  },
+] as const;
+---
+
+<BaseLayout
+  title="Symbols"
+  description="Legend for status badges, solution badges, and archive curation states."
+  canonicalPath="/resources/symbols.html"
+>
+  <section class="resource-hero">
+    <div class="shell resource-hero__inner">
+      <div class="resource-hero__copy">
+        <p class="section-kicker">Legend</p>
+        <h1>How to read the archive.</h1>
+        <p>
+          Solution badges, curation states, and hot markers are generated from typed
+          data now, so the homepage and this legend stay consistent.
+        </p>
+      </div>
+      <a class="hero-link" href="/">Back to the competition index</a>
+    </div>
+  </section>
+
+  <section class="resource-section">
+    <div class="shell legend-grid">
+      <article class="legend-card">
+        <p class="legend-card__eyebrow">Solution links</p>
+        <h2>Badges combine rank with format.</h2>
+        <div class="legend-stack">
+          {solutionExamples.map((solution) => <SolutionBadge solution={solution} />)}
+        </div>
+        <ul class="legend-list">
+          <li><strong>Code</strong> means a repository or implementation is linked.</li>
+          <li><strong>Write-up</strong> means the link is primarily explanatory.</li>
+          <li><strong>Notebook</strong> means a Kaggle notebook or kernel is linked.</li>
+          <li><strong>Community pick</strong> means the resource is useful but not tied to a ranked finish.</li>
+        </ul>
+      </article>
+
+      <article class="legend-card">
+        <p class="legend-card__eyebrow">Curation states</p>
+        <h2>Status pills reflect review state, not just link count.</h2>
+        <div class="legend-stack">
+          <StatusPill label="Curated" tone="success" />
+          <StatusPill label="Needs review" tone="warning" />
+          <StatusPill label="Missing" tone="muted" />
+          <StatusPill label="Hot" tone="hot" />
+        </div>
+        <ul class="legend-list">
+          <li><strong>Curated</strong> means the competition has been reviewed and published as a finished entry.</li>
+          <li><strong>Needs review</strong> means there are some links, but the entry is still marked incomplete in the YAML.</li>
+          <li><strong>Missing</strong> means no solution links have been added yet.</li>
+          <li><strong>Hot</strong> flags a competition as especially notable or timely.</li>
+        </ul>
+      </article>
+
+      <article class="legend-card">
+        <p class="legend-card__eyebrow">Maintenance notes</p>
+        <h2>The authoring workflow did not change.</h2>
+        <ul class="legend-list">
+          <li>The archive still reads from <code>data/competitions.yml</code>.</li>
+          <li><code>done: "true"</code> marks an entry as curated.</li>
+          <li><code>done: "false"</code> keeps the entry in the missing bucket, even if partial links already exist.</li>
+          <li><code>isHot: "true"</code> adds the Hot status without affecting curation state.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

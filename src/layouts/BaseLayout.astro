@@ -1,0 +1,78 @@
+---
+import "../styles/global.css";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import Analytics from "../components/Analytics.astro";
+import { siteConfig } from "../config/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalPath?: string;
+  pageClass?: string;
+  noIndex?: boolean;
+}
+
+const {
+  title = siteConfig.title,
+  description = siteConfig.description,
+  image = siteConfig.ogImage,
+  canonicalPath,
+  pageClass = "",
+  noIndex = false,
+} = Astro.props;
+
+const baseTitle = siteConfig.title;
+const pageTitle = title === baseTitle ? baseTitle : `${title} | ${baseTitle}`;
+const currentPath = canonicalPath ?? Astro.url.pathname;
+const normalizedPath =
+  currentPath === "/index.html" ? "/" : currentPath.replace(/\/index\.html$/, "/");
+const site = Astro.site ?? new URL("https://kaggle.farid.one");
+const canonicalUrl = new URL(normalizedPath, site).toString();
+const socialImage = new URL(image, site).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={siteConfig.author} />
+    <meta name="keywords" content={siteConfig.keywords.join(", ")} />
+    <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
+    <meta name="theme-color" content="#0f6d8c" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+  </head>
+
+  <body class={pageClass}>
+    <Analytics />
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page">
+      <SiteHeader currentPath={normalizedPath} />
+      <main id="main">
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+  </body>
+</html>

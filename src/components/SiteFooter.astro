@@ -1,0 +1,29 @@
+---
+import { siteConfig } from "../config/site";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="shell site-footer__inner">
+    <div>
+      <p class="site-footer__title">A living Kaggle archive</p>
+      <p class="site-footer__text">
+        Competition data stays in <code>data/competitions.yml</code>, while Astro
+        handles the presentation layer and static output.
+      </p>
+    </div>
+
+    <div class="site-footer__meta">
+      <p class="site-footer__text">
+        Last content refresh: <strong>{siteConfig.lastUpdated}</strong>
+      </p>
+      <p class="site-footer__text">
+        &copy; 2018-{currentYear}
+        <a href={siteConfig.authorUrl} target="_blank" rel="noreferrer">
+          {siteConfig.author}
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>

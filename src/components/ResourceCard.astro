@@ -1,0 +1,16 @@
+---
+import type { ResourceCard as ResourceCardData } from "../config/site";
+
+interface Props {
+  card: ResourceCardData;
+}
+
+const { card } = Astro.props;
+---
+
+<a class="resource-card" href={card.href}>
+  <span class="resource-card__eyebrow">Resource</span>
+  <strong class="resource-card__title">{card.title}</strong>
+  <span class="resource-card__summary">{card.summary}</span>
+  <span class="resource-card__cta">Open page</span>
+</a>

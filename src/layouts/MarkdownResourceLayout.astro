@@ -1,0 +1,47 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Frontmatter {
+  title?: string;
+  description?: string;
+  summary?: string;
+  canonicalPath?: string;
+}
+
+interface Props {
+  frontmatter: Frontmatter;
+}
+
+const { frontmatter } = Astro.props;
+const title = frontmatter.title ?? "Resource";
+const description =
+  frontmatter.description ??
+  frontmatter.summary ??
+  "Curated Kaggle learning resources from the Kaggle Solutions archive.";
+const canonicalPath =
+  frontmatter.canonicalPath ??
+  (Astro.url.pathname.endsWith("/")
+    ? `${Astro.url.pathname.slice(0, -1)}.html`
+    : Astro.url.pathname);
+---
+
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath}>
+  <section class="resource-hero">
+    <div class="shell resource-hero__inner">
+      <div class="resource-hero__copy">
+        <p class="section-kicker">Resource Archive</p>
+        <h1>{title}</h1>
+        <p>{description}</p>
+      </div>
+      <a class="hero-link" href="/">Back to the competition index</a>
+    </div>
+  </section>
+
+  <section class="resource-section">
+    <div class="shell resource-shell">
+      <article class="prose resource-article">
+        <slot />
+      </article>
+    </div>
+  </section>
+</BaseLayout>

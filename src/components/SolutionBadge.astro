@@ -1,0 +1,20 @@
+---
+import type { Solution } from "../data/competitions";
+
+interface Props {
+  solution: Solution;
+}
+
+const { solution } = Astro.props;
+---
+
+<a
+  class:list={["solution-badge", `solution-badge--${solution.tone}`]}
+  href={solution.link}
+  target="_blank"
+  rel="noreferrer"
+  aria-label={`${solution.label} (${solution.kindLabel})`}
+  title={`${solution.label} (${solution.kindLabel})`}
+>
+  <span class="solution-badge__label">{solution.label}</span>
+</a>
