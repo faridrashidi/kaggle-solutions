@@ -212,13 +212,35 @@ kbd {
 }
 
 .site-nav__link--external {
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff8f4;
+  gap: 0.7rem;
+  padding: 0.62rem 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(30, 28, 28, 0.46);
+  color: #fff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 10px 22px rgba(67, 7, 7, 0.16);
 }
 
 .site-nav__link--external:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(30, 28, 28, 0.64);
   color: #fff;
+}
+
+.site-nav__github-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: 0 0 auto;
+}
+
+.site-nav__stars {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .hero,
