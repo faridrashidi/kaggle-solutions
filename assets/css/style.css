@@ -97,6 +97,38 @@ iframe.yt {
   max-width: 70px;
 }
 
+.not-found-page {
+  min-height: calc(100vh - 144px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.not-found-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.not-found-content h1 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1;
+  margin: 0;
+  padding-right: 23px;
+  margin-right: 20px;
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.not-found-content p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0;
+}
+
 .td-image {
   width: 10%;
 }
@@ -161,5 +193,17 @@ iframe.yt {
   }
   .img-competition {
     max-width: 52px;
+  }
+  .not-found-page {
+    min-height: calc(100vh - 128px);
+  }
+  .not-found-content {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .not-found-content h1 {
+    padding-right: 0;
+    margin-right: 0;
+    border-right: 0;
   }
 }
