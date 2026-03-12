@@ -176,12 +176,43 @@ kbd {
 
 .brand {
   display: inline-flex;
+  align-items: center;
   justify-self: center;
   font-family: "Space Grotesk", sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
   letter-spacing: -0.02em;
   color: #fff8f4;
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+.brand:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+}
+
+.brand__text {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.38rem;
+}
+
+.brand__primary,
+.brand__secondary {
+  position: relative;
+  font-size: 1.24rem;
+  line-height: 1;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.brand__primary {
+  font-weight: 800;
+  color: #fff9f5;
+}
+
+.brand__secondary {
+  font-weight: 700;
+  color: rgba(255, 245, 239, 0.78);
 }
 
 .site-header__actions {
@@ -1239,6 +1270,15 @@ kbd {
 
   .site-header__actions {
     justify-self: center;
+  }
+
+  .brand__text {
+    gap: 0.3rem;
+  }
+
+  .brand__primary,
+  .brand__secondary {
+    font-size: 1.12rem;
   }
 
   .overview-links,

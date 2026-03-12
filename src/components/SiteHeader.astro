@@ -8,12 +8,19 @@ const githubStarsDisplay = githubStarsLabel ?? "GitHub";
 const githubAriaLabel = githubRepositoryStats.starCount !== null
   ? `GitHub repository with ${githubStarsLabel} stars`
   : "GitHub repository";
+const [brandPrimary = siteConfig.title, ...brandSecondaryWords] = siteConfig.title.split(" ");
+const brandSecondary = brandSecondaryWords.join(" ");
 ---
 
 <header class="site-header">
   <div class="shell site-header__inner">
     <div class="site-header__spacer" aria-hidden="true"></div>
-    <a class="brand" href="/">{siteConfig.title}</a>
+    <a class="brand" href="/" aria-label={siteConfig.title}>
+      <span class="brand__text">
+        <span class="brand__primary">{brandPrimary}</span>
+        {brandSecondary && <span class="brand__secondary">{brandSecondary}</span>}
+      </span>
+    </a>
     <div class="site-header__actions">
       <a
         class="site-nav__link site-nav__link--external"
