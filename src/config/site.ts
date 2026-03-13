@@ -41,7 +41,7 @@ export const siteConfig = {
   lastUpdated: resolveLastUpdated(),
   ogImage: "/assets/images/logo.png",
   competitionImagesBaseUrl:
-    "https://cdn.jsdelivr.net/gh/faridrashidi/kaggle-solutions@main",
+    "https://cdn.jsdelivr.net/gh/faridrashidi/kaggle-solutions@main/public",
   resourceCards: [
     {
       href: "/resources/videos.html",
