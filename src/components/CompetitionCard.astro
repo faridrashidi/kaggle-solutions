@@ -91,7 +91,10 @@ const reviewTone =
     competition.solutionCount > 0 ? (
       <details class="competition-card__solutions">
         <summary>{competition.solutionCount} solution links</summary>
-        <ul class="solution-list" aria-label={`Solution links for ${competition.title}`}>
+        <ul
+          class="solution-list"
+          aria-label={`Solution links for ${competition.title}`}
+        >
           {competition.solutions.map((solution) => (
             <li>
               <SolutionBadge solution={solution} />
@@ -104,7 +107,12 @@ const reviewTone =
     )
   }
 
-  <a class="competition-card__cta" href={competition.link} target="_blank" rel="noreferrer">
+  <a
+    class="competition-card__cta"
+    href={competition.link}
+    target="_blank"
+    rel="noreferrer"
+  >
     Open competition
   </a>
 </article>

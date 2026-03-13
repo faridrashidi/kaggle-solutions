@@ -25,7 +25,11 @@ const canonicalPath =
     : Astro.url.pathname);
 ---
 
-<BaseLayout title={title} description={description} canonicalPath={canonicalPath}>
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+>
   <section class="resource-hero">
     <div class="shell resource-hero__inner">
       <div class="resource-hero__copy">

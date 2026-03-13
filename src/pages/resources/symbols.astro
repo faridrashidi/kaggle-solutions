@@ -54,8 +54,8 @@ const solutionExamples = [
         <p class="section-kicker">Legend</p>
         <h1>How to read the archive.</h1>
         <p>
-          Solution badges, curation states, and hot markers are generated from typed
-          data now, so the homepage and this legend stay consistent.
+          Solution badges, curation states, and hot markers are generated from
+          typed data now, so the homepage and this legend stay consistent.
         </p>
       </div>
       <a class="hero-link" href="/">Back to the competition index</a>
@@ -68,13 +68,26 @@ const solutionExamples = [
         <p class="legend-card__eyebrow">Solution links</p>
         <h2>Badges combine rank with format.</h2>
         <div class="legend-stack">
-          {solutionExamples.map((solution) => <SolutionBadge solution={solution} />)}
+          {
+            solutionExamples.map((solution) => (
+              <SolutionBadge solution={solution} />
+            ))
+          }
         </div>
         <ul class="legend-list">
-          <li><strong>Code</strong> means a repository or implementation is linked.</li>
-          <li><strong>Write-up</strong> means the link is primarily explanatory.</li>
-          <li><strong>Notebook</strong> means a Kaggle notebook or kernel is linked.</li>
-          <li><strong>Community pick</strong> means the resource is useful but not tied to a ranked finish.</li>
+          <li>
+            <strong>Code</strong> means a repository or implementation is linked.
+          </li>
+          <li>
+            <strong>Write-up</strong> means the link is primarily explanatory.
+          </li>
+          <li>
+            <strong>Notebook</strong> means a Kaggle notebook or kernel is linked.
+          </li>
+          <li>
+            <strong>Community pick</strong> means the resource is useful but not tied
+            to a ranked finish.
+          </li>
         </ul>
       </article>
 
@@ -88,10 +101,20 @@ const solutionExamples = [
           <StatusPill label="Hot" tone="hot" />
         </div>
         <ul class="legend-list">
-          <li><strong>Curated</strong> means the competition has been reviewed and published as a finished entry.</li>
-          <li><strong>Needs review</strong> means there are some links, but the entry is still marked incomplete in the YAML.</li>
-          <li><strong>Missing</strong> means no solution links have been added yet.</li>
-          <li><strong>Hot</strong> flags a competition as especially notable or timely.</li>
+          <li>
+            <strong>Curated</strong> means the competition has been reviewed and published
+            as a finished entry.
+          </li>
+          <li>
+            <strong>Needs review</strong> means there are some links, but the entry
+            is still marked incomplete in the YAML.
+          </li>
+          <li>
+            <strong>Missing</strong> means no solution links have been added yet.
+          </li>
+          <li>
+            <strong>Hot</strong> flags a competition as especially notable or timely.
+          </li>
         </ul>
       </article>
 
@@ -99,10 +122,18 @@ const solutionExamples = [
         <p class="legend-card__eyebrow">Maintenance notes</p>
         <h2>The authoring workflow did not change.</h2>
         <ul class="legend-list">
-          <li>The archive still reads from <code>data/competitions.yml</code>.</li>
+          <li>
+            The archive still reads from <code>data/competitions.yml</code>.
+          </li>
           <li><code>done: "true"</code> marks an entry as curated.</li>
-          <li><code>done: "false"</code> keeps the entry in the missing bucket, even if partial links already exist.</li>
-          <li><code>isHot: "true"</code> adds the Hot status without affecting curation state.</li>
+          <li>
+            <code>done: "false"</code> keeps the entry in the missing bucket, even
+            if partial links already exist.
+          </li>
+          <li>
+            <code>isHot: "true"</code> adds the Hot status without affecting curation
+            state.
+          </li>
         </ul>
       </article>
     </div>

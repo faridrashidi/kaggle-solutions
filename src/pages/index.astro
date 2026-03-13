@@ -30,26 +30,35 @@ const statCards = [
 ];
 ---
 
-<BaseLayout title={siteConfig.title} description={siteConfig.description} canonicalPath="/">
+<BaseLayout
+  title={siteConfig.title}
+  description={siteConfig.description}
+  canonicalPath="/"
+>
   <section class="hero">
     <div class="shell hero__simple">
       <p class="section-kicker">Competition Archive</p>
       <h1>The Most Comprehensive List of Kaggle Solutions and Ideas</h1>
       <p class="hero__lede">
         This repository contains a curated collection of Kaggle competition
-        solutions, write-ups, and notebooks shared by top performers across years of
-        competitions.
+        solutions, write-ups, and notebooks shared by top performers across
+        years of competitions.
       </p>
       <p class="hero__meta">
-        Last updated <strong>{siteConfig.lastUpdated}</strong>. Search, filter, and
-        sort the archive below.
+        Last updated <strong>{siteConfig.lastUpdated}</strong>. Search, filter,
+        and sort the archive below.
       </p>
 
       <div class="hero__actions">
         <a class="hero-link hero-link--primary" href="#competition-index">
           Jump to the index
         </a>
-        <a class="hero-link" href={siteConfig.repositoryUrl} target="_blank" rel="noreferrer">
+        <a
+          class="hero-link"
+          href={siteConfig.repositoryUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
           Open GitHub
         </a>
       </div>
@@ -62,8 +71,8 @@ const statCards = [
         <p class="section-kicker">Overview</p>
         <h2>Useful pages and archive stats</h2>
         <p>
-          Browse competitions by title, description, prize, team size, year, metric,
-          or solution count. These resource pages are also available:
+          Browse competitions by title, description, prize, team size, year,
+          metric, or solution count. These resource pages are also available:
         </p>
       </div>
 
@@ -123,7 +132,11 @@ const statCards = [
           <span class="control__label">Kind</span>
           <select data-filter="kind" name="kind">
             <option value="all">All kinds</option>
-            {competitionKinds.map((kind) => <option value={kind}>{kind}</option>)}
+            {
+              competitionKinds.map((kind) => (
+                <option value={kind}>{kind}</option>
+              ))
+            }
           </select>
         </label>
 
@@ -131,7 +144,11 @@ const statCards = [
           <span class="control__label">Year</span>
           <select data-filter="year" name="year">
             <option value="all">All years</option>
-            {competitionYears.map((year) => <option value={year}>{year}</option>)}
+            {
+              competitionYears.map((year) => (
+                <option value={year}>{year}</option>
+              ))
+            }
           </select>
         </label>
 
@@ -161,8 +178,8 @@ const statCards = [
           {competitionStats.total.toLocaleString()} competitions in the archive.
         </p>
         <p class="explorer-meta__hint">
-          Missing competitions may still contain partial links; the curation status
-          reflects whether the entry has been fully reviewed.
+          Missing competitions may still contain partial links; the curation
+          status reflects whether the entry has been fully reviewed.
         </p>
       </div>
 
@@ -170,9 +187,15 @@ const statCards = [
         <table class="competition-table">
           <colgroup>
             <col class="competition-table__col competition-table__col--main" />
-            <col class="competition-table__col competition-table__col--details" />
-            <col class="competition-table__col competition-table__col--solutions" />
-            <col class="competition-table__col competition-table__col--status" />
+            <col
+              class="competition-table__col competition-table__col--details"
+            />
+            <col
+              class="competition-table__col competition-table__col--solutions"
+            />
+            <col
+              class="competition-table__col competition-table__col--status"
+            />
           </colgroup>
           <thead>
             <tr>
@@ -183,18 +206,30 @@ const statCards = [
             </tr>
           </thead>
           <tbody data-table-body>
-            {competitions.map((competition) => <CompetitionRow competition={competition} />)}
+            {
+              competitions.map((competition) => (
+                <CompetitionRow competition={competition} />
+              ))
+            }
           </tbody>
         </table>
       </div>
 
       <div class="competition-grid" data-card-grid>
-        {competitions.map((competition) => <CompetitionCard competition={competition} />)}
+        {
+          competitions.map((competition) => (
+            <CompetitionCard competition={competition} />
+          ))
+        }
       </div>
 
       <div class="empty-state" data-empty-state hidden>
         <p>No competitions match the current filters.</p>
-        <button class="hero-link hero-link--primary" type="button" data-clear-filters>
+        <button
+          class="hero-link hero-link--primary"
+          type="button"
+          data-clear-filters
+        >
           Clear filters
         </button>
       </div>
@@ -219,8 +254,12 @@ const statCards = [
       const clearFiltersButton = root.querySelector("[data-clear-filters]");
       const tableBody = root.querySelector("[data-table-body]");
       const cardGrid = root.querySelector("[data-card-grid]");
-      const rowElements = Array.from(root.querySelectorAll("[data-competition-row]"));
-      const cardElements = Array.from(root.querySelectorAll("[data-competition-card]"));
+      const rowElements = Array.from(
+        root.querySelectorAll("[data-competition-row]"),
+      );
+      const cardElements = Array.from(
+        root.querySelectorAll("[data-competition-card]"),
+      );
 
       const cardById = new Map(
         cardElements.map((card) => [card.dataset.id, card]),
@@ -385,7 +424,9 @@ const statCards = [
           }
         });
 
-        const visibleCount = sortedRecords.filter((record) => !record.row.hidden).length;
+        const visibleCount = sortedRecords.filter(
+          (record) => !record.row.hidden,
+        ).length;
         resultsCount.textContent =
           visibleCount === records.length
             ? `${records.length.toLocaleString()} competitions in the archive.`
@@ -419,10 +460,12 @@ const statCards = [
         return ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName);
       }
 
-      [searchInput, kindSelect, yearSelect, statusSelect, sortSelect].forEach((control) => {
-        control.addEventListener("input", () => applyFilters(true));
-        control.addEventListener("change", () => applyFilters(true));
-      });
+      [searchInput, kindSelect, yearSelect, statusSelect, sortSelect].forEach(
+        (control) => {
+          control.addEventListener("input", () => applyFilters(true));
+          control.addEventListener("change", () => applyFilters(true));
+        },
+      );
 
       clearFiltersButton.addEventListener("click", resetFilters);
 

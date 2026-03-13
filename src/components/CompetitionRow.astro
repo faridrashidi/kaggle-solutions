@@ -91,7 +91,10 @@ const reviewTone =
   <td>
     {
       competition.solutionCount > 0 ? (
-        <ul class="solution-list" aria-label={`Solution links for ${competition.title}`}>
+        <ul
+          class="solution-list"
+          aria-label={`Solution links for ${competition.title}`}
+        >
           {competition.solutions.map((solution) => (
             <li>
               <SolutionBadge solution={solution} />

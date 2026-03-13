@@ -6,14 +6,19 @@ const description =
   "The page you were trying to reach is not in the Kaggle Solutions archive.";
 ---
 
-<BaseLayout title={title} description={description} canonicalPath="/404.html" noIndex>
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/404.html"
+  noIndex
+>
   <section class="not-found">
     <div class="shell not-found__inner">
       <p class="section-kicker">404</p>
       <h1>That page is not in the archive.</h1>
       <p>
-        The competition index lives on the homepage, and the curated resource pages
-        stay under <code>/resources/*.html</code>.
+        The competition index lives on the homepage, and the curated resource
+        pages stay under <code>/resources/*.html</code>.
       </p>
       <div class="hero__actions">
         <a class="hero-link hero-link--primary" href="/">Go back home</a>

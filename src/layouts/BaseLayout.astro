@@ -27,14 +27,55 @@ const baseTitle = siteConfig.title;
 const pageTitle = title === baseTitle ? baseTitle : `${title} | ${baseTitle}`;
 const currentPath = canonicalPath ?? Astro.url.pathname;
 const normalizedPath =
-  currentPath === "/index.html" ? "/" : currentPath.replace(/\/index\.html$/, "/");
+  currentPath === "/index.html"
+    ? "/"
+    : currentPath.replace(/\/index\.html$/, "/");
 const site = Astro.site ?? new URL("https://kaggle.farid.one");
 const canonicalUrl = new URL(normalizedPath, site).toString();
 const socialImage = new URL(image, site).toString();
+
+const themeScript = `
+(() => {
+  const STORAGE_KEY = "theme-preference";
+  const root = document.documentElement;
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  const COLORS = { light: "#0f6d8c", dark: "#09131d" };
+
+  const getStoredTheme = () => {
+    try {
+      return localStorage.getItem(STORAGE_KEY) || "system";
+    } catch {
+      return "system";
+    }
+  };
+
+  const resolveTheme = (theme) => (theme === "system" ? (media.matches ? "dark" : "light") : theme);
+
+  const applyTheme = (theme) => {
+    const resolvedTheme = resolveTheme(theme);
+    root.dataset.themePreference = theme;
+    root.dataset.theme = resolvedTheme;
+    root.style.colorScheme = resolvedTheme;
+
+    if (metaTheme) {
+      metaTheme.setAttribute("content", COLORS[resolvedTheme]);
+    }
+  };
+
+  applyTheme(getStoredTheme());
+
+  media.addEventListener("change", () => {
+    if ((root.dataset.themePreference || "system") === "system") {
+      applyTheme("system");
+    }
+  });
+})();
+`;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light" data-theme-preference="system">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -42,8 +83,12 @@ const socialImage = new URL(image, site).toString();
     <meta name="description" content={description} />
     <meta name="author" content={siteConfig.author} />
     <meta name="keywords" content={siteConfig.keywords.join(", ")} />
-    <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
+    <meta
+      name="robots"
+      content={noIndex ? "noindex, nofollow" : "index, follow"}
+    />
     <meta name="theme-color" content="#0f6d8c" />
+    <script is:inline set:html={themeScript} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
