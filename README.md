@@ -32,12 +32,7 @@
 
 <p align="center">
   <a href="https://kaggle.farid.one/">
-    <img src="public/assets/images/homepage1.png" style="max-width:100%;">
-  </a>
-</p>
-<p align="center">
-  <a href="https://kaggle.farid.one/resources/videos.html">
-    <img src="public/assets/images/homepage2.png" style="max-width:100%;">
+    <img src="public/assets/images/homepage.webp" style="max-width:100%;">
   </a>
 </p>
 
