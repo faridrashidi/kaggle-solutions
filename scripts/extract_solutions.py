@@ -10,6 +10,9 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 
+DEFAULT_EXPORT_DIR = "~/Desktop/kaggle"
+
+
 def get_competition_slug(link):
     """Extract competition slug from Kaggle URL."""
     match = re.search(r"kaggle\.com/(?:competitions|c)/([^/]+)", link)
@@ -71,6 +74,35 @@ def format_competition_yaml(comp, indent="  "):
             lines.append(f"{field_indent}solutions:")
 
     return "\n".join(lines)
+
+
+def normalize_path(path):
+    """Expand user/home markers and return an absolute path."""
+    if not path:
+        return None
+    return os.path.abspath(os.path.expandvars(os.path.expanduser(path)))
+
+
+def resolve_output_path(input_path, output_path):
+    """
+    Resolve the final output file path.
+    If output_path points to a directory, reuse the input filename inside it.
+    """
+    if not output_path:
+        return None
+
+    output_path = normalize_path(output_path)
+
+    if output_path.endswith(os.sep) or os.path.isdir(output_path):
+        return os.path.join(output_path, os.path.basename(input_path))
+
+    # Treat extensionless, non-existent paths as directories for convenience.
+    if not os.path.exists(output_path):
+        output_name = os.path.basename(output_path)
+        if not os.path.splitext(output_name)[1]:
+            return os.path.join(output_path, os.path.basename(input_path))
+
+    return output_path
 
 
 def create_driver():
@@ -306,6 +338,8 @@ def process_yaml_file(input_path, output_path=None, image_dir=None):
     indented_yaml = "\n".join(output_lines)
 
     if output_path:
+        output_path = resolve_output_path(input_path, output_path)
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(indented_yaml)
         print(f"\nOutput saved to: {output_path}")
@@ -326,18 +360,18 @@ if __name__ == "__main__":
     parser.add_argument(
         "--output",
         metavar="OUTPUT",
-        help="Path to save the output file. If not specified, prints to stdout.",
+        help="Path to save the output file or directory. Defaults to ~/Desktop/kaggle using the input filename.",
     )
     parser.add_argument(
         "--images",
         metavar="DIR",
-        help="Extract competition images to the specified directory (e.g., public/assets/logos)",
+        help="Extract competition images to the specified directory. Defaults to ~/Desktop/kaggle.",
     )
     args = parser.parse_args()
 
     if args.input_file:
-        output_path = os.path.expanduser(args.output) if args.output else None
-        image_dir = os.path.expanduser(args.images) if args.images else None
+        output_path = args.output if args.output else DEFAULT_EXPORT_DIR
+        image_dir = normalize_path(args.images) if args.images else normalize_path(DEFAULT_EXPORT_DIR)
         process_yaml_file(args.input_file, output_path, image_dir)
     else:
         parser.print_help()
