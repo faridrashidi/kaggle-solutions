@@ -259,7 +259,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  font-family: "Manrope", sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--text);
   background:
     radial-gradient(
@@ -391,7 +391,7 @@ kbd {
   display: inline-flex;
   align-items: center;
   justify-self: center;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   letter-spacing: -0.02em;
   color: var(--header-text);
   transition:
@@ -583,7 +583,7 @@ kbd {
 .legend-card h2,
 .not-found h1 {
   margin: 0;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: clamp(2.3rem, 4vw, 4.4rem);
   line-height: 0.94;
   letter-spacing: -0.06em;
@@ -698,7 +698,7 @@ kbd {
 .stat-card__value {
   display: block;
   margin-top: 0.42rem;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: clamp(1.4rem, 2vw, 2.2rem);
   line-height: 1;
 }
@@ -732,7 +732,7 @@ kbd {
 }
 
 .overview-links__link strong {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 1.02rem;
 }
 
@@ -783,7 +783,7 @@ kbd {
 }
 
 .resource-card__title {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 1.22rem;
   line-height: 1.05;
 }
@@ -950,7 +950,7 @@ kbd {
 .competition-main__title,
 .competition-card__title {
   display: inline-block;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 1.18rem;
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -1304,7 +1304,7 @@ kbd {
 .prose h3 {
   margin-top: 2rem;
   margin-bottom: 0.8rem;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.05;
 }
 
@@ -1369,7 +1369,7 @@ kbd {
 
 .site-footer__title {
   margin: 0 0 0.35rem;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 1.2rem;
   color: var(--text);
 }
