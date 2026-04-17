@@ -1,6 +1,3 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "baseUrl": "."
-  }
+  "extends": "astro/tsconfigs/strict"
 }
