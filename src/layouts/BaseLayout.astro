@@ -2,7 +2,6 @@
 import "../styles/global.css";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
-import Analytics from "../components/Analytics.astro";
 import { siteConfig } from "../config/site";
 
 interface Props {
@@ -89,6 +88,29 @@ const themeScript = `
     />
     <meta name="theme-color" content="#0f6d8c" />
     <script is:inline set:html={themeScript} />
+    <script is:inline>
+      (function (i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        ((i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date()));
+        ((a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]));
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        "script",
+        "//www.google-analytics.com/analytics.js",
+        "ga",
+      );
+      ga("create", "UA-122994885-1", "auto");
+      ga("send", "pageview");
+    </script>
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -110,7 +132,6 @@ const themeScript = `
   </head>
 
   <body class={pageClass}>
-    <Analytics />
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="page">
       <SiteHeader currentPath={normalizedPath} />
