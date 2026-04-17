@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownResourceLayout.astro
 title: Top Kagglers Interviews and Lectures
 summary: Talks, interviews, and panels featuring Kaggle grandmasters and competition veterans.
 description: A preserved collection of Kaggle interviews, lectures, and video playlists from the Kaggle Solutions archive.
-canonicalPath: /resources/videos.html
+canonicalPath: /resources/videos
 ---
 
 A list of interviews by Sanyam Bhutani with top Kagglers:

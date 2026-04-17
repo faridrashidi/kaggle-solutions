@@ -29,7 +29,7 @@ const currentPath = canonicalPath ?? Astro.url.pathname;
 const normalizedPath =
   currentPath === "/index.html"
     ? "/"
-    : currentPath.replace(/\/index\.html$/, "/");
+    : currentPath.replace(/\/index\.html$/, "/").replace(/\.html$/, "");
 const site = Astro.site ?? new URL("https://kaggle.farid.one");
 const canonicalUrl = new URL(normalizedPath, site).toString();
 const socialImage = new URL(image, site).toString();

@@ -21,7 +21,7 @@ const description =
 const canonicalPath =
   frontmatter.canonicalPath ??
   (Astro.url.pathname.endsWith("/")
-    ? `${Astro.url.pathname.slice(0, -1)}.html`
+    ? Astro.url.pathname.slice(0, -1) || "/"
     : Astro.url.pathname);
 ---
 

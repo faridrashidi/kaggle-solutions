@@ -44,19 +44,19 @@ export const siteConfig = {
     "https://cdn.jsdelivr.net/gh/faridrashidi/kaggle-solutions@main/public",
   resourceCards: [
     {
-      href: "/resources/videos.html",
+      href: "/resources/videos",
       title: "Top Kagglers Interviews",
       summary:
         "Talks, panel discussions, and long-form interviews with competition veterans and grandmasters.",
     },
     {
-      href: "/resources/kernels.html",
+      href: "/resources/kernels",
       title: "Kernels of The Week",
       summary:
         "A lightweight archive of standout Kaggle notebooks and tutorials worth revisiting.",
     },
     {
-      href: "/resources/symbols.html",
+      href: "/resources/symbols",
       title: "Legend and Symbols",
       summary:
         "Badge meanings, curation rules, and a quick guide to how solution links are categorized.",

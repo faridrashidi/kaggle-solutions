@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownResourceLayout.astro
 title: Kernels of The Week
 summary: A time capsule of standout Kaggle notebooks and educational kernels.
 description: A curated archive of Kaggle Kernels of the Week links preserved in the Astro migration.
-canonicalPath: /resources/kernels.html
+canonicalPath: /resources/kernels
 ---
 
 - [November 30, 2018](https://www.kaggle.com/ogakulov/the-mooc-wars-kaggle-s-perspective?utm_medium=social&utm_source=twitter.com&utm_campaign=Weekly-Kernel-Awards)
