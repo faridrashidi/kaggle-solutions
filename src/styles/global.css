@@ -322,15 +322,6 @@ kbd {
   margin: 0 auto;
 }
 
-.section-kicker {
-  margin: 0 0 0.8rem;
-  color: var(--accent-strong);
-  font-size: 0.78rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  font-weight: 800;
-}
-
 .site-header {
   position: sticky;
   top: 0;
@@ -588,10 +579,6 @@ kbd {
   max-width: 860px;
   margin: 0 auto;
   text-align: center;
-}
-
-.hero__simple .section-kicker {
-  margin-bottom: 0.65rem;
 }
 
 .hero__simple h1 {
@@ -1220,10 +1207,6 @@ kbd {
 .resource-hero__copy p {
   color: var(--resource-hero-text-soft);
   max-width: 46rem;
-}
-
-.resource-hero .section-kicker {
-  color: var(--resource-hero-kicker);
 }
 
 .resource-shell,
