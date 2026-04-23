@@ -50,7 +50,7 @@ const statCards = [
 
       <div class="hero__actions">
         <a class="hero-link hero-link--primary" href="#competition-index">
-          Jump to the index
+          Jump to the search
         </a>
         <a
           class="hero-link"
@@ -66,14 +66,6 @@ const statCards = [
 
   <section class="overview-section">
     <div class="shell overview-simple">
-      <div class="overview-copy">
-        <h2>Useful pages and archive stats</h2>
-        <p>
-          Browse competitions by title, description, prize, team size, year,
-          metric, or solution count. These resource pages are also available:
-        </p>
-      </div>
-
       <ul class="overview-links">
         {
           siteConfig.resourceCards.map((card) => (
@@ -107,8 +99,7 @@ const statCards = [
           <h2>Searchable, filterable, and shareable.</h2>
         </div>
         <p class="explorer-heading__text">
-          Press <kbd>/</kbd> to focus search when you are not already typing in a
-          field.
+          Press <kbd>/</kbd> to focus search.
         </p>
       </div>
 
@@ -168,15 +159,12 @@ const statCards = [
             <option value="largest-teams">Largest fields</option>
           </select>
         </label>
-      </div>
 
-      <div class="explorer-meta">
-        <p class="explorer-meta__count" data-results-count>
+        <p
+          class="explorer-meta__count explorer-toolbar__count"
+          data-results-count
+        >
           {competitionStats.total.toLocaleString()} competitions in the archive.
-        </p>
-        <p class="explorer-meta__hint">
-          Missing competitions may still contain partial links; the curation
-          status reflects whether the entry has been fully reviewed.
         </p>
       </div>
 

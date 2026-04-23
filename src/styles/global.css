@@ -85,14 +85,26 @@
   --bronze-badge-bg: #c57a49;
   --bronze-badge-text: #4f240c;
   --bronze-badge-border: rgba(123, 67, 31, 0.52);
-  --resource-hero-bg: linear-gradient(
-    180deg,
-    rgba(16, 34, 51, 0.98),
-    rgba(19, 47, 66, 0.95)
-  );
-  --resource-hero-text: #fef6ea;
-  --resource-hero-text-soft: rgba(254, 246, 234, 0.8);
-  --resource-hero-kicker: rgba(254, 246, 234, 0.7);
+  --resource-hero-bg:
+    radial-gradient(
+      circle at top right,
+      rgba(15, 109, 140, 0.14),
+      transparent 18rem
+    ),
+    radial-gradient(
+      circle at left center,
+      rgba(201, 95, 60, 0.08),
+      transparent 22rem
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 249, 241, 0.98),
+      rgba(247, 251, 255, 0.96)
+    );
+  --resource-hero-border: rgba(18, 35, 48, 0.12);
+  --resource-hero-text: #122330;
+  --resource-hero-text-soft: rgba(18, 35, 48, 0.72);
+  --resource-hero-kicker: rgba(15, 109, 140, 0.62);
   --footer-border: rgba(18, 35, 48, 0.1);
   --radius-xl: 20px;
   --radius-lg: 16px;
@@ -190,14 +202,26 @@
   --bronze-badge-bg: #a55f37;
   --bronze-badge-text: #fff0e4;
   --bronze-badge-border: rgba(205, 128, 82, 0.5);
-  --resource-hero-bg: linear-gradient(
-    180deg,
-    rgba(9, 19, 29, 0.98),
-    rgba(13, 34, 47, 0.95)
-  );
+  --resource-hero-bg:
+    radial-gradient(
+      circle at top right,
+      rgba(73, 179, 209, 0.18),
+      transparent 18rem
+    ),
+    radial-gradient(
+      circle at left center,
+      rgba(255, 158, 115, 0.1),
+      transparent 22rem
+    ),
+    linear-gradient(
+      180deg,
+      rgba(17, 33, 49, 0.98),
+      rgba(9, 19, 29, 0.96)
+    );
+  --resource-hero-border: rgba(236, 243, 250, 0.1);
   --resource-hero-text: #f4f8fb;
-  --resource-hero-text-soft: rgba(244, 248, 251, 0.8);
-  --resource-hero-kicker: rgba(244, 248, 251, 0.68);
+  --resource-hero-text-soft: rgba(244, 248, 251, 0.78);
+  --resource-hero-kicker: rgba(122, 209, 235, 0.66);
   --footer-border: rgba(236, 243, 250, 0.1);
 }
 
@@ -500,12 +524,12 @@ kbd {
 }
 
 .overview-section {
-  padding-top: clamp(1.2rem, 2vw, 1.8rem);
-  padding-bottom: clamp(1.2rem, 2vw, 1.8rem);
+  padding-top: clamp(0.5rem, 0.95vw, 0.85rem);
+  padding-bottom: clamp(0.5rem, 0.95vw, 0.85rem);
 }
 
 .explorer-section {
-  padding-top: clamp(1.2rem, 2vw, 1.8rem);
+  padding-top: clamp(0.65rem, 1.2vw, 1rem);
 }
 
 .explorer-toolbar,
@@ -535,7 +559,6 @@ kbd {
 }
 
 .hero h1,
-.overview-copy h2,
 .explorer-heading h2,
 .resource-hero h1,
 .legend-card h2,
@@ -547,7 +570,6 @@ kbd {
   letter-spacing: 0em;
 }
 
-.overview-copy h2,
 .explorer-heading h2,
 .legend-card h2 {
   font-size: clamp(1.35rem, 2.2vw, 2.1rem);
@@ -557,7 +579,6 @@ kbd {
 
 .hero__lede,
 .hero__meta,
-.overview-copy p,
 .explorer-heading__text,
 .resource-hero__copy p,
 .site-footer__text,
@@ -656,10 +677,6 @@ kbd {
   font-family: "Inter", sans-serif;
   font-size: clamp(1.18rem, 1.6vw, 1.8rem);
   line-height: 1;
-}
-
-.overview-copy {
-  max-width: 780px;
 }
 
 .overview-simple {
@@ -774,6 +791,12 @@ kbd {
   margin-bottom: 1rem;
 }
 
+.explorer-toolbar__count {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-top: 0.15rem;
+}
+
 .control {
   display: flex;
   flex-direction: column;
@@ -800,24 +823,9 @@ kbd {
   box-shadow: var(--control-shadow);
 }
 
-.explorer-meta {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
 .explorer-meta__count {
   margin: 0;
   font-weight: 800;
-}
-
-.explorer-meta__hint {
-  margin: 0;
-  max-width: 46rem;
-  color: var(--text-soft);
-  text-align: right;
 }
 
 .desktop-table {
@@ -1201,6 +1209,7 @@ kbd {
   gap: 1.5rem;
   padding: clamp(1.6rem, 3vw, 2.5rem);
   border-radius: var(--radius-xl);
+  border: 1px solid var(--resource-hero-border);
   background: var(--resource-hero-bg);
   color: var(--resource-hero-text);
   box-shadow: var(--shadow);
@@ -1350,7 +1359,6 @@ kbd {
   }
 
   .explorer-heading,
-  .explorer-meta,
   .resource-hero__inner,
   .site-footer__inner {
     align-items: start;
@@ -1359,7 +1367,6 @@ kbd {
   }
 
   .explorer-heading__text,
-  .explorer-meta__hint,
   .site-footer__meta {
     text-align: left;
     justify-items: start;
@@ -1494,7 +1501,6 @@ kbd {
   }
 
   .hero h1,
-  .overview-copy h2,
   .explorer-heading h2,
   .resource-hero h1,
   .legend-card h2,
@@ -1502,7 +1508,6 @@ kbd {
     font-size: clamp(1.7rem, 6.4vw, 2.5rem);
   }
 
-  .overview-copy h2,
   .explorer-heading h2,
   .legend-card h2 {
     font-size: clamp(1.4rem, 4.8vw, 1.95rem);
@@ -1511,7 +1516,6 @@ kbd {
 
 @media (max-width: 640px) {
   .hero h1,
-  .overview-copy h2,
   .explorer-heading h2,
   .resource-hero h1,
   .legend-card h2,
@@ -1519,7 +1523,6 @@ kbd {
     font-size: clamp(1.5rem, 7vw, 2rem);
   }
 
-  .overview-copy h2,
   .explorer-heading h2,
   .legend-card h2 {
     font-size: clamp(1.28rem, 5.8vw, 1.7rem);
