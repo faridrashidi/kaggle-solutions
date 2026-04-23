@@ -115,13 +115,19 @@ function parseTeamCount(value: string): number | null {
 }
 
 function normalizeImagePath(image: string): string {
-  return image.replace(/^\/kaggle-solutions(?=\/assets\/)/, "");
+  const withoutBasePath = image.replace(/^\/kaggle-solutions(?=\/)/, "");
+
+  return withoutBasePath.replace(/^\/assets\/(images|logos)\//, "/$1/");
+}
+
+function isLocalImagePath(image: string): boolean {
+  return image.startsWith("/images/") || image.startsWith("/logos/");
 }
 
 function validateImagePath(image: string, title: string): string {
   const normalized = normalizeImagePath(image);
 
-  if (!normalized.startsWith("/assets/")) {
+  if (!isLocalImagePath(normalized)) {
     return normalized;
   }
 
@@ -137,7 +143,7 @@ function validateImagePath(image: string, title: string): string {
 function buildCompetitionImageUrl(image: string, title: string): string {
   const normalized = validateImagePath(image, title);
 
-  if (normalized.startsWith("/assets/logos/")) {
+  if (normalized.startsWith("/logos/")) {
     return `${siteConfig.competitionImagesBaseUrl}${normalized}`;
   }
 

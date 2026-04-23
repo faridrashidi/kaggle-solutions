@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://kaggle.farid.one/">
-    <img src="public/assets/images/logo.png" height="150">
+    <img src="public/images/logo.png" height="150">
   </a>
 </p>
 <p align="center">
@@ -32,7 +32,7 @@
 
 <p align="center">
   <a href="https://kaggle.farid.one/">
-    <img src="public/assets/images/homepage.webp" style="max-width:100%;">
+    <img src="public/images/homepage.webp" style="max-width:100%;">
   </a>
 </p>
 

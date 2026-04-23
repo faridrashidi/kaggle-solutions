@@ -39,7 +39,7 @@ export const siteConfig = {
     "notebooks",
   ],
   lastUpdated: resolveLastUpdated(),
-  ogImage: "/assets/images/logo.png",
+  ogImage: "/images/logo.png",
   competitionImagesBaseUrl:
     "https://cdn.jsdelivr.net/gh/faridrashidi/kaggle-solutions@main/public",
   resourceCards: [

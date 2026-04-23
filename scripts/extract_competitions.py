@@ -39,7 +39,7 @@ for comp in comps:
         else:
             metric = "-"
         link = comp.ref.replace("/competitions/", "/c/")
-        image = f"/assets/logos/{comp.id}.webp"
+        image = f"/logos/{comp.id}.webp"
         year = deadline.year
         isHot = "false"
         done = "false"
