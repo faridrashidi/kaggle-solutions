@@ -3,6 +3,9 @@
   "version": "2026.4.5",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -13,7 +16,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.1",
-    "astro": "^6.0.3",
+    "astro": "^6.1.9",
     "js-yaml": "^4.1.1"
   },
   "devDependencies": {
