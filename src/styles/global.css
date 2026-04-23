@@ -53,11 +53,6 @@
   --header-link-bg: rgba(30, 28, 28, 0.46);
   --header-link-bg-hover: rgba(30, 28, 28, 0.64);
   --header-link-shadow: none;
-  --theme-toggle-bg: rgba(255, 255, 255, 0.1);
-  --theme-toggle-border: rgba(255, 255, 255, 0.14);
-  --theme-toggle-text: rgba(255, 248, 244, 0.82);
-  --theme-toggle-hover: #fff;
-  --theme-toggle-shadow: none;
   --card-border: rgba(255, 255, 255, 0.62);
   --card-bg: rgba(255, 252, 246, 0.9);
   --toolbar-glow: rgba(15, 109, 140, 0.08);
@@ -163,11 +158,6 @@
   --header-link-bg: rgba(255, 255, 255, 0.05);
   --header-link-bg-hover: rgba(255, 255, 255, 0.1);
   --header-link-shadow: none;
-  --theme-toggle-bg: rgba(255, 255, 255, 0.06);
-  --theme-toggle-border: rgba(236, 243, 250, 0.14);
-  --theme-toggle-text: rgba(238, 245, 251, 0.78);
-  --theme-toggle-hover: #f7fbff;
-  --theme-toggle-shadow: none;
   --card-border: rgba(236, 243, 250, 0.1);
   --card-bg: rgba(14, 26, 38, 0.95);
   --toolbar-glow: rgba(73, 179, 209, 0.08);
@@ -397,24 +387,21 @@ kbd {
   display: inline-grid;
   place-items: center;
   align-items: center;
-  width: 2.9rem;
-  height: 2.9rem;
   padding: 0;
-  border: 1px solid var(--theme-toggle-border);
-  border-radius: var(--radius-md);
-  background: var(--theme-toggle-bg);
-  box-shadow: var(--theme-toggle-shadow);
-  color: var(--theme-toggle-text);
+  margin: 0;
+  border: 0;
+  background: transparent;
+  appearance: none;
+  color: var(--header-link);
+  line-height: 0;
   cursor: pointer;
   transition:
     color 180ms ease,
-    border-color 180ms ease,
-    background-color 180ms ease,
     transform 180ms ease;
 }
 
 .theme-toggle:hover {
-  color: var(--theme-toggle-hover);
+  color: var(--header-link-hover-text);
   transform: translateY(-1px);
 }
 
@@ -468,6 +455,21 @@ kbd {
   color: var(--header-link-hover-text);
 }
 
+#github-repository-link {
+  min-height: 2.2rem;
+  gap: 0.38rem;
+  padding: 0.36rem 0.62rem;
+}
+
+#github-repository-link .site-nav__github-icon {
+  width: 1.08rem;
+  height: 1.08rem;
+}
+
+#github-repository-link .site-nav__stars {
+  font-size: 0.82rem;
+}
+
 .site-nav__github-icon {
   width: 1.5rem;
   height: 1.5rem;
@@ -493,7 +495,7 @@ kbd {
 }
 
 .hero {
-  padding-top: clamp(2.2rem, 4vw, 3.2rem);
+  padding-top: clamp(1.45rem, 2.8vw, 2.35rem);
   padding-bottom: clamp(1.2rem, 2vw, 1.8rem);
 }
 
@@ -1436,18 +1438,24 @@ kbd {
   }
 
   .site-header__inner {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 0.85rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.65rem;
   }
 
   .site-header__spacer {
     display: none;
   }
 
+  .brand {
+    justify-self: start;
+    min-width: 0;
+  }
+
   .site-header__actions {
-    justify-self: center;
-    justify-content: center;
+    justify-self: end;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    gap: 0.55rem;
   }
 
   .brand__text {
