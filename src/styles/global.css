@@ -85,22 +85,7 @@
   --bronze-badge-bg: #c57a49;
   --bronze-badge-text: #4f240c;
   --bronze-badge-border: rgba(123, 67, 31, 0.52);
-  --resource-hero-bg:
-    radial-gradient(
-      circle at top right,
-      rgba(15, 109, 140, 0.14),
-      transparent 18rem
-    ),
-    radial-gradient(
-      circle at left center,
-      rgba(201, 95, 60, 0.08),
-      transparent 22rem
-    ),
-    linear-gradient(
-      180deg,
-      rgba(255, 249, 241, 0.98),
-      rgba(247, 251, 255, 0.96)
-    );
+  --resource-hero-bg: #ffffff;
   --resource-hero-border: rgba(18, 35, 48, 0.12);
   --resource-hero-text: #122330;
   --resource-hero-text-soft: rgba(18, 35, 48, 0.72);
@@ -213,11 +198,7 @@
       rgba(255, 158, 115, 0.1),
       transparent 22rem
     ),
-    linear-gradient(
-      180deg,
-      rgba(17, 33, 49, 0.98),
-      rgba(9, 19, 29, 0.96)
-    );
+    linear-gradient(180deg, rgba(17, 33, 49, 0.98), rgba(9, 19, 29, 0.96));
   --resource-hero-border: rgba(236, 243, 250, 0.1);
   --resource-hero-text: #f4f8fb;
   --resource-hero-text-soft: rgba(244, 248, 251, 0.78);
