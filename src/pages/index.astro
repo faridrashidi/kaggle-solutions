@@ -28,6 +28,8 @@ const statCards = [
     value: `${competitionStats.firstYear}-${competitionStats.latestYear}`,
   },
 ];
+
+const lazyPageSize = 10;
 ---
 
 <BaseLayout
@@ -93,7 +95,11 @@ const statCards = [
   </section>
 
   <section class="explorer-section" id="competition-index">
-    <div class="shell" data-competition-explorer>
+    <div
+      class="shell"
+      data-competition-explorer
+      data-page-size={lazyPageSize}
+    >
       <div class="explorer-heading">
         <div>
           <h2>Searchable, filterable, and shareable.</h2>
@@ -208,6 +214,16 @@ const statCards = [
         }
       </div>
 
+      <div class="load-more" data-load-more hidden>
+        <button
+          class="hero-link load-more__button"
+          type="button"
+          data-load-more-button
+        >
+          Load more
+        </button>
+      </div>
+
       <div class="empty-state" data-empty-state hidden>
         <p>No competitions match the current filters.</p>
         <button
@@ -239,6 +255,16 @@ const statCards = [
       const clearFiltersButton = root.querySelector("[data-clear-filters]");
       const tableBody = root.querySelector("[data-table-body]");
       const cardGrid = root.querySelector("[data-card-grid]");
+      const loadMore = root.querySelector("[data-load-more]");
+      const loadMoreButton = root.querySelector("[data-load-more-button]");
+      const configuredPageSize = Number.parseInt(
+        root.dataset.pageSize ?? "20",
+        10,
+      );
+      const pageSize =
+        Number.isFinite(configuredPageSize) && configuredPageSize > 0
+          ? configuredPageSize
+          : 20;
       const rowElements = Array.from(
         root.querySelectorAll("[data-competition-row]"),
       );
@@ -267,6 +293,8 @@ const statCards = [
           solutionCount: Number.parseInt(row.dataset.solutionCount ?? "0", 10),
         };
       });
+      let matchingRecords = [];
+      let visibleLimit = pageSize;
 
       const validKinds = new Set(
         Array.from(kindSelect.options).map((option) => option.value),
@@ -389,35 +417,81 @@ const statCards = [
         return right.number - left.number;
       }
 
-      function applyFilters(updateLocation) {
-        const state = currentState();
-        const sortedRecords = [...records].sort((left, right) =>
-          compareRecords(left, right, state.sort),
-        );
+      function detachRecord(record) {
+        record.row.remove();
+        if (record.card) {
+          record.card.remove();
+        }
+      }
 
-        sortedRecords.forEach((record) => {
-          const visible = matches(record, state);
+      function updateResultsCount(totalMatches, shownCount) {
+        if (totalMatches === 0) {
+          resultsCount.textContent = "No competitions match the current filters.";
+          return;
+        }
 
-          record.row.hidden = !visible;
+        if (totalMatches === records.length && shownCount === records.length) {
+          resultsCount.textContent = `${records.length.toLocaleString()} competitions in the archive.`;
+          return;
+        }
+
+        if (totalMatches === records.length) {
+          resultsCount.textContent = `Showing ${shownCount.toLocaleString()} of ${records.length.toLocaleString()} competitions.`;
+          return;
+        }
+
+        resultsCount.textContent = `Showing ${shownCount.toLocaleString()} of ${totalMatches.toLocaleString()} matching competitions.`;
+      }
+
+      function renderRecords() {
+        const shownCount = Math.min(visibleLimit, matchingRecords.length);
+        const visibleRecords = matchingRecords.slice(0, shownCount);
+        const tableFragment = document.createDocumentFragment();
+        const cardFragment = document.createDocumentFragment();
+
+        records.forEach(detachRecord);
+
+        visibleRecords.forEach((record) => {
+          record.row.hidden = false;
+          tableFragment.appendChild(record.row);
           if (record.card) {
-            record.card.hidden = !visible;
-          }
-
-          tableBody.appendChild(record.row);
-          if (record.card) {
-            cardGrid.appendChild(record.card);
+            record.card.hidden = false;
+            cardFragment.appendChild(record.card);
           }
         });
 
-        const visibleCount = sortedRecords.filter(
-          (record) => !record.row.hidden,
-        ).length;
-        resultsCount.textContent =
-          visibleCount === records.length
-            ? `${records.length.toLocaleString()} competitions in the archive.`
-            : `Showing ${visibleCount.toLocaleString()} of ${records.length.toLocaleString()} competitions.`;
+        tableBody.appendChild(tableFragment);
+        cardGrid.appendChild(cardFragment);
 
-        emptyState.hidden = visibleCount !== 0;
+        updateResultsCount(matchingRecords.length, shownCount);
+
+        emptyState.hidden = matchingRecords.length !== 0;
+        if (loadMore) {
+          loadMore.hidden = shownCount >= matchingRecords.length;
+        }
+        if (loadMoreButton) {
+          loadMoreButton.disabled = shownCount >= matchingRecords.length;
+        }
+      }
+
+      function loadNextRecords() {
+        if (visibleLimit >= matchingRecords.length) {
+          return;
+        }
+
+        visibleLimit = Math.min(visibleLimit + pageSize, matchingRecords.length);
+        renderRecords();
+      }
+
+      function applyFilters(updateLocation) {
+        const state = currentState();
+
+        visibleLimit = pageSize;
+        matchingRecords = records
+          .filter((record) => matches(record, state))
+          .sort((left, right) => compareRecords(left, right, state.sort));
+
+        renderRecords();
 
         if (updateLocation) {
           updateUrl(state);
@@ -453,6 +527,20 @@ const statCards = [
       );
 
       clearFiltersButton.addEventListener("click", resetFilters);
+      loadMoreButton?.addEventListener("click", loadNextRecords);
+
+      if ("IntersectionObserver" in window && loadMore) {
+        const loadMoreObserver = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              loadNextRecords();
+            }
+          },
+          { rootMargin: "420px 0px" },
+        );
+
+        loadMoreObserver.observe(loadMore);
+      }
 
       document.addEventListener("keydown", (event) => {
         if (

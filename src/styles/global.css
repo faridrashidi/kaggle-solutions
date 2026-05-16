@@ -1172,6 +1172,25 @@ kbd {
   font-weight: 800;
 }
 
+.load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.load-more[hidden] {
+  display: none;
+}
+
+.load-more__button {
+  cursor: pointer;
+}
+
+.load-more__button:disabled {
+  cursor: default;
+  opacity: 0.68;
+}
+
 .empty-state {
   margin-top: 1rem;
   padding: 1.4rem;
