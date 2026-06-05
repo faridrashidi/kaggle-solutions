@@ -632,40 +632,6 @@ kbd {
   color: var(--text-inverse);
 }
 
-.buy-coffee-button {
-  display: inline-flex;
-  line-height: 0;
-  border-radius: var(--radius-pill);
-  transition: transform 180ms ease;
-}
-
-.buy-coffee-button:hover {
-  transform: translateY(-1px);
-}
-
-.buy-coffee-button:focus-visible {
-  outline: 3px solid var(--focus-ring);
-  outline-offset: 4px;
-}
-
-.buy-coffee-button__image {
-  display: block;
-  width: auto;
-  height: 3.125rem;
-}
-
-.buy-coffee-button__image--dark {
-  display: none;
-}
-
-:root[data-theme="dark"] .buy-coffee-button__image--light {
-  display: none;
-}
-
-:root[data-theme="dark"] .buy-coffee-button__image--dark {
-  display: block;
-}
-
 .hero__meta {
   margin: 1rem 0 0;
 }

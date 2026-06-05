@@ -19,12 +19,6 @@
 </p>
 
 <p align="center">
-  <a href="https://buymeacoffee.com/faridrashidi">
-    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50">
-  </a>
-</p>
-
-<p align="center">
   <a href="https://github.com/faridrashidi/kaggle-solutions/blob/main/LICENSE.md"><img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge&labelColor=000000"></a>
   <a href="https://astro.build/"><img src="https://img.shields.io/badge/Platform-Astro-0f6d8c.svg?style=for-the-badge&labelColor=000000"></a>
   <a href="https://guides.github.com/features/mastering-markdown/"><img src="https://img.shields.io/badge/Language-Markdown-green.svg?style=for-the-badge&labelColor=000000"></a>
