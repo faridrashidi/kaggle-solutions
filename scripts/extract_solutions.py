@@ -2,6 +2,7 @@ import argparse
 import html
 import os
 import re
+import subprocess
 import time
 import urllib.request
 
@@ -188,6 +189,66 @@ def download_competition_image(competition_slug, output_dir, image_mapping):
     return None
 
 
+def convert_png_images_to_webp(image_dir):
+    """
+    Convert downloaded PNG images to WebP with sharp, then delete PNGs whose
+    matching WebP output was created successfully.
+    """
+    png_filenames = [
+        filename
+        for filename in os.listdir(image_dir)
+        if os.path.isfile(os.path.join(image_dir, filename)) and filename.endswith(".png")
+    ]
+
+    if not png_filenames:
+        print("No PNG images found to convert.")
+        return
+
+    print(f"Converting {len(png_filenames)} PNG images to WebP...")
+
+    try:
+        subprocess.run(
+            [
+                "sharp",
+                "-i",
+                "./*.png",
+                "-o",
+                "./{name}.webp",
+                "-f",
+                "webp",
+                "-q",
+                "75",
+            ],
+            cwd=image_dir,
+            check=True,
+        )
+    except FileNotFoundError:
+        print("Sharp CLI not found. PNG images were kept.")
+        return
+    except subprocess.CalledProcessError as e:
+        print(f"Sharp conversion failed with exit code {e.returncode}. PNG images were kept.")
+        return
+
+    deleted_count = 0
+    for filename in png_filenames:
+        png_path = os.path.join(image_dir, filename)
+        webp_path = os.path.join(
+            image_dir, f"{os.path.splitext(filename)[0]}.webp"
+        )
+
+        if not os.path.exists(webp_path):
+            print(f"  Keeping PNG without matching WebP: {filename}")
+            continue
+
+        try:
+            os.remove(png_path)
+            deleted_count += 1
+        except OSError as e:
+            print(f"  Could not delete PNG {filename}: {e}")
+
+    print(f"Deleted {deleted_count} PNG images after WebP conversion.")
+
+
 def get_kaggle_solutions(driver, competition_slug):
     """
     Fetch leaderboard page with Selenium and extract solution links.
@@ -329,6 +390,9 @@ def process_yaml_file(input_path, output_path=None, image_dir=None):
     finally:
         driver.quit()
         print("Browser closed.")
+
+    if image_dir:
+        convert_png_images_to_webp(image_dir)
 
     # Format output using custom YAML formatter
     output_lines = []
