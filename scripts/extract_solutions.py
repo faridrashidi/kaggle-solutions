@@ -7,6 +7,8 @@ import time
 import urllib.request
 
 import yaml
+from bs4 import BeautifulSoup
+from selenium.common.exceptions import InvalidSessionIdException, WebDriverException
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -118,6 +120,20 @@ def create_driver():
     return driver
 
 
+def is_browser_session_error(error):
+    """Return True when Selenium lost the underlying browser session."""
+    message = str(error).lower()
+    return isinstance(error, InvalidSessionIdException) or any(
+        text in message
+        for text in [
+            "invalid session id",
+            "not connected to devtools",
+            "chrome not reachable",
+            "session deleted",
+        ]
+    )
+
+
 def build_competition_image_mapping(driver):
     """
     Visit the competitions listing page and build a mapping of slug -> (image_url, comp_id).
@@ -187,6 +203,102 @@ def download_competition_image(competition_slug, output_dir, image_mapping):
         print(f"  Error downloading image: {e}")
 
     return None
+
+
+def normalize_writeup_url(href):
+    """Normalize Kaggle writeup links to the shorter /c/ URL format."""
+    href = html.unescape(href).split("?", 1)[0].split("#", 1)[0]
+    href = href.removeprefix("https://www.kaggle.com")
+    return "https://www.kaggle.com" + href.replace("/competitions/", "/c/", 1)
+
+
+def extract_rank_from_writeup_url(href):
+    """Extract a rank from common Kaggle writeup URL title patterns."""
+    rank_patterns = [
+        r"(?:^|[-/])(\d+)(?:st|nd|rd|th)-private-place(?:[-/]|$)",
+        r"(?:^|[-/])(\d+)(?:st|nd|rd|th)-place(?:[-/]|$)",
+        r"(?:^|[-/])(\d+)(?:st|nd|rd|th)-(?:solution|writeup)(?:[-/]|$)",
+        r"(?:^|[-/])lb-?(\d+)(?:[-/]|$)",
+    ]
+
+    for pattern in rank_patterns:
+        rank_match = re.search(pattern, href, re.IGNORECASE)
+        if rank_match:
+            return str(int(rank_match.group(1)))
+
+    return None
+
+
+def extract_rank_from_leaderboard_row(link):
+    """Extract the displayed leaderboard rank from the row containing a writeup link."""
+    row = link.find_parent("li")
+    if not row:
+        return None
+
+    first_text = next(row.stripped_strings, "")
+    if not re.fullmatch(r"\d[\d,]*", first_text):
+        return None
+
+    return str(int(first_text.replace(",", "")))
+
+
+def extract_solutions_from_page_source(page_source, competition_slug):
+    """Extract writeup solution links and ranks from a Kaggle leaderboard page."""
+    soup = BeautifulSoup(page_source, "html.parser")
+    writeup_path_pattern = re.compile(
+        rf"^(?:https://www\.kaggle\.com)?/competitions/{re.escape(competition_slug)}/writeups/[^?#]+"
+    )
+
+    seen = set()
+    solutions = []
+
+    for link in soup.find_all("a", href=writeup_path_pattern):
+        full_url = normalize_writeup_url(link["href"])
+        if full_url in seen:
+            continue
+
+        seen.add(full_url)
+        rank = extract_rank_from_leaderboard_row(link)
+        if rank is None:
+            rank = extract_rank_from_writeup_url(full_url)
+
+        solutions.append(
+            {
+                "rank": rank or "?",
+                "link": full_url,
+                "kind": "description",
+            }
+        )
+
+    if not solutions:
+        # Fallback for pages whose links are only visible in raw page data.
+        writeup_pattern = (
+            rf'href="(/competitions/{re.escape(competition_slug)}/writeups/[^"]+)"'
+        )
+        for href in re.findall(writeup_pattern, page_source):
+            full_url = normalize_writeup_url(href)
+            if full_url in seen:
+                continue
+
+            seen.add(full_url)
+            rank = extract_rank_from_writeup_url(full_url)
+            solutions.append(
+                {
+                    "rank": rank or "?",
+                    "link": full_url,
+                    "kind": "description",
+                }
+            )
+
+    ranked_solutions = [
+        solution for solution in solutions if re.fullmatch(r"\d+", solution["rank"])
+    ]
+    unranked_solutions = [
+        solution for solution in solutions if not re.fullmatch(r"\d+", solution["rank"])
+    ]
+    ranked_solutions.sort(key=lambda solution: int(solution["rank"]))
+
+    return ranked_solutions + unranked_solutions
 
 
 def convert_png_images_to_webp(image_dir):
@@ -263,58 +375,16 @@ def get_kaggle_solutions(driver, competition_slug):
         # Wait for page to fully load
         time.sleep(10)
 
-        # Get page source and find writeup links using regex
+        # Get page source and extract writeup links from leaderboard rows.
         page_source = driver.page_source
-        writeup_pattern = (
-            rf'href="(/competitions/{re.escape(competition_slug)}/writeups/[^"]+)"'
-        )
-        writeup_matches = re.findall(writeup_pattern, page_source)
-
-        # Get unique writeups preserving order
-        seen = set()
-        unique_writeups = []
-        for href in writeup_matches:
-            # Use shorter /c/ URL format
-            full_url = "https://www.kaggle.com" + href.replace("/competitions/", "/c/")
-            if full_url not in seen:
-                seen.add(full_url)
-                unique_writeups.append(full_url)
-
-        print(f"  Found {len(unique_writeups)} writeup links")
-
-        # Extract rank from URL (e.g., "1st-place", "2nd-place")
-        # Include all writeups, using URL order for those without rank pattern
-        ranked_solutions = []
-        unranked_solutions = []
-
-        for href in unique_writeups:
-            rank_match = re.search(r"(\d+)(?:st|nd|rd|th)-place", href)
-            if rank_match:
-                rank = int(rank_match.group(1))
-                ranked_solutions.append(
-                    {
-                        "rank": str(rank),
-                        "link": href,
-                        "kind": "description",
-                    }
-                )
-            else:
-                unranked_solutions.append(
-                    {
-                        "rank": "?",
-                        "link": href,
-                        "kind": "description",
-                    }
-                )
-
-        # Sort ranked solutions by rank
-        ranked_solutions.sort(key=lambda x: int(x["rank"]))
-
-        # Add all solutions (ranked first, then unranked)
-        solutions = ranked_solutions + unranked_solutions
+        solutions = extract_solutions_from_page_source(page_source, competition_slug)
+        print(f"  Found {len(solutions)} writeup links")
         print(f"  Extracted {len(solutions)} solutions")
 
     except Exception as e:
+        if is_browser_session_error(e):
+            raise
+
         print(f"  Error: {e}")
         import traceback
 
@@ -371,7 +441,26 @@ def process_yaml_file(input_path, output_path=None, image_dir=None):
                 print(f"  Could not extract competition slug from: {link}\n")
                 continue
 
-            solutions = get_kaggle_solutions(driver, competition_slug)
+            solutions = []
+            for attempt in range(2):
+                try:
+                    solutions = get_kaggle_solutions(driver, competition_slug)
+                    break
+                except WebDriverException as e:
+                    if attempt == 0 and is_browser_session_error(e):
+                        print("  Browser session lost; restarting and retrying.")
+                        try:
+                            driver.quit()
+                        except Exception:
+                            pass
+                        driver = create_driver()
+                        continue
+
+                    print(f"  Error: {e}")
+                    import traceback
+
+                    traceback.print_exc()
+                    break
 
             if solutions:
                 comp["solutions"] = solutions
