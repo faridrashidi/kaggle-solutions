@@ -229,7 +229,7 @@ kbd {
 
 .theme-toggle,
 .site-nav__link {
-  border: 1px solid rgba(255, 255, 255, 0.34);
+  border: 0;
   border-radius: var(--radius-md);
   background: transparent;
   color: var(--text-inverse);
@@ -274,15 +274,6 @@ kbd {
 
 .site-nav__link--external {
   gap: 0.38rem;
-}
-
-.site-nav__github-icon {
-  width: 1rem;
-  height: 1rem;
-}
-
-.site-nav__stars {
-  white-space: nowrap;
 }
 
 .hero {
@@ -349,7 +340,6 @@ kbd {
 .explorer-heading__text,
 .resource-hero__copy p,
 .site-footer__text,
-.site-footer__title,
 .not-found p,
 .solution-empty,
 .competition-main__description,
@@ -368,6 +358,86 @@ kbd {
   justify-content: center;
   gap: 0.8rem;
   margin-top: 1rem;
+}
+
+.hero-github-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  margin-top: 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text);
+  overflow: hidden;
+}
+
+.hero-github-card:hover {
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+
+.hero-github-card__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.62rem;
+  align-self: stretch;
+  padding: 0.68rem 0.9rem;
+  border-right: 1px solid var(--line);
+  background: var(--surface-muted);
+  text-align: left;
+}
+
+.hero-github-card__brand strong,
+.hero-github-card__brand span span {
+  display: block;
+  line-height: 1.15;
+}
+
+.hero-github-card__brand strong {
+  font-size: 0.92rem;
+}
+
+.hero-github-card__brand span span {
+  color: var(--text-soft);
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.hero-github-card__icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: 0 0 auto;
+}
+
+.hero-github-card__stats {
+  display: inline-flex;
+  align-items: stretch;
+}
+
+.hero-github-stat {
+  display: grid;
+  min-width: 6.7rem;
+  gap: 0.05rem;
+  padding: 0.58rem 0.82rem;
+  border-right: 1px solid var(--line);
+}
+
+.hero-github-stat:last-child {
+  border-right: 0;
+}
+
+.hero-github-stat strong {
+  font-size: 1.02rem;
+  line-height: 1.15;
+}
+
+.hero-github-stat span {
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 .hero-link {
@@ -439,23 +509,6 @@ kbd {
   color: var(--link-hover);
 }
 
-.overview-stats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.stat-card {
-  padding: 0.78rem 0.95rem;
-  border-right: 1px solid var(--line);
-}
-
-.stat-card:last-child {
-  border-right: 0;
-}
-
-.stat-card__label,
 .control__label,
 .competition-main__index,
 .competition-card__index,
@@ -470,13 +523,6 @@ kbd {
   font-weight: 700;
   letter-spacing: 0;
   line-height: 1.35;
-}
-
-.stat-card__value {
-  display: block;
-  margin-top: 0.2rem;
-  font-size: 1.35rem;
-  line-height: 1.1;
 }
 
 .resource-grid,
@@ -865,10 +911,10 @@ kbd {
 }
 
 .competition-card__solutions {
-  padding: 0.7rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  background: var(--surface-muted);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .load-more {
@@ -955,6 +1001,14 @@ kbd {
   margin: 0.85rem 0 1rem;
 }
 
+.legend-stack .solution-badge {
+  width: auto;
+  min-width: 7.25rem;
+  min-height: 1.8rem;
+  padding: 0.28rem 0.48rem;
+  font-size: 0.74rem;
+}
+
 .legend-list {
   margin: 0;
   padding-left: 1.25rem;
@@ -1035,26 +1089,11 @@ kbd {
 .site-footer__inner {
   display: flex;
   align-items: start;
-  justify-content: space-between;
-  gap: 1.2rem;
+  justify-content: flex-start;
 }
 
-.site-footer__title,
 .site-footer__text {
   margin: 0;
-}
-
-.site-footer__title {
-  margin-bottom: 0.28rem;
-  color: var(--text);
-  font-weight: 700;
-}
-
-.site-footer__meta {
-  display: grid;
-  gap: 0.28rem;
-  justify-items: end;
-  text-align: right;
 }
 
 @media (max-width: 1100px) {
@@ -1067,15 +1106,12 @@ kbd {
   }
 
   .explorer-heading,
-  .resource-hero__inner,
-  .site-footer__inner {
+  .resource-hero__inner {
     align-items: start;
     flex-direction: column;
   }
 
-  .explorer-heading__text,
-  .site-footer__meta {
-    justify-items: start;
+  .explorer-heading__text {
     text-align: left;
   }
 
@@ -1102,13 +1138,8 @@ kbd {
     white-space: nowrap;
   }
 
-  .overview-links,
-  .overview-stats {
+  .overview-links {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .explorer-toolbar {
-    grid-template-columns: 1fr;
   }
 
   .desktop-table {
@@ -1129,10 +1160,6 @@ kbd {
     gap: 0.25rem;
   }
 
-  .site-nav__stars {
-    display: none;
-  }
-
   .hero h1 {
     font-size: 1.9rem;
   }
@@ -1144,19 +1171,9 @@ kbd {
   }
 
   .overview-links,
-  .overview-stats,
   .detail-list,
   .competition-card__details {
     grid-template-columns: 1fr;
-  }
-
-  .stat-card {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .stat-card:last-child {
-    border-bottom: 0;
   }
 
   .hero__actions {

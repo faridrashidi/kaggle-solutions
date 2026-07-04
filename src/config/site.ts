@@ -30,6 +30,10 @@ export const siteConfig = {
   author: "Farid Rashidi",
   authorUrl: "https://farid.one",
   repositoryUrl: "https://github.com/faridrashidi/kaggle-solutions",
+  githubStatsFallback: {
+    stars: "6,451",
+    forks: "2,367",
+  },
   keywords: [
     "Kaggle",
     "machine learning",

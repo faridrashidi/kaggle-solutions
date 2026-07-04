@@ -10,25 +10,27 @@ import {
 } from "../data/competitions";
 import { siteConfig } from "../config/site";
 
-const statCards = [
-  {
-    label: "Competitions",
-    value: competitionStats.total.toLocaleString(),
-  },
-  {
-    label: "Curated",
-    value: competitionStats.curated.toLocaleString(),
-  },
-  {
-    label: "Hot",
-    value: competitionStats.hot.toLocaleString(),
-  },
-  {
-    label: "Years covered",
-    value: `${competitionStats.firstYear}-${competitionStats.latestYear}`,
-  },
-];
+const resolveGithubRepositoryPath = (repositoryUrl: string) => {
+  try {
+    const repository = new URL(repositoryUrl);
+    const segments = repository.pathname.replace(/^\/+|\/+$/g, "").split("/");
 
+    if (segments.length >= 2) {
+      return {
+        owner: segments[0],
+        repo: segments[1].replace(/\.git$/, ""),
+      };
+    }
+  } catch {
+    // Keep the hero stats as static labels if the repository URL is invalid.
+  }
+
+  return null;
+};
+
+const githubRepositoryPath = resolveGithubRepositoryPath(
+  siteConfig.repositoryUrl,
+);
 const lazyPageSize = 10;
 ---
 
@@ -41,26 +43,56 @@ const lazyPageSize = 10;
     <div class="shell hero__simple">
       <h1>Kaggle Solutions</h1>
       <p class="hero__lede">
-        A plain archive of Kaggle competition solutions, write-ups, notebooks,
-        and ideas shared by top performers across years of competitions.
+        This is a list of almost all available solutions and ideas shared by top
+        performers in the past Kaggle competitions. This list gets updated as
+        soon as a new competition finishes. If you found it interesting, you may
+        give a star or make a fork
       </p>
       <p class="hero__meta">
         Last updated <strong>{siteConfig.lastUpdated}</strong>.
       </p>
 
-      <div class="hero__actions">
-        <a class="hero-link hero-link--primary" href="#competition-index">
-          Jump to the search
-        </a>
-        <a
-          class="hero-link"
-          href={siteConfig.repositoryUrl}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Open GitHub
-        </a>
-      </div>
+      <a
+        id="github-repository-link"
+        class="hero-github-card"
+        href={siteConfig.repositoryUrl}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="GitHub repository statistics"
+        data-owner={githubRepositoryPath?.owner}
+        data-repo={githubRepositoryPath?.repo}
+      >
+        <span class="hero-github-card__brand" aria-hidden="true">
+          <svg
+            class="hero-github-card__icon"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            role="presentation"
+          >
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.66 7.66 0 0 1 8 4.97c.68 0 1.37.09 2.01.26 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+            ></path>
+          </svg>
+          <span>
+            <strong>GitHub</strong>
+            <span>Repository</span>
+          </span>
+        </span>
+        <span class="hero-github-card__stats">
+          <span class="hero-github-stat">
+            <strong data-github-stars
+              >{siteConfig.githubStatsFallback.stars}</strong
+            >
+            <span>stars</span>
+          </span>
+          <span class="hero-github-stat">
+            <strong data-github-forks
+              >{siteConfig.githubStatsFallback.forks}</strong
+            >
+            <span>forks</span>
+          </span>
+        </span>
+      </a>
     </div>
   </section>
 
@@ -78,26 +110,11 @@ const lazyPageSize = 10;
           ))
         }
       </ul>
-
-      <div class="overview-stats" aria-label="Archive statistics">
-        {
-          statCards.map((stat) => (
-            <article class="stat-card">
-              <span class="stat-card__label">{stat.label}</span>
-              <strong class="stat-card__value">{stat.value}</strong>
-            </article>
-          ))
-        }
-      </div>
     </div>
   </section>
 
   <section class="explorer-section" id="competition-index">
-    <div
-      class="shell"
-      data-competition-explorer
-      data-page-size={lazyPageSize}
-    >
+    <div class="shell" data-competition-explorer data-page-size={lazyPageSize}>
       <div class="explorer-heading">
         <div>
           <h2>Competition index</h2>
@@ -235,6 +252,76 @@ const lazyPageSize = 10;
       </div>
     </div>
   </section>
+
+  <script is:inline>
+    (() => {
+      const githubRepositoryLink = document.getElementById(
+        "github-repository-link",
+      );
+
+      if (!githubRepositoryLink) {
+        return;
+      }
+
+      const { owner, repo } = githubRepositoryLink.dataset;
+
+      if (!owner || !repo) {
+        return;
+      }
+
+      const githubStarTargets = githubRepositoryLink.querySelectorAll(
+        "[data-github-stars]",
+      );
+      const githubForkTargets = githubRepositoryLink.querySelectorAll(
+        "[data-github-forks]",
+      );
+      const formatter = new Intl.NumberFormat("en-US");
+
+      const syncGithubStats = async () => {
+        try {
+          const response = await fetch(
+            `https://api.github.com/repos/${owner}/${repo}`,
+            {
+              cache: "no-store",
+              headers: {
+                Accept: "application/vnd.github+json",
+              },
+            },
+          );
+
+          if (!response.ok) {
+            return;
+          }
+
+          const repository = await response.json();
+          const starCount = repository?.stargazers_count;
+          const forkCount = repository?.forks_count;
+
+          if (typeof starCount !== "number" || typeof forkCount !== "number") {
+            return;
+          }
+
+          const formattedStarCount = formatter.format(starCount);
+          const formattedForkCount = formatter.format(forkCount);
+
+          githubStarTargets.forEach((target) => {
+            target.textContent = formattedStarCount;
+          });
+          githubForkTargets.forEach((target) => {
+            target.textContent = formattedForkCount;
+          });
+          githubRepositoryLink.setAttribute(
+            "aria-label",
+            `GitHub repository with ${formattedStarCount} stars and ${formattedForkCount} forks`,
+          );
+        } catch {
+          // Keep the fallback numbers when the GitHub API is unavailable.
+        }
+      };
+
+      void syncGithubStats();
+    })();
+  </script>
 
   <script is:inline>
     (() => {
@@ -425,7 +512,8 @@ const lazyPageSize = 10;
 
       function updateResultsCount(totalMatches, shownCount) {
         if (totalMatches === 0) {
-          resultsCount.textContent = "No competitions match the current filters.";
+          resultsCount.textContent =
+            "No competitions match the current filters.";
           return;
         }
 
@@ -478,7 +566,10 @@ const lazyPageSize = 10;
           return;
         }
 
-        visibleLimit = Math.min(visibleLimit + pageSize, matchingRecords.length);
+        visibleLimit = Math.min(
+          visibleLimit + pageSize,
+          matchingRecords.length,
+        );
         renderRecords();
       }
 
