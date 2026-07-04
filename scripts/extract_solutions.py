@@ -8,10 +8,9 @@ import urllib.request
 
 import yaml
 from bs4 import BeautifulSoup
-from selenium.common.exceptions import InvalidSessionIdException, WebDriverException
 from selenium import webdriver
+from selenium.common.exceptions import InvalidSessionIdException, WebDriverException
 from selenium.webdriver.chrome.options import Options
-
 
 DEFAULT_EXPORT_DIR = "~/Desktop/kaggle"
 
@@ -173,14 +172,81 @@ def build_competition_image_mapping(driver):
     return mapping
 
 
-def download_competition_image(competition_slug, output_dir, image_mapping):
+def get_competition_id_from_image_path(image_path):
+    """Extract the Kaggle competition id from a local logo path."""
+    if not image_path:
+        return None
+
+    match = re.search(r"(?:^|/)logos/(\d+)\.[a-z0-9]+$", image_path)
+    if match:
+        return match.group(1)
+
+    match = re.search(r"(?:^|/)(\d+)\.[a-z0-9]+$", image_path)
+    if match:
+        return match.group(1)
+
+    return None
+
+
+def build_competition_thumbnail_url(comp_id):
+    """Build Kaggle's stable thumbnail image endpoint for a competition id."""
+    return f"https://www.kaggle.com/competitions/{comp_id}/images/thumbnail"
+
+
+def extract_competition_image_from_page_source(page_source):
+    """Extract a competition image URL and id from a Kaggle competition page."""
+    endpoint_match = re.search(
+        r"(?:https://(?:www\.)?kaggle\.com)?/competitions/(\d+)/images/(?:thumbnail|header)",
+        page_source,
+    )
+    if endpoint_match:
+        comp_id = endpoint_match.group(1)
+        return build_competition_thumbnail_url(comp_id), comp_id
+
+    storage_match = re.search(
+        r"(https://storage\.googleapis\.com/kaggle-competitions/kaggle/(\d+)/logos/[^\"'<>\s)]+)",
+        page_source,
+    )
+    if storage_match:
+        return html.unescape(storage_match.group(1)), storage_match.group(2)
+
+    return None
+
+
+def find_competition_image(driver, competition_slug):
+    """Fetch a competition page and extract its image URL and id."""
+    url = f"https://www.kaggle.com/competitions/{competition_slug}"
+    print(f"  Looking up image from: {url}")
+    driver.get(url)
+    time.sleep(5)
+    return extract_competition_image_from_page_source(driver.page_source)
+
+
+def download_competition_image(
+    competition_slug, output_dir, image_mapping, driver=None, image_path=None
+):
     """
     Download the image for a single competition using the pre-built mapping.
     Returns the filename if successful, None otherwise.
     """
     if competition_slug not in image_mapping:
-        print(f"  No image mapping found for: {competition_slug}")
-        return None
+        comp_id = get_competition_id_from_image_path(image_path)
+        if comp_id:
+            image_mapping[competition_slug] = (
+                build_competition_thumbnail_url(comp_id),
+                comp_id,
+            )
+        elif driver:
+            try:
+                image = find_competition_image(driver, competition_slug)
+                if image:
+                    image_mapping[competition_slug] = image
+            except Exception as e:
+                print(f"  Error looking up image: {e}")
+
+        if competition_slug not in image_mapping:
+            print(f"  No image mapping found for: {competition_slug}")
+            return None
 
     img_url, comp_id = image_mapping[competition_slug]
 
@@ -309,7 +375,8 @@ def convert_png_images_to_webp(image_dir):
     png_filenames = [
         filename
         for filename in os.listdir(image_dir)
-        if os.path.isfile(os.path.join(image_dir, filename)) and filename.endswith(".png")
+        if os.path.isfile(os.path.join(image_dir, filename))
+        and filename.endswith(".png")
     ]
 
     if not png_filenames:
@@ -338,15 +405,15 @@ def convert_png_images_to_webp(image_dir):
         print("Sharp CLI not found. PNG images were kept.")
         return
     except subprocess.CalledProcessError as e:
-        print(f"Sharp conversion failed with exit code {e.returncode}. PNG images were kept.")
+        print(
+            f"Sharp conversion failed with exit code {e.returncode}. PNG images were kept."
+        )
         return
 
     deleted_count = 0
     for filename in png_filenames:
         png_path = os.path.join(image_dir, filename)
-        webp_path = os.path.join(
-            image_dir, f"{os.path.splitext(filename)[0]}.webp"
-        )
+        webp_path = os.path.join(image_dir, f"{os.path.splitext(filename)[0]}.webp")
 
         if not os.path.exists(webp_path):
             print(f"  Keeping PNG without matching WebP: {filename}")
@@ -472,7 +539,13 @@ def process_yaml_file(input_path, output_path=None, image_dir=None):
 
             # Download image if image_dir is provided
             if image_dir:
-                download_competition_image(competition_slug, image_dir, image_mapping)
+                download_competition_image(
+                    competition_slug,
+                    image_dir,
+                    image_mapping,
+                    driver=driver,
+                    image_path=comp.get("image"),
+                )
 
             print()  # Empty line between competitions
 
@@ -524,7 +597,11 @@ if __name__ == "__main__":
 
     if args.input_file:
         output_path = args.output if args.output else DEFAULT_EXPORT_DIR
-        image_dir = normalize_path(args.images) if args.images else normalize_path(DEFAULT_EXPORT_DIR)
+        image_dir = (
+            normalize_path(args.images)
+            if args.images
+            else normalize_path(DEFAULT_EXPORT_DIR)
+        )
         process_yaml_file(args.input_file, output_path, image_dir)
     else:
         parser.print_help()
