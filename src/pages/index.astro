@@ -39,15 +39,13 @@ const lazyPageSize = 10;
 >
   <section class="hero">
     <div class="shell hero__simple">
-      <h1>The Most Comprehensive List of Kaggle Solutions and Ideas</h1>
+      <h1>Kaggle Solutions</h1>
       <p class="hero__lede">
-        This repository contains a curated collection of Kaggle competition
-        solutions, write-ups, and notebooks shared by top performers across
-        years of competitions.
+        A plain archive of Kaggle competition solutions, write-ups, notebooks,
+        and ideas shared by top performers across years of competitions.
       </p>
       <p class="hero__meta">
-        Last updated <strong>{siteConfig.lastUpdated}</strong>. Search, filter,
-        and sort the archive below.
+        Last updated <strong>{siteConfig.lastUpdated}</strong>.
       </p>
 
       <div class="hero__actions">
@@ -102,10 +100,11 @@ const lazyPageSize = 10;
     >
       <div class="explorer-heading">
         <div>
-          <h2>Searchable, filterable, and shareable.</h2>
+          <h2>Competition index</h2>
         </div>
         <p class="explorer-heading__text">
-          Press <kbd>/</kbd> to focus search.
+          {competitionStats.total.toLocaleString()} competitions collected from
+          {competitionStats.firstYear}-{competitionStats.latestYear}.
         </p>
       </div>
 

@@ -39,7 +39,7 @@ const themeScript = `
   const root = document.documentElement;
   const metaTheme = document.querySelector('meta[name="theme-color"]');
   const media = window.matchMedia("(prefers-color-scheme: dark)");
-  const COLORS = { light: "#0f6d8c", dark: "#09131d" };
+  const COLORS = { light: "#8c1515", dark: "#171513" };
 
   const getStoredTheme = () => {
     try {
@@ -86,9 +86,13 @@ const themeScript = `
       name="robots"
       content={noIndex ? "noindex, nofollow" : "index, follow"}
     />
-    <meta name="theme-color" content="#0f6d8c" />
+    <meta name="theme-color" content="#8c1515" />
     <script is:inline set:html={themeScript} />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJ7FH27J1F"></script>
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-KJ7FH27J1F"
+    ></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -106,7 +110,6 @@ const themeScript = `
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     />
-
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />

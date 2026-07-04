@@ -89,8 +89,7 @@ const reviewTone =
 
   {
     competition.solutionCount > 0 ? (
-      <details class="competition-card__solutions">
-        <summary>{competition.solutionCount} solution links</summary>
+      <div class="competition-card__solutions">
         <ul
           class="solution-list"
           aria-label={`Solution links for ${competition.title}`}
@@ -101,18 +100,9 @@ const reviewTone =
             </li>
           ))}
         </ul>
-      </details>
+      </div>
     ) : (
       <p class="solution-empty">No solution links added yet.</p>
     )
   }
-
-  <a
-    class="competition-card__cta"
-    href={competition.link}
-    target="_blank"
-    rel="noreferrer"
-  >
-    Open competition
-  </a>
 </article>
