@@ -11,8 +11,8 @@
   --line-strong: #b9ad9a;
   --accent: #8c1515;
   --accent-strong: #6f1010;
-  --link: #0645ad;
-  --link-hover: #8c1515;
+  --link: #211f1b;
+  --link-hover: #000000;
   --success: #2f6f3e;
   --success-soft: #edf6ee;
   --warning: #825900;
@@ -53,8 +53,8 @@
   --line-strong: #675a4b;
   --accent: #b83f3f;
   --accent-strong: #e1867f;
-  --link: #8eb6ff;
-  --link-hover: #ffaaa2;
+  --link: #f3eee4;
+  --link-hover: #ffffff;
   --success: #9bd19d;
   --success-soft: #203025;
   --warning: #efca78;
@@ -301,7 +301,6 @@ kbd {
 }
 
 .hero h1,
-.explorer-heading h2,
 .resource-hero h1,
 .legend-card h2,
 .legend-card h3,
@@ -319,7 +318,6 @@ kbd {
   font-size: 2.35rem;
 }
 
-.explorer-heading h2,
 .resource-hero h1,
 .not-found h1 {
   font-size: 1.7rem;
@@ -337,7 +335,6 @@ kbd {
 }
 
 .hero__meta,
-.explorer-heading__text,
 .resource-hero__copy p,
 .site-footer__text,
 .not-found p,
@@ -544,19 +541,6 @@ kbd {
 
 .explorer-section {
   padding-top: 1.25rem;
-}
-
-.explorer-heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
-}
-
-.explorer-heading__text {
-  margin: 0;
-  text-align: right;
 }
 
 .explorer-toolbar {
@@ -1105,14 +1089,9 @@ kbd {
     grid-column: 1 / -1;
   }
 
-  .explorer-heading,
   .resource-hero__inner {
     align-items: start;
     flex-direction: column;
-  }
-
-  .explorer-heading__text {
-    text-align: left;
   }
 
   .legend-grid,
@@ -1164,7 +1143,6 @@ kbd {
     font-size: 1.9rem;
   }
 
-  .explorer-heading h2,
   .resource-hero h1,
   .not-found h1 {
     font-size: 1.45rem;
