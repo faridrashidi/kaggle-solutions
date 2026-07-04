@@ -4,6 +4,7 @@
   --paper: #f8f6ea;
   --surface: #ffffff;
   --surface-muted: #f5f2e8;
+  --table-row-alt: #fbfaf6;
   --text: #211f1b;
   --text-soft: #5f5a50;
   --text-inverse: #ffffff;
@@ -46,6 +47,7 @@
   --paper: #24211d;
   --surface: #1d1a17;
   --surface-muted: #27231f;
+  --table-row-alt: #211e1a;
   --text: #f3eee4;
   --text-soft: #c7bfb1;
   --text-inverse: #ffffff;
@@ -635,6 +637,10 @@ kbd {
   border-bottom: 0;
 }
 
+.competition-table tbody tr:nth-child(even) {
+  background: var(--table-row-alt);
+}
+
 .competition-row:hover {
   background: var(--surface-muted);
 }
@@ -1082,7 +1088,7 @@ kbd {
 
 @media (max-width: 1100px) {
   .explorer-toolbar {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .control--search {
@@ -1152,6 +1158,10 @@ kbd {
   .detail-list,
   .competition-card__details {
     grid-template-columns: 1fr;
+  }
+
+  .explorer-toolbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .hero__actions {
