@@ -1,18 +1,18 @@
 :root {
   color-scheme: light;
   --bg: #ffffff;
-  --paper: #f8f6ea;
+  --paper: #f3f4f5;
   --surface: #ffffff;
-  --surface-muted: #f5f2e8;
-  --table-row-alt: #fbfaf6;
-  --text: #211f1b;
-  --text-soft: #5f5a50;
+  --surface-muted: #f0f2f4;
+  --table-row-alt: #f8f9fa;
+  --text: #202124;
+  --text-soft: #5f6368;
   --text-inverse: #ffffff;
-  --line: #ddd6c8;
-  --line-strong: #b9ad9a;
+  --line: #d8dce0;
+  --line-strong: #aeb4ba;
   --accent: #8c1515;
   --accent-strong: #6f1010;
-  --link: #211f1b;
+  --link: #202124;
   --link-hover: #000000;
   --success: #2f6f3e;
   --success-soft: #edf6ee;
@@ -20,8 +20,8 @@
   --warning-soft: #fbf2dc;
   --hot: #a43c2e;
   --hot-soft: #f9e9e5;
-  --muted: #67625a;
-  --muted-soft: #efede7;
+  --muted: #646c74;
+  --muted-soft: #eceff1;
   --gold-badge-bg: #fff4c2;
   --gold-badge-text: #614600;
   --gold-badge-border: #d4b044;
