@@ -13,7 +13,6 @@
   --accent: #8c1515;
   --accent-strong: #6f1010;
   --link: #202124;
-  --link-hover: #000000;
   --success: #2f6f3e;
   --success-soft: #edf6ee;
   --warning: #825900;
@@ -56,7 +55,6 @@
   --accent: #b83f3f;
   --accent-strong: #e1867f;
   --link: #f3eee4;
-  --link-hover: #ffffff;
   --success: #9bd19d;
   --success-soft: #203025;
   --warning: #efca78;
@@ -105,10 +103,6 @@ img {
 a {
   color: var(--link);
   text-decoration: none;
-}
-
-a:hover {
-  color: var(--link-hover);
 }
 
 button,
@@ -196,10 +190,6 @@ kbd {
   text-decoration: none;
 }
 
-.brand:hover {
-  color: #f2e4e4;
-}
-
 .brand__text {
   display: inline-flex;
   align-items: baseline;
@@ -245,12 +235,6 @@ kbd {
   place-items: center;
   padding: 0;
   cursor: pointer;
-}
-
-.theme-toggle:hover,
-.site-nav__link:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--text-inverse);
 }
 
 .theme-toggle__icon {
@@ -372,11 +356,6 @@ kbd {
   overflow: hidden;
 }
 
-.hero-github-card:hover {
-  border-color: var(--line-strong);
-  color: var(--text);
-}
-
 .hero-github-card__brand {
   display: inline-flex;
   align-items: center;
@@ -450,10 +429,6 @@ kbd {
   text-decoration: none;
 }
 
-.hero-link:hover {
-  color: var(--link-hover);
-}
-
 .overview-section {
   padding-bottom: 1rem;
 }
@@ -489,23 +464,12 @@ kbd {
   text-decoration: none;
 }
 
-.overview-links__link:hover,
-.resource-card:hover {
-  border-color: var(--line-strong);
-  background: var(--surface-muted);
-}
-
 .overview-links__link strong,
 .resource-card__title {
   color: var(--link);
   font-size: 1rem;
   line-height: 1.3;
   text-decoration: none;
-}
-
-.overview-links__link:hover strong,
-.resource-card:hover .resource-card__title {
-  color: var(--link-hover);
 }
 
 .control__label,
@@ -641,10 +605,6 @@ kbd {
   background: var(--table-row-alt);
 }
 
-.competition-row:hover {
-  background: var(--surface-muted);
-}
-
 .competition-main {
   display: flex;
   gap: 0.72rem;
@@ -681,12 +641,6 @@ kbd {
   font-size: 1.03rem;
   font-weight: 700;
   line-height: 1.35;
-}
-
-.competition-main__title:hover,
-.competition-card__title:hover,
-.prose a:hover {
-  color: var(--link-hover);
 }
 
 .competition-main__description,
@@ -788,11 +742,6 @@ kbd {
   font-weight: 700;
   line-height: 1.2;
   text-decoration: none;
-}
-
-.solution-badge:hover {
-  border-color: var(--line-strong);
-  color: var(--link-hover);
 }
 
 .solution-badge__label {
