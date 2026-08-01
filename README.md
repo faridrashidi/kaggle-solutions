@@ -26,7 +26,8 @@
 
 <p align="center">
   <a href="https://kaggle.farid.one/">
-    <img src="public/images/homepage.webp" style="max-width:100%;">
+    <img src="public/images/homepage-1.webp" style="max-width:100%;">
+    <img src="public/images/homepage-2.webp" style="max-width:100%;">
   </a>
 </p>
 
