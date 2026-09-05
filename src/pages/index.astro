@@ -493,13 +493,6 @@ const lazyPageSize = 10;
         return right.number - left.number;
       }
 
-      function detachRecord(record) {
-        record.row.remove();
-        if (record.card) {
-          record.card.remove();
-        }
-      }
-
       function updateResultsCount(totalMatches, shownCount) {
         if (totalMatches === 0) {
           resultsCount.textContent =
@@ -526,8 +519,6 @@ const lazyPageSize = 10;
         const tableFragment = document.createDocumentFragment();
         const cardFragment = document.createDocumentFragment();
 
-        records.forEach(detachRecord);
-
         visibleRecords.forEach((record) => {
           record.row.hidden = false;
           tableFragment.appendChild(record.row);
@@ -537,8 +528,8 @@ const lazyPageSize = 10;
           }
         });
 
-        tableBody.appendChild(tableFragment);
-        cardGrid.appendChild(cardFragment);
+        tableBody.replaceChildren(tableFragment);
+        cardGrid.replaceChildren(cardFragment);
 
         updateResultsCount(matchingRecords.length, shownCount);
 
