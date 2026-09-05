@@ -115,6 +115,19 @@ const lazyPageSize = 10;
 
   <section class="explorer-section" id="competition-index">
     <div class="shell" data-competition-explorer data-page-size={lazyPageSize}>
+      <style
+        is:inline
+        set:html={`
+          [data-initializing] .competition-row:nth-child(n + ${lazyPageSize + 1}),
+          [data-initializing] .competition-card:nth-child(n + ${lazyPageSize + 1}) {
+            display: none;
+          }
+        `}
+      />
+      <script is:inline>
+        // Avoid laying out the full archive before pagination initializes.
+        document.currentScript.parentElement.setAttribute("data-initializing", "");
+      </script>
       <div class="explorer-toolbar">
         <label class="control control--search">
           <span class="control__label">Search</span>
@@ -634,6 +647,7 @@ const lazyPageSize = 10;
 
       syncControlsFromUrl();
       applyFilters(false);
+      root.removeAttribute("data-initializing");
     })();
   </script>
 </BaseLayout>
