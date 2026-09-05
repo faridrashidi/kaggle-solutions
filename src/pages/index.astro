@@ -58,7 +58,6 @@ const searchIndex = competitions.map((competition) => ({
   canonicalPath="/"
   noIndex={showAll}
 >
-  <link slot="head" rel="prefetch" href="/competition-markup.json" />
   <section class="hero">
     <div class="shell hero__simple">
       <h1>Kaggle Solutions</h1>
@@ -409,6 +408,14 @@ const searchIndex = competitions.map((competition) => ({
             throw error;
           });
       }
+
+      window.addEventListener("load", () => {
+        if (markupPromise) return;
+        const prefetch = document.createElement("link");
+        prefetch.rel = "prefetch";
+        prefetch.href = "/competition-markup.json";
+        document.head.appendChild(prefetch);
+      }, { once: true });
 
       const validKinds = new Set(
         Array.from(kindSelect.options).map((option) => option.value),
