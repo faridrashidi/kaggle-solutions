@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { Font } from "astro:assets";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import { siteConfig } from "../config/site";
@@ -88,11 +89,6 @@ const themeScript = `
     />
     <meta name="theme-color" content="#8c1515" />
     <script is:inline set:html={themeScript} />
-    <script
-      is:inline
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-KJ7FH27J1F"
-    ></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -100,16 +96,27 @@ const themeScript = `
       }
       gtag("js", new Date());
       gtag("config", "G-KJ7FH27J1F");
+
+      window.addEventListener("load", () => {
+        const loadAnalytics = () => {
+          const script = document.createElement("script");
+          script.async = true;
+          script.src =
+            "https://www.googletagmanager.com/gtag/js?id=G-KJ7FH27J1F";
+          document.head.appendChild(script);
+        };
+
+        if ("requestIdleCallback" in window) {
+          window.requestIdleCallback(loadAnalytics, { timeout: 2000 });
+        } else {
+          window.setTimeout(loadAnalytics, 2000);
+        }
+      }, { once: true });
     </script>
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon.png" />
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    />
+    <Font cssVariable="--font-inter" preload />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
