@@ -18,6 +18,7 @@ export default defineConfig({
       cssVariable: "--font-inter",
       weights: ["400 800"],
       styles: ["normal"],
+      display: "optional",
     },
   ],
   integrations: [sitemap({ filter: (page) => !page.endsWith("/archive") })],
