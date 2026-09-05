@@ -6,6 +6,7 @@ const site = process.env.SITE_URL ?? "https://kaggle.farid.one";
 export default defineConfig({
   site,
   output: "static",
+  compressHTML: true,
   build: {
     format: "preserve",
   },

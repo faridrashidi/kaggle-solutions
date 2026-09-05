@@ -16,8 +16,8 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.1",
-    "astro": "^6.3.3",
-    "js-yaml": "^4.1.1"
+    "astro": "^7.3.1",
+    "js-yaml": "^4.3.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.2",
