@@ -32,13 +32,33 @@ const githubRepositoryPath = resolveGithubRepositoryPath(
   siteConfig.repositoryUrl,
 );
 const lazyPageSize = 10;
+interface Props {
+  showAll?: boolean;
+}
+const { showAll = false }: Props = Astro.props;
+const initialCompetitions = showAll
+  ? competitions
+  : competitions.slice(0, lazyPageSize);
+const searchIndex = competitions.map((competition) => ({
+  id: String(competition.number),
+  search: competition.searchText,
+  kind: competition.kind,
+  year: String(competition.year),
+  status: competition.status,
+  isHot: competition.isHot,
+  number: competition.number,
+  teamCount: competition.teamCount ?? -1,
+  solutionCount: competition.solutionCount,
+}));
 ---
 
 <BaseLayout
   title={siteConfig.title}
   description={siteConfig.description}
   canonicalPath="/"
+  noIndex={showAll}
 >
+  <link slot="head" rel="prefetch" href="/competition-markup.json" />
   <section class="hero">
     <div class="shell hero__simple">
       <h1>Kaggle Solutions</h1>
@@ -115,19 +135,19 @@ const lazyPageSize = 10;
 
   <section class="explorer-section" id="competition-index">
     <div class="shell" data-competition-explorer data-page-size={lazyPageSize}>
-      <style
+      <script
         is:inline
-        set:html={`
-          [data-initializing] .competition-row:nth-child(n + ${lazyPageSize + 1}),
-          [data-initializing] .competition-card:nth-child(n + ${lazyPageSize + 1}) {
-            display: none;
-          }
-        `}
+        type="application/json"
+        data-competition-index
+        set:html={JSON.stringify(searchIndex).replace(/</g, "\\u003c")}
       />
-      <script is:inline>
-        // Avoid laying out the full archive before pagination initializes.
-        document.currentScript.parentElement.setAttribute("data-initializing", "");
-      </script>
+      {
+        !showAll && (
+          <noscript>
+            <p><a href="/archive">Browse the full competition archive</a></p>
+          </noscript>
+        )
+      }
       <div class="explorer-toolbar">
         <label class="control control--search">
           <span class="control__label">Search</span>
@@ -217,7 +237,7 @@ const lazyPageSize = 10;
           </thead>
           <tbody data-table-body>
             {
-              competitions.map((competition) => (
+              initialCompetitions.map((competition) => (
                 <CompetitionRow competition={competition} />
               ))
             }
@@ -227,7 +247,7 @@ const lazyPageSize = 10;
 
       <div class="competition-grid" data-card-grid>
         {
-          competitions.map((competition) => (
+          initialCompetitions.map((competition) => (
             <CompetitionCard competition={competition} />
           ))
         }
@@ -365,25 +385,30 @@ const lazyPageSize = 10;
         cardElements.map((card) => [card.dataset.id, card]),
       );
 
-      const records = rowElements.map((row) => {
-        const card = cardById.get(row.dataset.id);
-
-        return {
-          id: row.dataset.id ?? "",
-          row,
-          card,
-          search: row.dataset.search ?? "",
-          kind: row.dataset.kind ?? "",
-          year: row.dataset.year ?? "",
-          status: row.dataset.status ?? "",
-          isHot: row.dataset.hot === "true",
-          number: Number.parseInt(row.dataset.number ?? "0", 10),
-          teamCount: Number.parseInt(row.dataset.teamCount ?? "-1", 10),
-          solutionCount: Number.parseInt(row.dataset.solutionCount ?? "0", 10),
-        };
-      });
+      const rowById = new Map(rowElements.map((row) => [row.dataset.id, row]));
+      const records = JSON.parse(
+        root.querySelector("[data-competition-index]").textContent,
+      ).map((record) => ({
+        ...record,
+        row: rowById.get(record.id),
+        card: cardById.get(record.id),
+      }));
       let matchingRecords = [];
       let visibleLimit = pageSize;
+      let markupPromise;
+      let renderVersion = 0;
+
+      function loadMarkup() {
+        return markupPromise ??= fetch("/competition-markup.json")
+          .then((response) => {
+            if (!response.ok) throw new Error("Could not load competition markup");
+            return response.json();
+          })
+          .catch((error) => {
+            markupPromise = null;
+            throw error;
+          });
+      }
 
       const validKinds = new Set(
         Array.from(kindSelect.options).map((option) => option.value),
@@ -526,9 +551,32 @@ const lazyPageSize = 10;
         resultsCount.textContent = `Showing ${shownCount.toLocaleString()} of ${totalMatches.toLocaleString()} matching competitions.`;
       }
 
-      function renderRecords() {
+      async function renderRecords() {
+        const version = ++renderVersion;
         const shownCount = Math.min(visibleLimit, matchingRecords.length);
         const visibleRecords = matchingRecords.slice(0, shownCount);
+
+        if (visibleRecords.some((record) => !record.row)) {
+          resultsCount.textContent = "Loading competitions…";
+          try {
+            const markup = await loadMarkup();
+            if (version !== renderVersion) return;
+
+            visibleRecords.forEach((record) => {
+              if (record.row) return;
+              const template = document.createElement("template");
+              template.innerHTML = `<table><tbody>${markup[record.id].row}</tbody></table>${markup[record.id].card}`;
+              record.row = template.content.querySelector("tr");
+              record.card = template.content.querySelector("article");
+            });
+          } catch {
+            if (version === renderVersion) {
+              resultsCount.textContent = "Could not load competitions. Please try again.";
+            }
+            return;
+          }
+        }
+
         const tableFragment = document.createDocumentFragment();
         const cardFragment = document.createDocumentFragment();
 
@@ -647,7 +695,6 @@ const lazyPageSize = 10;
 
       syncControlsFromUrl();
       applyFilters(false);
-      root.removeAttribute("data-initializing");
     })();
   </script>
 </BaseLayout>

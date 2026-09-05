@@ -20,5 +20,5 @@ export default defineConfig({
       styles: ["normal"],
     },
   ],
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: (page) => !page.endsWith("/archive") })],
 });
